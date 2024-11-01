@@ -1,68 +1,107 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+// –––––––––––––––––––––––––––––––––––––––––––
+// Variabler
+// ––––––––––––––––––––––––––––––––––––––––––-
+$color-background: #FFF5D0;
+$color-secondary: #FECC66;
+$color-inputFill: #FFF8DE;
+$color-inputBorder: #E3D9B0;
+$color-text-black: #1F1F1F;
+$color-text-white: #ffffff; 
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+// –––––––––––––––––––––––––––––––––––––––––––
+// Mixins
+// ––––––––––––––––––––––––––––––––––––––––––-
+@mixin font-style($family, $size, $weight, $color, $line-height) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  line-height: $line-height;
+  @media screen and (max-width:1000px) {
+    font-size: ($size)*0.9;
+  }
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+// –––––––––––––––––––––––––––––––––––––––––––
+// Global styles
+// ––––––––––––––––––––––––––––––––––––––––––-
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  background-color: $color-background;
+  box-sizing: border-box;
   min-height: 100vh;
+  overflow-x: hidden; 
+}
+
+p { 
+  @include font-style("Itim", 1rem, 200, $color-text-white, 2rem);    
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  @include font-style("Itim", 2.8rem, 200, $color-text-white, 3.5rem);
+}
+
+h2 {
+  @include font-style("Itim", 2rem, 200, $color-text-white, 1.5rem); 
+}
+
+h3 {
+  @include font-style("Itim", 1.4rem, 200, $color-text-white, 1.5rem);
+}
+
+a {
+  @include font-style("Itim", 1rem, 600, $color-text-white, 2.5rem);  
+}
+
+input {
+  padding: 0.5em 1em;
+  @include font-style("Itim", 1rem, 200, $color-text-white, 2rem);
+  background-color: $color-inputFill;
+  border: 1px solid $color-inputBorder;
+  border-radius: 10px;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  padding: 0.2em 1em;
+  @include font-style("Jomhuria", 43px, 200, $color-text-white, 2rem);
+  background-color: $color-secondary;
+  border: none;
+  border-radius: 10px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+form {
+  margin: 4em auto;
+  display: grid;
+  gap: 1em;
+  width: 100%; /* Får formularen til at fylde hele bredden */
+  max-width: 400px; /* Sæt max-bredde til et mere passende niveau */
+}
+.logo {
+  margin: 8em auto;
+  width: 150px; 
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 1em;
+  .smileCircle {
+    width: 100%;
+    height: auto;
+    animation: rotate 10s linear infinite;
   }
-  a:hover {
-    color: #747bff;
+  .smileFace {
+    width: 35%;
+    height: auto;
+    position: absolute;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@keyframes rotate {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
   }
 }
