@@ -8,7 +8,6 @@ function App() {
       <img src={smileCircle} alt="Smile" className='smileCircle' /> 
       <img src={smileFace} alt="Smile" className='smileFace' />
     </div>
-  
 
     <form>
     <input type="text" placeholder='Navn' />
