@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Task({ addTask, addCategory, addPoints }) {
+function Task({addTask}) {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [taskName, setTaskName] = useState('');
     const [selectedPoints, setSelectedPoints] = useState('');
@@ -56,18 +56,6 @@ function Task({ addTask, addCategory, addPoints }) {
             <option value={15}>15</option>
             <option value={20}>20</option>
             <option value={25}>25</option>
-          </select>
-  
-          {/* Projektvalg - sørg for nyeste opgaver kommer nederst */}
-          <select 
-            value={selectedShop}
-            onChange={(e) => setSelectedShop(e.target.value)}
-            required
-          >
-            <option value="" disabled hidden>Vælg butik</option>
-            {shops.map((shop, index) => (
-              <option key={index} value={shop}>{shop}</option>
-            ))}
           </select>
   
           <button type="submit">Tilføj</button>
