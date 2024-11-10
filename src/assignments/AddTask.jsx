@@ -34,7 +34,7 @@ function Task({ addTask, addCategory, addPoints }) {
             onChange={(e) => setSelectedCategory(e.target.value)}
             required
           >
-            <option value="" disabled hidden>Vælg opgavekategori</option>
+            <option value="" disabled hidden>Vælg kategori</option>
             <option value="bøger">📚</option>
             <option value="tallerken">🍽️</option>
             <option value="sæbe">🧼</option>
@@ -43,8 +43,22 @@ function Task({ addTask, addCategory, addPoints }) {
             <option value="seng">🛏️</option>
             <option value="poser">🛍️</option>
           </select>
+
+          {/* Valg af antal Points */}
+          <select 
+            value={selectedPoints} 
+            onChange={(e) => setSelectedPoints(Number(e.target.value))}
+            required
+          >
+            <option value="" disabled hidden>Vælg antal points</option>
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+            <option value={25}>25</option>
+          </select>
   
-          {/* Projektvalg - sørg for nyeste projekter er nederst */}
+          {/* Projektvalg - sørg for nyeste opgaver kommer nederst */}
           <select 
             value={selectedShop}
             onChange={(e) => setSelectedShop(e.target.value)}
