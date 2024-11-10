@@ -1,5 +1,6 @@
 import smileCircle from './assets/smileCircle.png';
 import smileFace from './assets/smileFace.png';
+import AddTask from './assignments/AddTask';
 
 function App() {
   return (
