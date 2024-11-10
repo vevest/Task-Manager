@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function AddInput({ addShopItem, addShop, shops }) {
+function Task({ addShopItem, addShop, shops }) {
     const [inputValue, setInputValue] = useState('');
     const [priority, setPriority] = useState('');
     const [shopName, setShopName] = useState('');
@@ -81,4 +81,4 @@ function AddInput({ addShopItem, addShop, shops }) {
     );
   }
   
-  export default AddInput
+  export default Task
