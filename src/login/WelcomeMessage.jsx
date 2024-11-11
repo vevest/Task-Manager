@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 
 function WelcomeMessage() {
-  const { name } = useContext(LoginContext);
+  const {name} = useContext(LoginContext);
   return (
     <section className="center">
       <h1>Hej {name} !</h1> 

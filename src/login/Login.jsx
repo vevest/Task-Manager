@@ -22,12 +22,12 @@ function Login() {
   return (
     <>
       <div className='logo'>
-      <img src={smileCircle} alt="Smile" className='smileCircle' /> 
-      <img src={smileFace} alt="Smile" className='smileFace' />
+        <img src={smileCircle} alt="Smile" className='smileCircle' /> 
+        <img src={smileFace} alt="Smile" className='smileFace' />
       </div>
       <form onSubmit={handleSubmit}>
-      <input type="text" placeholder='Navn' onChange={handleChance} />
-      <button type='submit'>Login</button>
+        <input type="text" placeholder='Navn' onChange={handleChance} />
+        <button type='submit'>Login</button>
       </form> 
     </>
   )
