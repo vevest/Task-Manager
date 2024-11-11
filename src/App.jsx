@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import Login from './Login/Login'
-import './App.css'
-import WelcomeMessage from './Login/WelcomeMessage';
-import { LoginContext } from './Context/LoginContext';
+import Login from './login/Login'
+import WelcomeMessage from './login/WelcomeMessage';
+import { LoginContext } from './context/LoginContext';
 import AddTask from './assignments/AddTask'; 
 
 

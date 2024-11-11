@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { LoginContext } from "../Context/LoginContext";
-import smileCircle from '../Assets/smileCircle.png';
-import smileFace from '../Assets/smileFace.png';
+import { LoginContext } from "../context/LoginContext";
+import smileCircle from '../assets/smileCircle.png';
+import smileFace from '../assets/smileFace.png';
 
 
 function Login() {

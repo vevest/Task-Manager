@@ -33,28 +33,31 @@ body {
 }
 
 p { 
-  @include font-style("Itim", 1rem, 200, $color-text-white, 2rem);    
+  @include font-style("Itim", 1rem, 200, $color-text-black, 2rem);    
 }
 
 h1 {
-  @include font-style("Itim", 2.8rem, 200, $color-text-white, 3.5rem);
+  @include font-style("Itim", 2.8rem, 200, $color-text-black, 3.5rem);
 }
 
 h2 {
-  @include font-style("Itim", 2rem, 200, $color-text-white, 1.5rem); 
+  @include font-style("Itim", 2rem, 200, $color-text-black, 1.5rem); 
 }
 
 h3 {
-  @include font-style("Itim", 1.4rem, 200, $color-text-white, 1.5rem);
+  @include font-style("Itim", 1.4rem, 200, $color-text-black, 1.5rem);
 }
 
 a {
   @include font-style("Itim", 1rem, 600, $color-text-white, 2.5rem);  
 }
+.center {
+  text-align: center;
+}
 
 input {
   padding: 0.5em 1em;
-  @include font-style("Itim", 1rem, 200, $color-text-white, 2rem);
+  @include font-style("Itim", 1rem, 200, $color-text-black, 2rem);
   background-color: $color-inputFill;
   border: 1px solid $color-inputBorder;
   border-radius: 10px;

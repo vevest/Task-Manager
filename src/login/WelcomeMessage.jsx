@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { LoginContext } from "../Context/LoginContext";
+import { LoginContext } from "../context/LoginContext";
 
 function WelcomeMessage() {
   const { name } = useContext(LoginContext);
   return (
-    <section>
+    <section className="center">
       <h1>Hej {name} !</h1> 
       <h2>Velkommen til Smile!</h2>
       <div className="boxType1">
