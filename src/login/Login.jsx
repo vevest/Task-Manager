@@ -27,7 +27,9 @@ function Login() {
       </div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Navn' onChange={handleChance} />
-        <button type='submit'>Login</button>
+        <button type='submit' className={`${!name ? "disabled" : ""}`}>Login</button>
+
+        {/* {`buttonBottom ${!selectedCharacter ? "disabled" : ""}`}  */}
       </form> 
     </>
   )

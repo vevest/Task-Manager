@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
+import { Link } from 'react-router-dom';
 
 import character1 from '../assets/character1.png';
 import character2 from '../assets/character2.png';
@@ -59,8 +60,13 @@ function Character() {
           </div>
         ))}
       </div>
-      <button className='buttonBottom' onClick={handleSubmit}>Kom i gang</button>
-    </div>
+      <Link 
+        to={`${selectedCharacter ? "/mood" : ""}`} 
+        className={`buttonBottom button ${!selectedCharacter ? "disabled" : ""}`} 
+      > 
+        Kom i gang
+      </Link>
+    </div> 
   );
 }
 

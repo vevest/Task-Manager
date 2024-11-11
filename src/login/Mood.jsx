@@ -1,5 +1,8 @@
+import { Link } from 'react-router-dom';
+
 import smileCircle from '../assets/smileCircle.png';
 import smileFace from '../assets/smileFace.png';
+
 
 function Mood() {
 
@@ -13,9 +16,9 @@ function Mood() {
       </div>
       <p>Hvordan har din dag været?</p>
       <div className='moodBox'>
-        <img src={smileFace} alt="Smile" className='smileCircle' />
-        <img src={smileFace} alt="Smile" className='smileCircle' />
-        <img src={smileFace} alt="Smile" className='smileCircle' />
+        <Link to='/'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
+        <Link to='/'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
+        <Link to='/'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
       </div>
     </div>
   );

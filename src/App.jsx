@@ -3,10 +3,9 @@ import { LoginContext } from './context/LoginContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 
 import Login from './login/Login';
-import WelcomeMessage from './login/WelcomeMessage';
-import AddTask from './assignments/AddTask'; 
+import WelcomeMessage from './login/WelcomeMessage'; 
 import Character from './login/Character';
-import Mood from './login/Mood';
+import Mood from './login/Mood'; 
 
  
 function App() {
@@ -19,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={showName ? <WelcomeMessage /> : <Login />} />
           <Route path="/character" element={<Character />} />
+          <Route path="/mood" element={<Mood />} />
         </Routes>
       </Router>
     </LoginContext.Provider>
