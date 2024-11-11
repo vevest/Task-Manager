@@ -16,9 +16,9 @@ function Mood() {
       </div>
       <p>Hvordan har din dag været?</p>
       <div className='moodBox'>
-        <Link to='/'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
-        <Link to='/'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
-        <Link to='/'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
+        <Link to='/homepage'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
+        <Link to='/homepage'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
+        <Link to='/homepage'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
       </div>
     </div>
   );

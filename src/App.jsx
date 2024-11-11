@@ -6,6 +6,9 @@ import Login from './login/Login';
 import WelcomeMessage from './login/WelcomeMessage'; 
 import Character from './login/Character';
 import Mood from './login/Mood'; 
+import Homepage from './pages/Homepage';
+import Profile from './pages/Profile';
+import Assignments from './pages/Assignments';
 
  
 function App() {
@@ -19,6 +22,9 @@ function App() {
           <Route path="/" element={showName ? <WelcomeMessage /> : <Login />} />
           <Route path="/character" element={<Character />} />
           <Route path="/mood" element={<Mood />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/assignments" element={<Assignments />} /> 
         </Routes>
       </Router>
     </LoginContext.Provider>

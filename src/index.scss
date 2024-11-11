@@ -58,6 +58,19 @@ a {
   justify-content: center;
 }
 
+nav {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 1.5em;
+  left: 0.4em;
+  right: 0.4em;
+}
+.navIcon {
+  .selectedPage {
+    fill: red; 
+  }
+}
 input {
   padding: 0.5em 1em;
   @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem);
