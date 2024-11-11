@@ -33,6 +33,15 @@ function Character() {
     setSelectedCharacter(characterId);  // Sætter den valgte karakter
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!selectedCharacter) {
+      alert('Vær sød at vælge en karakter! :)');
+    } else {
+      alert('Du har valgt en karakter!');
+    }
+  }
+
   return (
     <div className='center'>
       <h1>Vælg din karakter</h1>
@@ -50,7 +59,7 @@ function Character() {
           </div>
         ))}
       </div>
-      <button className='buttonBottom'>Kom i gang</button>
+      <button className='buttonBottom' onClick={handleSubmit}>Kom i gang</button>
     </div>
   );
 }

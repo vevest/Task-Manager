@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
+import { Link } from 'react-router-dom';
 
 function WelcomeMessage() {
   const {name} = useContext(LoginContext);
@@ -12,6 +13,7 @@ function WelcomeMessage() {
         <p className="framedContent">Pointsystem for at holde motivationen oppe.</p>
         <p className="framedContent">Motiverende citater</p>
         <button className="buttonBottom">Gå videre</button>
+        <Link to= '/character'>Gå videre</Link>
       </div>
     </section>
   )
