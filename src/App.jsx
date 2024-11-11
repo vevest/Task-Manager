@@ -1,21 +1,25 @@
-import smileCircle from './assets/smileCircle.png';
-import smileFace from './assets/smileFace.png';
-import AddTask from './assignments/AddTask';
+import { useState } from 'react'
+import Login from './Login/Login'
+import './App.css'
+import WelcomeMessage from './Login/WelcomeMessage';
+import { LoginContext } from './Context/LoginContext';
+import AddTask from './assignments/AddTask'; 
+
 
 function App() {
+  const [name, setName] = useState('');
+  const [showName, setShowName] = useState(false);
+
   return (
     <>
-    <div className='logo'>
-      <img src={smileCircle} alt="Smile" className='smileCircle' /> 
-      <img src={smileFace} alt="Smile" className='smileFace' />
-    </div>
-
-    <form>
-    <input type="text" placeholder='Navn' />
-    <button type="submit">LOGIN</button>
-    </form>
+    <LoginContext.Provider value={{name, setName, setShowName}}>
+      {showName ? <WelcomeMessage /> : <Login />}
+    </LoginContext.Provider>
+    
     </>
   )
 }
+
+
 
 export default App

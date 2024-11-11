@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Task({addTask}) {
+function AddTask({addTask}) {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [taskName, setTaskName] = useState('');
     const [selectedPoints, setSelectedPoints] = useState('');
@@ -64,4 +64,4 @@ function Task({addTask}) {
     );
   }
   
-  export default Task
+  export default AddTask
