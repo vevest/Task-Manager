@@ -12,7 +12,7 @@ function WelcomeMessage() {
         <p className="framedContent">Få styr på din hverdag sammen med os, i forsøget på at gøre hverdagens kedelige gøremål sjovere! </p>
         <p className="framedContent">Pointsystem for at holde motivationen oppe.</p>
         <p className="framedContent">Motiverende citater</p> 
-        <Link className="button" to= '/character'>Gå videre</Link>
+        <Link className="button buttonBottom" to= '/character'>Gå videre</Link>
       </div>
     </section>
   )

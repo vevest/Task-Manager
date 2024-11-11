@@ -2,10 +2,10 @@
 // Variabler
 // ––––––––––––––––––––––––––––––––––––––––––-
 $color-background: #FFF5D0;
-$color-secondary: #FECC66;
+$color-secondary: #d8a744; 
 $color-inputFill: #FFF8DE;
 $color-inputBorder: #E3D9B0;
-$color-text-black: #1F1F1F;
+$color-text-black: #323232;
 $color-text-white: #ffffff; 
 
 // –––––––––––––––––––––––––––––––––––––––––––
@@ -17,6 +17,7 @@ $color-text-white: #ffffff;
   font-weight: $weight;
   color: $color;
   line-height: $line-height;
+  letter-spacing: 1px;
   @media screen and (max-width:1000px) {
     font-size: ($size)*0.9;
   }
@@ -33,7 +34,7 @@ body {
 }
 
 p { 
-  @include font-style("Itim", 1rem, 200, $color-text-black, 2rem);    
+  @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem); 
 }
 
 h1 {
@@ -45,11 +46,11 @@ h2 {
 }
 
 h3 {
-  @include font-style("Itim", 1.4rem, 200, $color-text-black, 1.5rem);
+  @include font-style("Itim", 1.8rem, 200, $color-text-black, 1.5rem);
 }
 
 a {
-  @include font-style("Itim", 1rem, 600, $color-text-white, 2.5rem); 
+  @include font-style("Itim", 1.3rem, 600, $color-text-white, 2.5rem); 
   text-decoration: none; 
 }
 .center {
@@ -59,7 +60,7 @@ a {
 
 input {
   padding: 0.5em 1em;
-  @include font-style("Itim", 1rem, 200, $color-text-black, 2rem);
+  @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem);
   background-color: $color-inputFill;
   border: 1px solid $color-inputBorder;
   border-radius: 10px;
@@ -120,7 +121,13 @@ form {
 }
 
 
-
+.framedContent {
+  background-color: $color-inputFill;
+  border: 2px solid $color-inputBorder;
+  border-radius: 10px; 
+  padding: 1em;
+  margin-top: 2em; 
+}
 
 
 .character-selection {
