@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { LoginContext } from './context/LoginContext';
 import { CharacterContext } from './context/CharacterContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { TaskContext } from './context/TaskContext';
 
 import Login from './login/Login';
 import WelcomeMessage from './login/WelcomeMessage'; 
@@ -16,8 +17,12 @@ function App() {
   const [name, setName] = useState('');
   const [showName, setShowName] = useState(false);
   const [character, setCharacter] = useState(null);
+  const [category, setCategory] = useState('');
+  const [taskName, setTaskName] = useState('');
+  const [points, setPoints] = useState('');
 
   return (
+    <TaskContext.Provider value={{category, setCategory,taskName, setTaskName,points,setPoints}}>
     <CharacterContext.Provider value={{ character, setCharacter }}>
     <LoginContext.Provider value={{ name, setName, setShowName }}>
       <Router>
@@ -32,6 +37,7 @@ function App() {
       </Router>
     </LoginContext.Provider>
     </CharacterContext.Provider>
+    </TaskContext.Provider>
   )
 }
 

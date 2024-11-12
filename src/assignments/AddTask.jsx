@@ -1,10 +1,8 @@
 import { useState } from 'react';
 
 function AddTask({addTask}) {
-    const [category, setCategory] = useState('');
-    const [taskName, setTaskName] = useState('');
-    const [points, setPoints] = useState('');
-  
+  const { category, setCategory, taskName, setTaskName,points,setPoints } = useContext(TaskContext);
+
     const handleSubmit = (e) => {
       e.preventDefault();
       if (taskName.trim() && category && points) {

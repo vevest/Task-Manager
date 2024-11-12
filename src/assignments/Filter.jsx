@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React, { useContext } from "react";
-import { TaskContext } from "..//Context/TaskContext";
+import { TaskContext } from "../context/TaskContext";
 
 // Chores by category
 const booksChores = ["Read a book", "Shower", "Exercise", "Meditate"];
@@ -48,7 +48,7 @@ const categoryEmojis = [
 ];
 
 function Filter() {
-  const {category} = useContext(TaskContext);
+  const {category, task} = useContext(TaskContext);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   // Filter chores based on selected category
