@@ -48,7 +48,7 @@ const categoryEmojis = [
 ];
 
 function Filter() {
-  const {category, task} = useContext(TaskContext);
+  const {category, taskName, points} = useContext(TaskContext);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   // Filter chores based on selected category
