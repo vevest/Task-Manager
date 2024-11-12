@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { LoginContext } from './context/LoginContext';
+import { CharacterContext } from './context/CharacterContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 
 import Login from './login/Login';
@@ -14,8 +15,10 @@ import Assignments from './pages/Assignments';
 function App() {
   const [name, setName] = useState('');
   const [showName, setShowName] = useState(false);
+  const [character, setCharacter] = useState(null);
 
   return (
+    <CharacterContext.Provider value={{ character, setCharacter }}>
     <LoginContext.Provider value={{ name, setName, setShowName }}>
       <Router>
         <Routes>
@@ -28,6 +31,7 @@ function App() {
         </Routes>
       </Router>
     </LoginContext.Provider>
+    </CharacterContext.Provider>
   )
 }
 

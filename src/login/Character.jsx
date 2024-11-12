@@ -7,8 +7,9 @@ import character2 from '../assets/character2.png';
 // Importer flere karakterbilleder, hvis nødvendigt.
 
 function Character() {
-  const { Character, setCharacter } = useContext(CharacterContext);
+  const { setCharacter } = useContext(CharacterContext);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+
 
   const characters = [
     { id: 1, src: character1, alt: 'Pige' },
@@ -30,18 +31,10 @@ function Character() {
   ];
 
   // Funktion til at håndtere, når en karakter vælges
-  const handleCharacterClick = (characterId) => {
+  const handleCharacterClick = (characterId, characterSrc) => {
     setSelectedCharacter(characterId);  // Sætter den valgte karakter
+    setCharacter(characterSrc);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!selectedCharacter) {
-      alert('Vær sød at vælge en karakter! :)');
-    } else {
-      alert('Du har valgt en karakter!');
-    }
-  }
 
   return (
     <div className='center'>
@@ -51,7 +44,9 @@ function Character() {
           <div
             key={character.id}
             className={`character ${selectedCharacter === character.id ? 'selected' : ''}`}
-            onClick={() => handleCharacterClick(character.id)}
+            onClick={() => {
+              handleCharacterClick(character.id, character.src)
+            }}
           >
             <img
               src={character.src}
