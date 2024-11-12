@@ -1,18 +1,18 @@
 import { useState } from 'react';
 
 function AddTask({addTask}) {
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [category, setCategory] = useState('');
     const [taskName, setTaskName] = useState('');
-    const [selectedPoints, setSelectedPoints] = useState('');
+    const [points, setPoints] = useState('');
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (taskName.trim() && selectedCategory && selectedPoints) {
-        console.log('Tilføjer opgave til to do liste:', selectedPoints);  // Debugging for at sikre korrekt butiksnavn
-        addTask(selectedCategory, taskName, selectedPoints);
-        setSelectedCategory('');
+      if (taskName.trim() && category && points) {
+        console.log('Tilføjer opgave til to do liste:', points);  // Debugging for at sikre korrekt butiksnavn
+        addTask(category, taskName, points);
+        setCategory('');
         setTaskName('');
-        setSelectedPoints('');
+        setPoints('');
       }
     };
   
@@ -30,8 +30,8 @@ function AddTask({addTask}) {
   
           {/* Valg af kategori */}
           <select 
-            value={selectedCategory} 
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            value={category} 
+            onChange={(e) => setCategory(e.target.value)}
             required
           >
             <option value="" disabled hidden>Vælg kategori</option>
@@ -46,8 +46,8 @@ function AddTask({addTask}) {
 
           {/* Valg af antal Points */}
           <select 
-            value={selectedPoints} 
-            onChange={(e) => setSelectedPoints(Number(e.target.value))}
+            value={points} 
+            onChange={(e) => setPoints(Number(e.target.value))}
             required
           >
             <option value="" disabled hidden>Vælg antal points</option>
