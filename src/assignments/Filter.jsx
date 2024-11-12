@@ -3,7 +3,10 @@ import React, { useContext } from "react";
 import { TaskContext } from "../context/TaskContext";
 
 // Chores by category
-const booksChores = ["Read a book", "Shower", "Exercise", "Meditate"];
+const booksChores = [
+  "Read a book", "Shower", "Exercise", "Meditate"
+];
+
 const kitchenChores = [
   "Vacuum", "Do the dishes", "Make the bed", "Clean the bathroom",
   "Take the trash out", "Clean the kitchen", "Water indoor plants"
@@ -18,6 +21,10 @@ const clothesChores = [
 ];
 
 const bedroomChores = [
+  ""
+];
+
+const livingroomChores = [
   ""
 ];
 

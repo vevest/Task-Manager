@@ -23,20 +23,20 @@ function App() {
 
   return (
     <TaskContext.Provider value={{category, setCategory,taskName, setTaskName,points,setPoints}}>
-    <CharacterContext.Provider value={{ character, setCharacter }}>
-    <LoginContext.Provider value={{ name, setName, setShowName }}>
-      <Router>
-        <Routes>
-          <Route path="/" element={showName ? <WelcomeMessage /> : <Login />} />
-          <Route path="/character" element={<Character />} />
-          <Route path="/mood" element={<Mood />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/homepage" element={<Homepage />} />
-          <Route path="/assignments" element={<Assignments />} /> 
-        </Routes>
-      </Router>
-    </LoginContext.Provider>
-    </CharacterContext.Provider>
+      <CharacterContext.Provider value={{ character, setCharacter }}>
+        <LoginContext.Provider value={{ name, setName, setShowName }}>
+          <Router>
+            <Routes>
+              <Route path="/" element={showName ? <WelcomeMessage /> : <Login />} />
+              <Route path="/character" element={<Character />} />
+              <Route path="/mood" element={<Mood />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/homepage" element={<Homepage />} />
+              <Route path="/assignments" element={<Assignments />} /> 
+            </Routes>
+          </Router>
+        </LoginContext.Provider>
+      </CharacterContext.Provider>
     </TaskContext.Provider>
   )
 }

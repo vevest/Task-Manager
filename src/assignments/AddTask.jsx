@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { TaskContext } from "../context/TaskContext";
+
 
 function AddTask({addTask}) {
   const { category, setCategory, taskName, setTaskName,points,setPoints } = useContext(TaskContext);
