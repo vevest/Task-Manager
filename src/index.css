@@ -110,7 +110,7 @@ a {
   margin-top: 2em;
 }
 
-input {
+input, select {
   padding: 0.5em 1em;
   font-family: "Itim";
   font-size: 1.3rem;
@@ -123,7 +123,7 @@ input {
   border-radius: 10px;
 }
 @media screen and (max-width: 1000px) {
-  input {
+  input, select {
     font-size: 1.17rem;
   }
 }

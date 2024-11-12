@@ -84,7 +84,7 @@ a {
   margin-top: 2em;
 }
 
-input {
+input, select {
   padding: 0.5em 1em;
   @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem);
   background-color: $color-inputFill;
