@@ -35,13 +35,13 @@ function AddTask({addTask}) {
             required
           >
             <option value="" disabled hidden>Vælg kategori</option>
-            <option value="bøger">📚</option>
-            <option value="tallerken">🍽️</option>
-            <option value="sæbe">🧼</option>
-            <option value="tøj">👕</option>
-            <option value="sofa">🛋️</option>
-            <option value="seng">🛏️</option>
-            <option value="poser">🛍️</option>
+            <option value="books">📚</option>
+            <option value="kitchen">🍽️</option>
+            <option value="wash">🧼</option>
+            <option value="clothes">👕</option>
+            <option value="livingroom">🛋️</option>
+            <option value="bedroom">🛏️</option>
+            <option value="bags">🛍️</option>
           </select>
 
           {/* Valg af antal Points */}

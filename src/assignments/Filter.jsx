@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 // Chores by category
-const selfcareChores = ["Read a book", "Shower", "Exercise", "Meditate"];
-const houseChores = [
+const booksChores = ["Read a book", "Shower", "Exercise", "Meditate"];
+const kitchenChores = [
   "Vacuum", "Do the dishes", "Make the bed", "Clean the bathroom",
   "Take the trash out", "Clean the kitchen", "Water indoor plants"
 ];
-const outdoorChores = [
+const washChores = [
   "Clean the windows", "Mow the lawn", "Water outdoor plants",
   "Tend the garden", "Clean the car"
 ];
@@ -14,27 +14,35 @@ const clothesChores = [
   "Do the laundry", "Hang up the laundry", "Fold the laundry",
   "Put laundry in closet"
 ];
-const foodChores = [
-  "Make a grocery list", "Go grocery shopping", "Cook dinner",
-  "Set the table", "Clean out fridge of old food"
+
+const bedroomChores = [
+  ""
+];
+
+const bagsChores = [
+  ""
 ];
 
 // Combine categories into a single array
 const choresData = [
-  ...selfcareChores.map((name, index) => ({ id: `selfcare-${index}`, name, category: "Selfcare" })),
-  ...houseChores.map((name, index) => ({ id: `house-${index}`, name, category: "House" })),
-  ...outdoorChores.map((name, index) => ({ id: `outdoors-${index}`, name, category: "Outdoors" })),
+  ...booksChores.map((name, index) => ({ id: `books-${index}`, name, category: "Books" })),
+  ...kitchenChores.map((name, index) => ({ id: `kitchen-${index}`, name, category: "Kitchen" })),
+  ...washChores.map((name, index) => ({ id: `wash-${index}`, name, category: "Wash" })),
   ...clothesChores.map((name, index) => ({ id: `clothes-${index}`, name, category: "Clothes" })),
-  ...foodChores.map((name, index) => ({ id: `food-${index}`, name, category: "Food" })),
+  ...livingroomChores.map((name, index) => ({ id: `livingroom-${index}`, name, category: "Livingroom" })),
+  ...bedroomChores.map((name, index) => ({ id: `bedroom-${index}`, name, category: "Bedroom" })),
+  ...bagsChores.map((name, index) => ({ id: `bags-${index}`, name, category: "Bags" })),
 ];
 
 // Define emojis for each category
 const categoryEmojis = [
-  { label: "Selfcare", emoji: "📚" },
-  { label: "House", emoji: "🏠" },
-  { label: "Outdoors", emoji: "🌳" },
+  { label: "Books", emoji: "📚" },
+  { label: "Kitchen", emoji: "🍽️" },
+  { label: "Wash", emoji: "🧼" },
   { label: "Clothes", emoji: "👕" },
-  { label: "Food", emoji: "🍎" },
+  { label: "Livingroom", emoji: "🛋️" },
+  { label: "Bedroom", emoji: "🛏️" },
+  { label: "Bags", emoji: "🛍️" },
 ];
 
 const Filter = () => {
@@ -48,7 +56,7 @@ const Filter = () => {
 
   return (
     <div className="filter-container">
-      <h2>SMILE - Your Chores</h2>
+      <h2>SMILE - Dine opgaver</h2>
 
       {/* Emoji buttons for each category */}
       <div className="category-buttons">
