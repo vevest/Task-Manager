@@ -53,7 +53,7 @@ const Filter = () => {
       {/* Emoji buttons for each category */}
       <div className="category-buttons">
         <button onClick={() => setSelectedCategory("All")} className={`category-btn ${selectedCategory === "All" ? "active" : ""}`}>
-          🔄
+          <p className='filter-emoji'>🔄</p>
         </button>
         {categoryEmojis.map((category) => (
           <button
@@ -62,7 +62,7 @@ const Filter = () => {
             className={`category-btn ${selectedCategory === category.label ? "active" : ""}`}
             title={category.label}
           >
-            {category.emoji}
+            <p className='filter-emoji'>{category.emoji}</p>
           </button>
         ))}
       </div>

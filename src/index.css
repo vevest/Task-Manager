@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  background-color: #FFF5D0;
+  background-color: #fff5d0;
   box-sizing: border-box;
   min-height: 100vh;
   overflow-x: hidden;
@@ -22,21 +22,21 @@ p {
 
 h1 {
   font-family: "Itim";
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   font-weight: 200;
   color: #323232;
-  line-height: 3.5rem;
+  line-height: 1rem;
   letter-spacing: 1px;
 }
 @media screen and (max-width: 1000px) {
   h1 {
-    font-size: 2.52rem;
+    font-size: 2.16rem;
   }
 }
 
 h2 {
   font-family: "Itim";
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 200;
   color: #323232;
   line-height: 1.5rem;
@@ -44,7 +44,7 @@ h2 {
 }
 @media screen and (max-width: 1000px) {
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.62rem;
   }
 }
 
@@ -82,17 +82,32 @@ a {
   justify-content: center;
 }
 
-nav {
+.flex {
   display: flex;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 1.5em;
-  left: 0.4em;
-  right: 0.4em;
 }
 
-.navIcon .selectedPage {
-  fill: red;
+.grid {
+  display: grid;
+}
+
+.disabled {
+  background-color: rgb(96, 96, 96);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.signOut {
+  position: fixed;
+  top: 0;
+  right: 1em;
+}
+
+.framedContent {
+  background-color: #fff8de;
+  border: 2px solid #e3d9b0;
+  border-radius: 10px;
+  padding: 1em;
+  margin-top: 2em;
 }
 
 input {
@@ -103,43 +118,14 @@ input {
   color: #323232;
   line-height: 2rem;
   letter-spacing: 1px;
-  background-color: #FFF8DE;
-  border: 1px solid #E3D9B0;
+  background-color: #fff8de;
+  border: 1px solid #e3d9b0;
   border-radius: 10px;
 }
 @media screen and (max-width: 1000px) {
   input {
     font-size: 1.17rem;
   }
-}
-
-button, .button {
-  padding: 0.2em 1em;
-  font-family: "Jomhuria";
-  font-size: 43px;
-  font-weight: 200;
-  color: #ffffff;
-  line-height: 2rem;
-  letter-spacing: 1px;
-  background-color: #d8a744;
-  border: none;
-  border-radius: 10px;
-}
-@media screen and (max-width: 1000px) {
-  button, .button {
-    font-size: 38.7px;
-  }
-}
-
-button:hover {
-  background-color: #1F1F1F;
-}
-
-.buttonBottom {
-  position: absolute;
-  bottom: 2em;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 form {
@@ -172,6 +158,37 @@ form {
   position: absolute;
 }
 
+button,
+.button {
+  padding: 0.2em 1em;
+  font-family: "Jomhuria";
+  font-size: 43px;
+  font-weight: 200;
+  color: #ffffff;
+  line-height: 2rem;
+  letter-spacing: 1px;
+  background-color: #d8a744;
+  border: none;
+  border-radius: 10px;
+}
+@media screen and (max-width: 1000px) {
+  button,
+  .button {
+    font-size: 38.7px;
+  }
+}
+
+button:hover {
+  background-color: #1f1f1f;
+}
+
+.buttonBottom {
+  position: absolute;
+  bottom: 2em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -180,12 +197,52 @@ form {
     transform: rotate(360deg);
   }
 }
-.framedContent {
-  background-color: #FFF8DE;
-  border: 2px solid #E3D9B0;
-  border-radius: 10px;
-  padding: 1em;
-  margin-top: 2em;
+nav {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  left: 0.4em;
+  right: 0.4em;
+  padding-top: 1em;
+  background-color: #fff5d0;
+}
+
+.navIcon {
+  stroke: #e3d9b0;
+  transition: transform 2s ease; /* Overgange */
+}
+
+/* Valgt tilstand */
+.navIcon.selectedPage {
+  stroke: #d8a744; /* Farve for valgt ikon */
+  stroke-width: 2px; /* Tykkelse for valgt ikon */
+  transform: translateY(-2.5px); /* Hæv ikonet 10px op */
+}
+
+.selectedPage {
+  stroke: #d8a744; /* Farve, der viser at ikonet er valgt */
+  stroke-width: 2px;
+}
+
+.selectedCharacter {
+  width: 100%;
+  height: 7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selectedCharacter .characterProfile {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.selectedCharacter .characterHomepage {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .character-selection {
@@ -206,16 +263,16 @@ form {
   height: 100px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  background-color: #FFF8DE;
-  border: 2px solid #E3D9B0;
+  background-color: #fff8de;
+  border: 2px solid #e3d9b0;
 }
 
 .character img {
-  width: 80%;
-  height: 80%;
+  width: 65%;
+  height: 65%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 50%;
+  border-radius: 20%;
   transition: transform 0.3s ease;
 }
 
@@ -239,8 +296,8 @@ form {
   gap: 10px;
   justify-items: center;
   margin-top: 20px;
-  background-color: #FFF8DE;
-  border: 2px solid #E3D9B0;
+  background-color: #fff8de;
+  border: 2px solid #e3d9b0;
   border-radius: 10px;
   padding: 2em;
 }
@@ -255,8 +312,31 @@ form {
   transition: transform 0.3s ease;
 }
 
-.disabled {
-  background-color: rgb(96, 96, 96);
-  cursor: not-allowed;
-  opacity: 0.6;
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Placerer lidt afstand mellem knapperne */
+}
+
+.category-btn {
+  display: flex; /* Gør knappen til en flex-container */
+  height: 2em;
+  width: 2em;
+  justify-content: center; /* Centrerer emoji vandret */
+  align-items: center; /* Centrerer emoji lodret */
+  font-size: 24px; /* Juster emojiens størrelse */
+  border: 1px solid #e3d9b0; /* Valgfrit: kan bruges til at definere en kant på knappen */
+  background-color: #fff8de; /* Baggrundsfarve på knappen */
+  border-radius: 100%; /* Valgfrit: rundede kanter på knappen */
+  cursor: pointer; /* Ændrer musens cursor til en hånd når den er over knappen */
+  transition: background-color 0.3s; /* Giver en smooth transition på baggrundsfarven */
+  aspect-ratio: 1;
+}
+
+.category-btn.active {
+  background-color: #e3d9b0; /* Ændrer baggrundsfarven, når knappen er aktiv */
+}
+
+.filter-emoji {
+  font-size: 20px; /* Juster størrelsen på emoji */
 }/*# sourceMappingURL=index.css.map */
