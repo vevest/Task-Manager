@@ -1,12 +1,12 @@
 // –––––––––––––––––––––––––––––––––––––––––––
 // Variabler
 // ––––––––––––––––––––––––––––––––––––––––––-
-$color-background: #FFF5D0;
-$color-secondary: #d8a744; 
-$color-inputFill: #FFF8DE;
-$color-inputBorder: #E3D9B0;
+$color-background: #fff5d0;
+$color-secondary: #d8a744;
+$color-inputFill: #fff8de;
+$color-inputBorder: #e3d9b0;
 $color-text-black: #323232;
-$color-text-white: #ffffff; 
+$color-text-white: #ffffff;
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Mixins
@@ -18,8 +18,8 @@ $color-text-white: #ffffff;
   color: $color;
   line-height: $line-height;
   letter-spacing: 1px;
-  @media screen and (max-width:1000px) {
-    font-size: ($size)*0.9;
+  @media screen and (max-width: 1000px) {
+    font-size: ($size) * 0.9;
   }
 }
 
@@ -30,11 +30,11 @@ body {
   background-color: $color-background;
   box-sizing: border-box;
   min-height: 100vh;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
-p { 
-  @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem); 
+p {
+  @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem);
 }
 
 h1 {
@@ -42,7 +42,7 @@ h1 {
 }
 
 h2 {
-  @include font-style("Itim", 1.8rem, 200, $color-text-black, 1.5rem); 
+  @include font-style("Itim", 1.8rem, 200, $color-text-black, 1.5rem);
 }
 
 h3 {
@@ -50,8 +50,8 @@ h3 {
 }
 
 a {
-  @include font-style("Itim", 1.3rem, 600, $color-text-white, 2.5rem); 
-  text-decoration: none; 
+  @include font-style("Itim", 1.3rem, 600, $color-text-white, 2.5rem);
+  text-decoration: none;
 }
 .center {
   text-align: center;
@@ -63,53 +63,33 @@ a {
 .grid {
   display: grid;
 }
-nav {
-  display: flex;
-  justify-content: space-around;
+
+.disabled {
+  background-color: rgb(96, 96, 96);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.signOut {
   position: fixed;
-  bottom: 1.5em;
-  left: 0.4em;
-  right: 0.4em;
-  padding-top: 1em;
-}
-.navIcon {
-  stroke: #E3D9B0;
-  transition: transform 2s ease; /* Overgange */
+  top: 0;
+  right: 1em;
 }
 
-/* Valgt tilstand */
-.navIcon.selectedPage {
-  stroke: $color-secondary; /* Farve for valgt ikon */
-  stroke-width: 2px; /* Tykkelse for valgt ikon */
-  transform: translateY(-2.5px); /* Hæv ikonet 10px op */
+.framedContent {
+  background-color: $color-inputFill;
+  border: 2px solid $color-inputBorder;
+  border-radius: 10px;
+  padding: 1em;
+  margin-top: 2em;
 }
-.selectedPage {
-  stroke: $color-secondary; /* Farve, der viser at ikonet er valgt */
-  stroke-width: 2px;
 
-}
 input {
   padding: 0.5em 1em;
   @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem);
   background-color: $color-inputFill;
   border: 1px solid $color-inputBorder;
   border-radius: 10px;
-}
-button, .button {
-  padding: 0.2em 1em;
-  @include font-style("Jomhuria", 43px, 200, $color-text-white, 2rem);
-  background-color: $color-secondary;
-  border: none;
-  border-radius: 10px;
-}
-button:hover {
-  background-color: #1F1F1F;
-}
-.buttonBottom {
-  position: absolute;
-  bottom: 2em;  
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 form {
@@ -118,9 +98,10 @@ form {
   gap: 1em;
   width: 100%; /* Får formularen til at fylde hele bredden */
   max-width: 400px; /* Sæt max-bredde til et mere passende niveau */
-}.logo {
+}
+.logo {
   margin: 8em auto;
-  width: 150px; 
+  width: 150px;
   height: 150px;
   display: flex;
   justify-content: center;
@@ -139,15 +120,66 @@ form {
     position: absolute;
   }
 }
+button,
+.button {
+  padding: 0.2em 1em;
+  @include font-style("Jomhuria", 43px, 200, $color-text-white, 2rem);
+  background-color: $color-secondary;
+  border: none;
+  border-radius: 10px;
+}
+button:hover {
+  background-color: #1f1f1f;
+}
+.buttonBottom {
+  position: absolute;
+  bottom: 2em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 @keyframes rotate {
   from {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
+
+// –––––––––––––––––––––––––––––––––––––––––––
+// Navigation
+// ––––––––––––––––––––––––––––––––––––––––––-
+nav {
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  left: 0.4em;
+  right: 0.4em;
+  padding-top: 1em;
+  background-color: $color-background;
+}
+
+.navIcon {
+  stroke: #e3d9b0;
+  transition: transform 2s ease; /* Overgange */
+}
+
+/* Valgt tilstand */
+.navIcon.selectedPage {
+  stroke: $color-secondary; /* Farve for valgt ikon */
+  stroke-width: 2px; /* Tykkelse for valgt ikon */
+  transform: translateY(-2.5px); /* Hæv ikonet 10px op */
+}
+.selectedPage {
+  stroke: $color-secondary; /* Farve, der viser at ikonet er valgt */
+  stroke-width: 2px;
+}
+
+// –––––––––––––––––––––––––––––––––––––––––––
+// Characters
+// ––––––––––––––––––––––––––––––––––––––––––-
 
 .selectedCharacter {
   width: 100%;
@@ -167,18 +199,9 @@ form {
   }
 }
 
-.framedContent {
-  background-color: $color-inputFill;
-  border: 2px solid $color-inputBorder;
-  border-radius: 10px; 
-  padding: 1em;
-  margin-top: 2em; 
-}
-
-
 .character-selection {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-items: center;
   margin-top: 20px;
@@ -190,7 +213,7 @@ form {
   align-items: center;
   border-radius: 50%;
   overflow: hidden;
-  width: 100px; 
+  width: 100px;
   height: 100px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -199,10 +222,10 @@ form {
 }
 
 .character img {
-  width: 80%;
-  height: 80%;   
+  width: 65%;
+  height: 65%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 20%;
   transition: transform 0.3s ease;
 }
 
@@ -213,53 +236,66 @@ form {
 
 /* Stil for den valgte karakter */
 .selected {
-  border: 2px solid green;  /* Grøn ramme omkring valgte billede */
+  border: 2px solid green; /* Grøn ramme omkring valgte billede */
 }
 
 .selected img {
-  transform: scale(1.1);  /* Øger billedet en smule når valgt */
+  transform: scale(1.1); /* Øger billedet en smule når valgt */
 }
 
+// –––––––––––––––––––––––––––––––––––––––––––
+// Mood
+// ––––––––––––––––––––––––––––––––––––––––––-
 .moodBox {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-items: center;
   margin-top: 20px;
   background-color: $color-inputFill;
-  border: 2px solid $color-inputBorder; 
-  border-radius: 10px; 
+  border: 2px solid $color-inputBorder;
+  border-radius: 10px;
   padding: 2em;
   img {
-    border: 3px solid $color-secondary; 
+    border: 3px solid $color-secondary;
     border-radius: 100%;
-    width: 40%; 
-    height: auto;   
+    width: 40%;
+    height: auto;
     padding: 1em;
     object-fit: cover;
-  transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
   }
 }
 
-.disabled {
-  background-color: rgb(96, 96, 96);
-  cursor: not-allowed;
-  opacity: 0.6;
+// –––––––––––––––––––––––––––––––––––––––––––
+// Filter
+// ––––––––––––––––––––––––––––––––––––––––––-
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Placerer lidt afstand mellem knapperne */
 }
 
-.fade-in-text {
-  opacity: 0;
-  transform: translateX(-20px); /* Start 20px til venstre */
-  transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
+.category-btn {
+  display: flex; /* Gør knappen til en flex-container */
+  height: 2em;
+  width: 2em;
+  justify-content: center; /* Centrerer emoji vandret */
+  align-items: center; /* Centrerer emoji lodret */
+  font-size: 24px; /* Juster emojiens størrelse */
+  border: 1px solid $color-inputBorder; /* Valgfrit: kan bruges til at definere en kant på knappen */
+  background-color: $color-inputFill; /* Baggrundsfarve på knappen */
+  border-radius: 100%; /* Valgfrit: rundede kanter på knappen */
+  cursor: pointer; /* Ændrer musens cursor til en hånd når den er over knappen */
+  transition: background-color 0.3s; /* Giver en smooth transition på baggrundsfarven */
+  aspect-ratio: 1;
 }
 
-.fade-in-text.visible {
-  opacity: 1;
-  transform: translateX(0); /* Bevæg ind til oprindelig position */
+.category-btn.active {
+  background-color: #e3d9b0; /* Ændrer baggrundsfarven, når knappen er aktiv */
 }
 
-.signOut {
-  position: fixed;
-  top: 0;
-  right: 1em;
+.filter-emoji {
+  font-size: 20px; /* Juster størrelsen på emoji */
 }
