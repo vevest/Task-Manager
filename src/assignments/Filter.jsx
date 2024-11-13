@@ -66,7 +66,12 @@ function Filter() {
 
   return (
     <div className="filter-container">
-      <h2>SMILE - Dine opgaver</h2>
+      <div className='flex'>
+        <h2>Opgaver</h2>
+        <div className="circle">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </div>
 
       {/* Emoji buttons for each category */}
       <div className="category-buttons">

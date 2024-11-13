@@ -96,8 +96,8 @@ form {
   margin: 4em auto;
   display: grid;
   gap: 1em;
-  width: 100%; /* Får formularen til at fylde hele bredden */
-  max-width: 400px; /* Sæt max-bredde til et mere passende niveau */
+  width: 100%; 
+  max-width: 400px; 
 }
 .logo {
   margin: 8em auto;
@@ -163,17 +163,17 @@ nav {
 
 .navIcon {
   stroke: #e3d9b0;
-  transition: transform 2s ease; /* Overgange */
+  transition: transform 2s ease; 
 }
 
 /* Valgt tilstand */
 .navIcon.selectedPage {
-  stroke: $color-secondary; /* Farve for valgt ikon */
-  stroke-width: 2px; /* Tykkelse for valgt ikon */
-  transform: translateY(-2.5px); /* Hæv ikonet 10px op */
+  stroke: $color-secondary; 
+  stroke-width: 2px; 
+  transform: translateY(-2.5px); 
 }
 .selectedPage {
-  stroke: $color-secondary; /* Farve, der viser at ikonet er valgt */
+  stroke: $color-secondary; 
   stroke-width: 2px;
 }
 
@@ -236,11 +236,11 @@ nav {
 
 /* Stil for den valgte karakter */
 .selected {
-  border: 2px solid green; /* Grøn ramme omkring valgte billede */
+  border: 2px solid green; 
 }
 
 .selected img {
-  transform: scale(1.1); /* Øger billedet en smule når valgt */
+  transform: scale(1.1); 
 }
 
 // –––––––––––––––––––––––––––––––––––––––––––
@@ -274,28 +274,41 @@ nav {
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Placerer lidt afstand mellem knapperne */
+  gap: 10px;
 }
 
 .category-btn {
-  display: flex; /* Gør knappen til en flex-container */
+  display: flex; 
   height: 2em;
   width: 2em;
-  justify-content: center; /* Centrerer emoji vandret */
-  align-items: center; /* Centrerer emoji lodret */
-  font-size: 24px; /* Juster emojiens størrelse */
-  border: 1px solid $color-inputBorder; /* Valgfrit: kan bruges til at definere en kant på knappen */
-  background-color: $color-inputFill; /* Baggrundsfarve på knappen */
-  border-radius: 100%; /* Valgfrit: rundede kanter på knappen */
-  cursor: pointer; /* Ændrer musens cursor til en hånd når den er over knappen */
-  transition: background-color 0.3s; /* Giver en smooth transition på baggrundsfarven */
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; 
+  border: 1px solid $color-inputBorder; 
+  background-color: $color-inputFill; 
+  border-radius: 100%; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
   aspect-ratio: 1;
 }
 
 .category-btn.active {
-  background-color: #e3d9b0; /* Ændrer baggrundsfarven, når knappen er aktiv */
+  background-color: #e3d9b0; 
 }
 
 .filter-emoji {
-  font-size: 20px; /* Juster størrelsen på emoji */
+  font-size: 20px; 
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; 
+  height: 30px; 
+  background-color: $color-secondary; 
+  border-radius: 50%; 
+  color: white; 
+  font-size: 1.5rem; 
+
 }
