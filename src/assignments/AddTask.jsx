@@ -8,7 +8,7 @@ function AddTask({addTask}) {
     const handleSubmit = (e) => {
       e.preventDefault();
       if (taskName.trim() && category && points) {
-        console.log('Tilføjer opgave til to do liste:', points);  // Debugging for at sikre korrekt butiksnavn
+        console.log('Tilføjer opgave til to do liste:', points);  // Debugging for at sikre korrekt opgave
         addTask(category, taskName, points);
         setCategory('');
         setTaskName('');
