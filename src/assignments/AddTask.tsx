@@ -1,20 +1,20 @@
 import { useState, useContext } from 'react';
-import { TaskContext } from "../context/TaskContext";
-import {AddTaskTypes} from '../../types';
+import { TaskContext } from "../context/TaskContext"; 
+import { AddTaskFunction } from '../../types';
+  
 
 
-
-function AddTaskv(addTask) {
-  const { category, setCategory, taskName, setTaskName,points,setPoints } = useContext(TaskContext);
+function AddTask(addTask: AddTaskFunction) {
+  const { category, setCategory, taskName, setTaskName,points,setPoints } = useContext;
 
     const handleSubmit = (e: { preventDefault: () => void; }) => {
       e.preventDefault();
       if (taskName.trim() && category && points) {
         console.log('Tilføjer opgave til to do liste:', points);  // Debugging for at sikre korrekt opgave
         addTask(category, taskName, points);
-        setCategory('');
-        setTaskName('');
-        setPoints('');
+        setCategory("");
+        setTaskName("");
+        setPoints(0);
       }
     };
   
