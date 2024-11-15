@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
 import { Link } from 'react-router-dom';
 
+
+
 import character1 from '../assets/characters/character1.png';
 import character2 from '../assets/characters/character2.png';
 import character3 from '../assets/characters/character3.png';
