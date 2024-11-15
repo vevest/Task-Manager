@@ -4,10 +4,10 @@ import {AddTaskTypes} from '../../types';
 
 
 
-function AddTask({addTask}) {
+function AddTaskv(addTask) {
   const { category, setCategory, taskName, setTaskName,points,setPoints } = useContext(TaskContext);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
       e.preventDefault();
       if (taskName.trim() && category && points) {
         console.log('Tilføjer opgave til to do liste:', points);  // Debugging for at sikre korrekt opgave
