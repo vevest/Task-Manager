@@ -3,7 +3,7 @@ import { TaskContext } from '../context/TaskContext';
 import { Task } from '../types';
 
 const AddTask: React.FC<{ addTask: (task: { category: string; taskName: string; points: number }) => void }> = ({ addTask }) => {
-  const { taskName, setTaskName, categories, points } = useContext(TaskContext)!;  // Brug konteksten korrekt her
+  const { taskName, setTaskName, categories, points } = useContext(TaskContext)!; 
   const [category, setCategory] = useState<string | null>(null);  // Gemmer valgt kategori
   const [selectedPoints, setSelectedPoints] = useState<number | null>(null);  // Gemmer valgte points
 
