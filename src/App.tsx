@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import Assignments from './pages/Assignments';
 import TaskProvider from "./providers/TaskProvider";
 import AddTask from "./assignments/AddTask";
+import Filter from './assignments/Filter'; // Importér Filter komponenten
 
  
 function App() {
@@ -26,7 +27,9 @@ function App() {
 
   return (
     <TaskProvider>
-    <AddTask addTask={(task) => console.log("Opgave tilføjet:", task)} />
+
+            <Filter /> {/* Filter-komponenten */}
+
   </TaskProvider>
   );
 }
