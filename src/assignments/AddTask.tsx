@@ -37,7 +37,7 @@ const AddTask: React.FC<{ addTask: (task: { category: string; taskName: string; 
       {/* Valg af kategori */}
       <div>
         <h3>Vælg kategori:</h3>
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div>
           {categories.map((categoryItem) => (
             <button
               key={categoryItem.value}
@@ -52,7 +52,7 @@ const AddTask: React.FC<{ addTask: (task: { category: string; taskName: string; 
       {/* Valg af antal Points */}
       <div>
         <h3>Vælg antal points:</h3>
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div>
           {points.map((point) => (
             <button
               key={point}
