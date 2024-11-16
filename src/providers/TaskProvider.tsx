@@ -14,16 +14,16 @@ const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   // Eksempel på kategorier og points (kan også være dynamiske)
   const categories = [
-    { label: "Books", value: "Books" },
-    { label: "Kitchen", value: "Kitchen" },
-    { label: "Wash", value: "Wash" },
-    { label: "Clothes", value: "Clothes" },
-    { label: "Livingroom", value: "Livingroom" },
-    { label: "Bedroom", value: "Bedroom" },
-    { label: "Bags", value: "Bags" },
+    { label: "📚", value: "Books" },
+    { label: "🍽️", value: "Kitchen" },
+    { label: "🧼", value: "Wash" },
+    { label: "👕", value: "Clothes" },
+    { label: "🛋️", value: "Livingroom" },
+    { label: "🛏️", value: "Bedroom" },
+    { label: "🛍️", value: "Bags" },
   ];
 
-  const points = [1, 2, 3, 5, 10];
+  const points = [5, 10, 15, 20, 25];
 
   return (
     <TaskContext.Provider value={{ tasks, addTask, categories, points, taskName, setTaskName }}>
