@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 
+// tidsbestemt hilsen
+
 const Greeting: React.FC = () => {
   const { name } = useContext(LoginContext);
 
