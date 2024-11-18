@@ -3,6 +3,8 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   overflow-x: hidden;
+  padding: 2rem 4rem;
+  margin-bottom: 10rem;
 }
 
 p {
