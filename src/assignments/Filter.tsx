@@ -45,13 +45,13 @@ import { TaskContext } from "../context/TaskContext";
 
 // Define emojis for each category
 const categoryEmojis = [
-  { label: "Books", emoji: "📚" },
+  { label: "Study", emoji: "📚" },
   { label: "Kitchen", emoji: "🍽️" },
   { label: "Wash", emoji: "🧼" },
   { label: "Clothes", emoji: "👕" },
   { label: "Livingroom", emoji: "🛋️" },
   { label: "Bedroom", emoji: "🛏️" },
-  { label: "Bags", emoji: "🛍️" },
+  { label: "Shop", emoji: "🛍️" },
 ];
 
 function Filter() {
