@@ -92,7 +92,7 @@ return(
     </form> 
 
     <Link 
-        to={`${selectedPoints ? "/filter" : ""}`} 
+        to={`${selectedPoints ? "/assignment" : ""}`} 
         className={`buttonBottom button ${!task && !selectedCategory && !selectedPoints ? "disabled" : ""}`} 
       > 
         Tilføj opgave
