@@ -13,7 +13,7 @@ function Profile() {
   }
   return (
     <>
-      <h1>Profile</h1>
+      <h1>Profil</h1>
       <div className="framedContent flex">
         <div className="selectedCharacter">
         <img className="characterProfile" src={character} alt="Det valgte icon" />
