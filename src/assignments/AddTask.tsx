@@ -90,7 +90,6 @@ function AddTask() {
       <h2>Opret opgave</h2>
 
       <form>
-        <h3>Skriv din opgave</h3>
         <input
           type="text"
           value={selectedTask}
