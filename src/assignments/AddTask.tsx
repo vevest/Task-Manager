@@ -3,18 +3,9 @@ import { TaskContext } from "../context/TaskContext";
 import Filter from "./Filter";
 import { Link } from 'react-router-dom';
 
-
-
-
-
-
 function AddTask() {
-
-  const { task, setTask, setShowTask } = useContext(TaskContext);
-  const { setCategory} = useContext(TaskContext);
-  const { setPoints} = useContext(TaskContext);
-   
-  const [selectedTask, setSlectedTask] = useState(null);
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedPoints, setSelectedPoints] = useState(null);
     
@@ -29,39 +20,39 @@ function AddTask() {
   ];
 
   const points = [
-    {id: 1, label: '5', value:5},
-    {id: 2, label: '10', value:10},
-    {id: 3, label: '15', value:15},
-    {id: 4, label: '20', value:20},
-    {id: 5, label: '25', value:25}
+    {id: 1, label: '5 point', value:5},
+    {id: 2, label: '10 point', value:10},
+    {id: 3, label: '15 point', value:15},
+    {id: 4, label: '20 point', value:20},
+    {id: 5, label: '25 point', value:25}
     ];
 
-//Funktion til at skrive sin opgave 
-const handleTaskChange = (e) => {
-  setTask(e.target.value);
-};
+  //Funktion til at skrive sin opgave 
+  const handleTaskChange = (e) => {
+    setSelectedTask(e.target.value);
+  };
 
-// Funktion til at håndtere, når en category vælges 
-const handleCategoryClick = (categoryId, categoryValue) => {
-  setSelectedCategory(categoryId);  // Sætter den valgte value(emoji)
-  setCategory(categoryValue);
-};
+  // Funktion til at håndtere, når en category vælges 
+  const handleCategoryClick = (categoryId, categoryValue) => {
+    setSelectedCategory(categoryId);  // Sætter den valgte value(emoji)
+    setCategory(categoryValue);
+  };
 
-const handlePointsClick = (pointsId, pointsValue) => {
-  setSelectedPoints(pointsId); //Sætter den valgte value (nummer points)
-  setPoints(pointsValue);
-}
+  const handlePointsClick = (pointsId, pointsValue) => {
+    setSelectedPoints(pointsId); //Sætter den valgte value (nummer points)
+    setPoints(pointsValue);
+  }
 
 
-const handleLinkClick = (e) => {
-  e.preventDefault(); //Forhindrer sideopdatering
-   // Forhindrer navigation, hvis ikke alt er udfyldt
-  if (task && selectedCategory && selectedPoints) {
-    e.preventDefault();
-    alert('Udfyld venligst alle felter før du fortsætter.');
-    return;
+  const handleLinkClick = (e) => {
+    e.preventDefault(); //Forhindrer sideopdatering
+    // Forhindrer navigation, hvis ikke alt er udfyldt
+    if (!selectedTask || !selectedCategory || !selectedPoints) {
+      alert('Udfyld venligst alle felter før du fortsætter.');
+      return;
+    } else {
+      setButtonClicked(true);
     }
-    setShowTask(true); //sætter setShowTask til true, hvis der er en værdi i setTask
   };
 
 
@@ -71,17 +62,17 @@ return(
     
     
 
-
+  <div className='flex'>
     <form>
         <h3>Skriv din opgave</h3>
-        <input type="text" placeholder='Opgavens navn' onChange={handleTaskChange} />
+        <input type="text" value={selectedTask} placeholder='Opgavens navn' onChange={handleTaskChange} />
         <div className="character-selection"> 
         <h3>Vælg en kategori</h3>
         {categories.map((category) => (
           <div
             key={category.id}
-            className={`category ${selectedCategory === category.id ? 'selected' : ''}`}
-            onClick={() => handleCategoryClick(category.id, category.value)}
+            className={`category ${selectedCategory === category.label ? 'selected' : ''}`}
+            onClick={() => handleCategoryClick(category.label, category.value)}
             >
               {category.label}
           </div>
@@ -92,22 +83,24 @@ return(
         {points.map((points) => (
           <div
             key={points.id}
-            className={`points ${selectedPoints === points.id ? 'selected' : ''}`}
-            onClick={() => handlePointsClick(points.id, points.value)}
+            className={`points ${selectedPoints === points.label ? 'selected' : ''}`}
+            onClick={() => handlePointsClick(points.label, points.value)}
             >
-              {points.label}
+              {points.value}
           </div>
           ))}
         </div>
-        <Link 
-        to = "/filter"
-        className = {`buttonBottom button ${!task && !selectedCategory && !selectedPoints ? "disabled" : ""}`} 
-        onClick = {handleLinkClick}
-      > 
-        Tilføj opgave
-      </Link>
-      
+        <button 
+          className = {`button ${!selectedTask || !selectedCategory || !selectedPoints ? "disabled" : ""}`} 
+          onClick = {handleLinkClick}>Tilføj opgave
+        </button>   
     </form> 
+    <div>
+      <h1>{buttonClicked ? selectedTask : ''}</h1>
+      <h1>{buttonClicked ? selectedPoints : ''}</h1>
+      <h1>{buttonClicked ? selectedCategory : ''}</h1>
+    </div>
+    </div>
 
   </div>
   );
