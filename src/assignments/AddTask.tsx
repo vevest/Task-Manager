@@ -73,8 +73,10 @@ return(
 
 
     <form>
+        <h3>Skriv din opgave</h3>
         <input type="text" placeholder='Opgavens navn' onChange={handleTaskChange} />
         <div className="character-selection"> 
+        <h3>Vælg en kategori</h3>
         {categories.map((category) => (
           <div
             key={category.id}
@@ -86,6 +88,7 @@ return(
           ))}
         </div>
         <div className="character-selection"> 
+        <h3>Angiv antal points</h3>
         {points.map((points) => (
           <div
             key={points.id}
