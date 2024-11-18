@@ -11,13 +11,13 @@
 //   };
 //   // Eksempel på kategorier og points (kan også være dynamiske)
 //   const categories = [
-//     { label: "📚", value: "Books" },
+//     { label: "📚", value: "Study" },
 //     { label: "🍽️", value: "Kitchen" },
 //     { label: "🧼", value: "Wash" },
 //     { label: "👕", value: "Clothes" },
 //     { label: "🛋️", value: "Livingroom" },
 //     { label: "🛏️", value: "Bedroom" },
-//     { label: "🛍️", value: "Bags" },
+//     { label: "🛍️", value: "Shop" },
 //   ];
 //   const points = [5, 10, 15, 20, 25];
 //   return (
