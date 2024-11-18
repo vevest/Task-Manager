@@ -2,26 +2,26 @@ import { useContext, useState } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
 
 
-// Define emojis for each category
-// const categoryEmojis = [
-//   { label: "Study", emoji: "📚" },
-//   { label: "Kitchen", emoji: "🍽️" },
-//   { label: "Wash", emoji: "🧼" },
-//   { label: "Clothes", emoji: "👕" },
-//   { label: "Livingroom", emoji: "🛋️" },
-//   { label: "Bedroom", emoji: "🛏️" },
-//   { label: "Shop", emoji: "🛍️" },
-// ];
 
 function Filter() {
   const { tasks } = useContext(CharacterContext);  // Hent 'tasks' fra taskcontext
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedFilter, setSelectedFilter] = useState("All");
+
+  const categories = [
+    { id: 1, label: '📚', value: 'Study' },
+    { id: 2, label: '🍽️', value: 'Kitchen' },
+    { id: 3, label: '🧼', value: 'Wash' },
+    { id: 4, label: '👕', value: 'Clothes' },
+    { id: 5, label: '🛋️', value: 'Livingroom' },
+    { id: 6, label: '🛏️', value: 'Bedroom' },
+    { id: 7, label: '🛍️', value: 'Shop' },
+  ];
 
   // Filter opgaver baseret på valgt kategori
   const filteredTasks =
-    selectedCategory === "All"
+    selectedFilter === "All"
       ? tasks  // Hvis 'All' er valgt, vis alle opgaver
-      : tasks.filter((task) => task.category === selectedCategory);  // Filtrer opgaver efter kategori
+      : tasks.filter((task) => task.category === selectedFilter);  // Filtrer opgaver efter kategori
 
 
   return (
@@ -35,17 +35,18 @@ function Filter() {
 
       {/* Emoji knapper for hver kategori */}
       <div className="category-buttons">
-        <button onClick={() => setSelectedCategory("All")} className={selectedCategory === "All" ? "active" : ""}>
+        <button onClick={() => setSelectedFilter("All")} 
+        className={selectedFilter === "All" ? "active" : ""}>
           <p className="filter-emoji">🔄</p>
         </button>
-        {categoryEmojis.map((category) => (
+        {categories.map((category) => (
           <button
-            key={category.label}
-            onClick={() => setSelectedCategory(category.label)}
-            className={selectedCategory === category.label ? "active" : ""}
+            key={category.id}
+            onClick={() => setSelectedFilter(category.id)}
+            className={selectedFilter === category.value ? "active" : ""}
             title={category.label}
           >
-            <p className="filter-emoji">{category.emoji}</p>
+            <p className="filter-emoji">{category.label}</p>
           </button>
         ))}
       </div>
@@ -53,8 +54,8 @@ function Filter() {
       {/* Render de filtrerede opgaver */}
       <ul className="task-list">
         {filteredTasks.map((task, index) => (
-          <li key={index} className="task-item">
-            {task.taskName} - {task.category} - {task.points} points
+          <li key={task.value} className="task-item">
+            {task.name} - {task.category} - {task.points} points
           </li>
         ))}
       </ul>
