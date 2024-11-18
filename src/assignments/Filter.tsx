@@ -1,7 +1,5 @@
-import { useState } from 'react';
-import React, { useContext } from "react";
-import { TaskContext } from "../context/TaskContext";
-import AddTask from "./AddTask"; 
+import { useContext, useState } from 'react';
+import { CharacterContext } from "../context/CharacterContext"; 
 
 
 // Define emojis for each category
@@ -16,7 +14,7 @@ import AddTask from "./AddTask";
 // ];
 
 function Filter() {
-  const { tasks } = useContext(TaskContext)!;  // Hent 'tasks' fra taskcontext
+  const { tasks } = useContext(CharacterContext);  // Hent 'tasks' fra taskcontext
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   // Filter opgaver baseret på valgt kategori

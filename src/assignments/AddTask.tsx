@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CharacterContext } from "../context/CharacterContext"; 
 
 function AddTask() {
-  const [tasks, setTasks] = useState([]); // Gemmer opgaver i en liste
+  const { tasks, setTasks} = useContext(CharacterContext);
   const [selectedTask, setSelectedTask] = useState(''); // Opgavens navn
   const [selectedCategory, setSelectedCategory] = useState(null); // Valgte kategori
   const [selectedPoints, setSelectedPoints] = useState(null); // Valgte points
