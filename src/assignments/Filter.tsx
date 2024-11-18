@@ -23,7 +23,6 @@ function Filter() {
       ? tasks  // Hvis 'All' er valgt, vis alle opgaver
       : tasks.filter((task) => task.category === selectedFilter);  // Filtrer opgaver efter kategori
 
-
   return (
     <div className="filter-container">
       <div className='flex'>
@@ -41,8 +40,8 @@ function Filter() {
         </button>
         {categories.map((category) => (
           <button
-            key={category.id}
-            onClick={() => setSelectedFilter(category.id)}
+            key={category.value}
+            onClick={() => setSelectedFilter(category.value)}
             className={selectedFilter === category.value ? "active" : ""}
             title={category.label}
           >
@@ -54,7 +53,7 @@ function Filter() {
       {/* Render de filtrerede opgaver */}
       <ul className="task-list">
         {filteredTasks.map((task, index) => (
-          <li key={task.value} className="task-item">
+          <li key={task.id} className="task-item">
             {task.name} - {task.category} - {task.points} points
           </li>
         ))}

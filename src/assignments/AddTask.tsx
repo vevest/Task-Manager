@@ -1,8 +1,25 @@
 import { useContext, useState } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
 
+/**
+ * AddTask() opretter en ny opgave 
+ * @param tasks indeholder en liste over alle opgaver der er tilføjet
+ * @param setTask er en funktion der opdaterer task hver gang en opgave tilføjes eller slettes 
+ * @param selectedTask gemmer teksten fra inputfeltet
+ * @param setSelectedTask opdaterer selectedTask når den ændres
+ * @param selectedCategory gemmer den kategori brugeren har valgt
+ * @param setSelectedCategory opdaterer selectedCategori når den ændres
+ * @param selectedPoints gemmer points brugeren har valgt
+ * @param setSelectedPoints opdaterer selectedPoints når den ændres
+ * @param categories er en liste over de værdier brugeren kan vælge imellem af kategorier
+ * @param points er en liste over de værdier brugeren kan vælge imellem af points
+ * 
+ * @returns 
+ */
+
+
 function AddTask() {
-  const { tasks, setTasks} = useContext(CharacterContext);
+  const { tasks, setTasks } = useContext(CharacterContext);
   const [selectedTask, setSelectedTask] = useState(''); // Opgavens navn
   const [selectedCategory, setSelectedCategory] = useState(null); // Valgte kategori
   const [selectedPoints, setSelectedPoints] = useState(null); // Valgte points
@@ -28,6 +45,7 @@ function AddTask() {
   // Håndter inputændringer
   const handleTaskChange = (e) => {
     setSelectedTask(e.target.value);
+    
   };
 
   // Håndter valg af kategori
@@ -52,7 +70,7 @@ function AddTask() {
     const newTask = {
       id: tasks.length + 1,
       name: selectedTask,
-      category: selectedCategory.label,
+      category: selectedCategory.value,
       points: selectedPoints.value,
     };
 
@@ -86,7 +104,7 @@ function AddTask() {
             <div
               key={category.id}
               className={`category ${
-                selectedCategory && selectedCategory.id === category.id ? 'selected' : ''
+                selectedCategory && selectedCategory.value === category.value ? 'selected' : ''
               }`}
               onClick={() => handleCategoryClick(category)}
             >
