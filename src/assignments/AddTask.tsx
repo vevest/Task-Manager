@@ -138,5 +138,15 @@ function AddTask({addTask}) {
           <button type="submit">Tilføj</button>
         </form>
       </>
+          //   <Link 
+          //   to={`${selectedCharacter ? "/mood" : ""}`} 
+          //   className={`buttonBottom button ${!selectedCharacter ? "disabled" : ""}`} 
+          // > 
+          //   Kom i gang
+          // </Link>
+
+      
     );
   }
+
+  export default AddTask;

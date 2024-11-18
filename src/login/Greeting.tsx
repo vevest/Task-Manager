@@ -15,7 +15,7 @@ const Greeting: React.FC = () => {
     } else if (hours >= 9 && hours <= 11) {
       return `God formiddag ${name}`;
     } else if (hours >= 12 && hours <= 17) {
-      return `God dag ${name}`;
+      return `God eftermiddag ${name}`;
     } else if (hours >= 18 && hours <= 23) {
       return `God aften ${name}`;
     } else {

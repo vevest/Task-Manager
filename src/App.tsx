@@ -24,7 +24,6 @@ function App() {
   const [points, setPoints] = useState('');
 
   return (
-    <TaskProvider>
       <TaskContext.Provider value={{ category, setCategory, taskName, setTaskName, points, setPoints }}>
         <CharacterContext.Provider value={{ character, setCharacter }}>
           <LoginContext.Provider value={{ name, setName, setShowName }}>
@@ -38,13 +37,11 @@ function App() {
                 <Route path="/homepage" element={<Homepage />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/assignments" element={<Assignments />} /> {/* Filter er nu inkluderet i Assignments */}
-                <Route path="/add-task" element={<AddTask />} />
               </Routes>
             </Router>
           </LoginContext.Provider>
         </CharacterContext.Provider>
       </TaskContext.Provider>
-    </TaskProvider>
   );
 }
 
