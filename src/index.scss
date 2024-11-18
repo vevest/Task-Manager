@@ -258,12 +258,12 @@ nav {
   padding: 2em;
   
   img {
-    border: 3px solid $color-secondary;
-    border-radius: 100%;
-    width: 40%;
+    border: none;
+    border-radius: 0;
+    width: 100%;
     height: auto;
-    padding: 1em;
-    object-fit: cover;
+    padding: 0;
+    object-fit: contain;
     transition: transform 0.3s ease;
   }
 }

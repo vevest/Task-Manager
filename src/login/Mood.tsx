@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 
 import smileCircle from '../assets/smileCircle.png';
 import smileFace from '../assets/smileFace.png';
+import sadSmile from '../assets/sadSmile.png';
+import neutralSmile from '../assets/neutralSmile.png';
+import happySmile from '../assets/happySmile.png';
 
 // Opret array med citater
 const quotes = [
@@ -34,9 +37,9 @@ function Mood() {
       </div>
       <p>Hvordan har din dag været?</p>
       <div className='moodBox'>
-        <Link to='/homepage'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
-        <Link to='/homepage'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
-        <Link to='/homepage'><img src={smileFace} alt="Smile" className='smileCircle' /></Link>
+        <Link to='/homepage'><img src={happySmile} alt="Happy Smile" /></Link>
+        <Link to='/homepage'><img src={neutralSmile} alt="Neutral Smile" /></Link>
+        <Link to='/homepage'><img src={sadSmile} alt="Sad Smile" /></Link>
       </div>
     </div>
   );
