@@ -1,18 +1,19 @@
 import { useState } from 'react';
 import React, { useContext } from "react";
 import { TaskContext } from "../context/TaskContext";
+import AddTask from "./AddTask"; 
 
 
 // Define emojis for each category
-const categoryEmojis = [
-  { label: "Study", emoji: "📚" },
-  { label: "Kitchen", emoji: "🍽️" },
-  { label: "Wash", emoji: "🧼" },
-  { label: "Clothes", emoji: "👕" },
-  { label: "Livingroom", emoji: "🛋️" },
-  { label: "Bedroom", emoji: "🛏️" },
-  { label: "Shop", emoji: "🛍️" },
-];
+// const categoryEmojis = [
+//   { label: "Study", emoji: "📚" },
+//   { label: "Kitchen", emoji: "🍽️" },
+//   { label: "Wash", emoji: "🧼" },
+//   { label: "Clothes", emoji: "👕" },
+//   { label: "Livingroom", emoji: "🛋️" },
+//   { label: "Bedroom", emoji: "🛏️" },
+//   { label: "Shop", emoji: "🛍️" },
+// ];
 
 function Filter() {
   const { tasks } = useContext(TaskContext)!;  // Hent 'tasks' fra taskcontext
@@ -30,7 +31,7 @@ function Filter() {
       <div className='flex'>
         <h2>Opgaver</h2>
         <div className="circle">
-          {/* <i class="fa-solid fa-plus"></i> */}
+          <i class="fa-solid fa-plus"></i>
         </div>
       </div>
 
