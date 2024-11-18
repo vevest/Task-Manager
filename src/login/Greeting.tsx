@@ -19,7 +19,7 @@ const Greeting: React.FC = () => {
     } else if (hours >= 18 && hours <= 23) {
       return `God aften ${name}`;
     } else {
-      return `God nat ${name}`;
+      return `Nårh, er du en natteravn, ${name}?`;
     }
   };
 

@@ -38,7 +38,7 @@ p {
 }
 
 h1 {
-  @include font-style("Itim", 2.4rem, 200, $color-text-black, 1rem);
+  @include font-style("Itim", 2.4rem, 200, $color-text-black, 1.5rem);
 }
 
 h2 {
@@ -249,13 +249,13 @@ nav {
 .moodBox {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 20px;
   justify-items: center;
   margin-top: 20px;
   background-color: $color-inputFill;
   border: 2px solid $color-inputBorder;
   border-radius: 10px;
-  padding: 2em;
+  padding: 2rem;
   
   img {
     border: none;
@@ -263,9 +263,33 @@ nav {
     width: 100%;
     height: auto;
     padding: 0;
+    padding-top: .5rem;
     object-fit: contain;
     transition: transform 0.3s ease;
   }
+}
+
+// –––––––––––––––––––––––––––––––––––––––––––
+// Homepage
+// ––––––––––––––––––––––––––––––––––––––––––-
+
+.homepage-msg {
+  padding: 2rem;
+}
+
+.characterHomepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6rem;
+}
+
+.home-quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
 }
 
 // –––––––––––––––––––––––––––––––––––––––––––
@@ -311,5 +335,32 @@ nav {
   border-radius: 50%; 
   color: white; 
   font-size: 1.5rem; 
+
+}
+
+@media screen and (min-width: 1024px) {
+
+  .character-selection {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .center {
+    .logo {
+      margin: 3rem auto;
+    }
+  }
+
+  .moodBox {
+    margin-top: 2rem;
+    padding: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+
+    img {
+      padding-top: 1rem;
+      width: 80%;
+    }
+  }
 
 }
