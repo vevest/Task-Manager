@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
-import { CharacterContext } from "../context/CharacterContext"; 
+import { CharacterContext } from "../context/CharacterContext";
+import { PointsContext } from '../context/PointsContext'; // Importér PointsContext
 
 /**
  * AddTask() opretter en ny opgave 
@@ -20,6 +21,7 @@ import { CharacterContext } from "../context/CharacterContext";
 
 function AddTask() {
   const { tasks, setTasks } = useContext(CharacterContext);
+  const { addPoints } = useContext(PointsContext); // Hent addPoints-funktionen fra PointsContext
   const [selectedTask, setSelectedTask] = useState(''); // Opgavens navn
   const [selectedCategory, setSelectedCategory] = useState(null); // Valgte kategori
   const [selectedPoints, setSelectedPoints] = useState(null); // Valgte points
@@ -82,6 +84,12 @@ function AddTask() {
 
   // Slet opgaven
   const handleTaskDone = (taskId) => {
+    const completedTask = tasks.find((task) => task.id === taskId);
+
+    if (completedTask) {
+      addPoints(completedTask.points); // Tilføj points til konteksten
+    }
+
     setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern opgaven med det specifikke id
   };
 

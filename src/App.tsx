@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { LoginContext } from './context/LoginContext';
 import { CharacterContext } from './context/CharacterContext';
+import { PointsProvider } from './context/PointsContext';  // Importér PointsProvider
 
 import Login from './login/Login';
 import WelcomeMessage from './login/WelcomeMessage';
@@ -19,6 +20,7 @@ function App() {
   const [character, setCharacter] = useState(null);
 
   return (
+    <PointsProvider>
         <CharacterContext.Provider value={{ character, setCharacter, tasks, setTasks }}>
           <LoginContext.Provider value={{ name, setName, setShowName }}>
             <Router>
@@ -35,6 +37,7 @@ function App() {
             </Router>
           </LoginContext.Provider>
         </CharacterContext.Provider>
+      </PointsProvider>
   );
 }
 
