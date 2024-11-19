@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { PointsContext } from '../context/PointsContext'; // Import PointsContext
 
 function Profile() {
+  const { name } = useContext(LoginContext);  // Hent login-navnet
   const { character } = useContext(CharacterContext); // Hent karakterbillede
   const { setShowName } = useContext(LoginContext); // Håndter loginvisning
   const { weeklyPoints } = useContext(PointsContext); // Hent ugentlige points fra PointsContext
@@ -16,7 +17,7 @@ function Profile() {
 
   return (
     <>
-      <h1>Profil</h1>
+      <h1>{name}'s uge</h1>
       <div className="framedContent flex">
         <div className="selectedCharacter">
           <img className="characterProfile" src={character} alt="Det valgte icon" />
