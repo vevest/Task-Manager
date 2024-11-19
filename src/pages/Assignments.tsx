@@ -1,16 +1,16 @@
 import Navbar from "../allComponents/Navbar";
 import AddTask from "../assignments/AddTask";
 import Filter from "../assignments/Filter";
-import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
 import { CharacterContext } from "../context/CharacterContext"; 
+import React, { useContext } from 'react';
+
 
 function Assignments() {
-  const { tasks, setTasks} = useContext(CharacterContext);
+  const { addTaskToFilter } = useContext(CharacterContext);
 
   return (
     <>
-      <AddTask />
+      {addTaskToFilter && <AddTask />}
       <Filter />
       <Navbar />
     </>

@@ -332,6 +332,23 @@ nav {
   text-align: center;
 }
 
+.add-task-container {
+  border: 1px solid #e3d9b0;
+  background-color: #fff8de;
+  position: absolute;
+  width: 50vw;
+}
+
+.shutDown {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.shutDown:hover {
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
 .category {
   display: flex;
   height: 2em;

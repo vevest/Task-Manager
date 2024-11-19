@@ -20,9 +20,11 @@ import { CharacterContext } from "../context/CharacterContext";
 
 function AddTask() {
   const { tasks, setTasks } = useContext(CharacterContext);
+  const { setAddTaskToFilter } = useContext(CharacterContext);
   const [selectedTask, setSelectedTask] = useState(''); // Opgavens navn
   const [selectedCategory, setSelectedCategory] = useState(null); // Valgte kategori
   const [selectedPoints, setSelectedPoints] = useState(null); // Valgte points
+
 
   const categories = [
     { id: 1, label: '📚', value: 'Study' },
@@ -57,6 +59,10 @@ function AddTask() {
     setSelectedPoints(point);
   };
 
+  const shutDown = () => {
+    setAddTaskToFilter(false);
+  }
+
   // Tilføj opgaven til listen
   const handleAddTask = (e) => {
     e.preventDefault();
@@ -80,8 +86,9 @@ function AddTask() {
   };
 
   return (
-    <div className="center">
+    <div className="center add-task-container">
       <h1>Opret opgave</h1>
+      <div onClick={shutDown} className='shutDown'><i class="fa-solid fa-xmark"></i></div>
 
       <form>
         <h2>📌 Kategori</h2>

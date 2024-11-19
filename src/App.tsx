@@ -18,10 +18,11 @@ function App() {
   const [name, setName] = useState('');
   const [showName, setShowName] = useState(false);
   const [character, setCharacter] = useState(null);
+  const [addTaskToFilter, setAddTaskToFilter] = useState(false);
 
   return (
     <PointsProvider>
-        <CharacterContext.Provider value={{ character, setCharacter, tasks, setTasks }}>
+        <CharacterContext.Provider value={{ character, setCharacter, tasks, setTasks, addTaskToFilter, setAddTaskToFilter }}>
           <LoginContext.Provider value={{ name, setName, setShowName }}>
             <Router>
               <Routes>

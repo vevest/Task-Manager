@@ -6,6 +6,7 @@ import { PointsContext } from '../context/PointsContext'; // Importér PointsCon
 
 function Filter() {
   const { tasks, setTasks } = useContext(CharacterContext);  // Hent 'tasks' fra taskcontext
+  const { setAddTaskToFilter } = useContext(CharacterContext);
   const { addPoints } = useContext(PointsContext); // Hent addPoints-funktionen fra 
   const [selectedFilter, setSelectedFilter] = useState("All");
 
@@ -30,6 +31,10 @@ function Filter() {
       setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern opgaven med det specifikke id
     };
 
+    const handleToFilter = () => {
+      setAddTaskToFilter(true);
+    }
+
   // Filter opgaver baseret på valgt kategori
   const filteredTasks =
     selectedFilter === "All"
@@ -40,7 +45,7 @@ function Filter() {
     <div className="filter-container">
       <div className='flex'>
         <h2>Opgaver</h2>
-        <div className="circle">
+        <div onClick={handleToFilter} className="circle">
           <i class="fa-solid fa-plus"></i>
         </div>
       </div>
