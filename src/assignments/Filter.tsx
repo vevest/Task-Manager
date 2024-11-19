@@ -54,7 +54,7 @@ function Filter() {
         {categories.map((category) => (
           <button
             key={category.value}
-            onClick={() => setSelectedFilter(category.value)}
+            onClick={() => setSelectedFilter(category.label)}
             className={`filter-button ${selectedFilter === "All" ? "active" : ""}`}
             title={category.label}
           >
