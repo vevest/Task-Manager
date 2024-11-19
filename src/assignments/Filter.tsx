@@ -64,13 +64,27 @@ function Filter() {
       </div>
 
       {/* Render de filtrerede opgaver */}
-      <ul className="task-list">
-        {filteredTasks.map((task, index) => (
-          <li key={task.id} className="task-item">
-            {task.name} - {task.category} - {task.points} points <button onClick={() => handleTaskDone(task.id)}>Færdig</button>
-          </li>
-        ))}
-      </ul>
+<ul className="task-list">
+  <h2>To-do liste</h2>
+  {filteredTasks.map((task, index) => (
+    <li key={task.id} className="task-item">
+      <div className='task-info'>
+        <div className="task-category">
+          {task.category}
+        </div>
+        <div className="task-nameAndPoints">
+          <span className="task-name">{task.name}</span>
+          <span className="task-points">{task.points}⚡️</span>
+        </div>
+      </div>
+      <div className="task-actions">
+        <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
+          <i className="fa-solid fa-check"></i>
+        </button>
+      </div>
+    </li>
+  ))}
+</ul>
     </div>
   );
 };
