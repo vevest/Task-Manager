@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { CharacterContext } from "../context/CharacterContext";
-import { PointsContext } from '../context/PointsContext'; // Importér PointsContext
 
 /**
  * AddTask() opretter en ny opgave 
@@ -21,7 +20,6 @@ import { PointsContext } from '../context/PointsContext'; // Importér PointsCon
 
 function AddTask() {
   const { tasks, setTasks } = useContext(CharacterContext);
-  const { addPoints } = useContext(PointsContext); // Hent addPoints-funktionen fra PointsContext
   const [selectedTask, setSelectedTask] = useState(''); // Opgavens navn
   const [selectedCategory, setSelectedCategory] = useState(null); // Valgte kategori
   const [selectedPoints, setSelectedPoints] = useState(null); // Valgte points
@@ -47,7 +45,6 @@ function AddTask() {
   // Håndter inputændringer
   const handleTaskChange = (e) => {
     setSelectedTask(e.target.value);
-    
   };
 
   // Håndter valg af kategori
@@ -72,7 +69,7 @@ function AddTask() {
     const newTask = {
       id: tasks.length + 1,
       name: selectedTask,
-      category: selectedCategory.value,
+      category: selectedCategory.label,
       points: selectedPoints.value,
     };
 
@@ -82,36 +79,18 @@ function AddTask() {
     setSelectedPoints(null); // Nulstil points
   };
 
-  // Slet opgaven
-  const handleTaskDone = (taskId) => {
-    const completedTask = tasks.find((task) => task.id === taskId);
-
-    if (completedTask) {
-      addPoints(completedTask.points); // Tilføj points til konteksten
-    }
-
-    setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern opgaven med det specifikke id
-  };
-
   return (
     <div className="center">
-      <h2>Opret opgave</h2>
+      <h1>Opret opgave</h1>
 
       <form>
-        <input
-          type="text"
-          value={selectedTask}
-          placeholder="Opgavens navn"
-          onChange={handleTaskChange}
-        />
-
+        <h2>📌 Kategori</h2>
         <div className="character-selection">
-          <h3>Vælg en kategori</h3>
           {categories.map((category) => (
             <div
               key={category.id}
               className={`category ${
-                selectedCategory && selectedCategory.value === category.value ? 'selected' : ''
+                selectedCategory && selectedCategory.label === category.label ? 'selected' : ''
               }`}
               onClick={() => handleCategoryClick(category)}
             >
@@ -120,17 +99,26 @@ function AddTask() {
           ))}
         </div>
 
+        <h2>Opgaven</h2>
+        <input
+          type="text"
+          value={selectedTask}
+          placeholder="Skriv opgaven"
+          onChange={handleTaskChange}
+        />
+
+        <h2>⚡️ Points</h2>
         <div className="character-selection">
-          <h3>Angiv antal points</h3>
           {points.map((point) => (
             <div
               key={point.id}
               className={`points ${
-                selectedPoints && selectedPoints.id === point.id ? 'selected' : ''
+                selectedPoints && selectedPoints.value === point.value ? 'selected' : ''
               }`}
+
               onClick={() => handlePointsClick(point)}
             >
-              {point.label}
+              {point.value}
             </div>
           ))}
         </div>
@@ -144,19 +132,6 @@ function AddTask() {
           Tilføj opgave
         </button>
       </form>
-
-      {/* Viser tilføjede opgaver */}
-      <div className="task-list">
-        <h3>Opgaver</h3>
-        {tasks.map((task) => (
-          <div key={task.id} className="task-item">
-            <p>{task.name}</p>
-            <p>{task.category}</p>
-            <p>{task.points} points</p>
-            <button onClick={() => handleTaskDone(task.id)}>Færdig</button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

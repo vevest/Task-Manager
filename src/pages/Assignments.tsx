@@ -10,8 +10,6 @@ function Assignments() {
 
   return (
     <>
-      <h1>Mine opgaver</h1>
-      <p>Vælg eller opret dine egne opgaver og optjen points!</p>
       <AddTask />
       <Filter />
       <Navbar />

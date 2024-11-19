@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   background-color: #fff5d0;
   box-sizing: border-box;
@@ -159,7 +160,6 @@ form {
   position: absolute;
 }
 
-button,
 .button {
   padding: 0.2em 1em;
   font-family: "Jomhuria";
@@ -173,7 +173,6 @@ button,
   border-radius: 10px;
 }
 @media screen and (max-width: 1000px) {
-  button,
   .button {
     font-size: 38.7px;
   }
@@ -333,19 +332,60 @@ nav {
   text-align: center;
 }
 
-.category-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.category-btn {
+.category {
   display: flex;
   height: 2em;
   width: 2em;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 1.5em;
+  border: 1px solid #e3d9b0;
+  background-color: #fff8de;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  aspect-ratio: 1;
+}
+.category:hover {
+  background-color: #f0f0f0;
+}
+.category.selected {
+  border-color: #388e3c; /* Mørkere grøn kant */
+}
+
+.points {
+  display: flex;
+  height: 2em;
+  width: 2em;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e3d9b0;
+  background-color: #fff8de;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  aspect-ratio: 1;
+  padding: 10px;
+}
+.points:hover {
+  background-color: #f0f0f0;
+}
+.points.selected {
+  border-color: #388e3c; /* Mørkere grøn kant */
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.category-buttons .filter-button {
+  display: flex;
+  height: 2em;
+  width: 2em;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
   border: 1px solid #e3d9b0;
   background-color: #fff8de;
   border-radius: 100%;
@@ -354,29 +394,24 @@ nav {
   aspect-ratio: 1;
 }
 
-.category-btn.active {
-  background-color: #e3d9b0;
-}
-
-.filter-emoji {
-  font-size: 20px;
-}
-
 .circle {
   display: flex;
-  align-items: center;
+  height: 2em;
+  width: 2em;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  background-color: #d8a744;
-  border-radius: 50%;
-  color: white;
-  font-size: 1.5rem;
+  align-items: center;
+  font-size: 1em;
+  border: 1px solid #e3d9b0;
+  background-color: #fff8de;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  aspect-ratio: 1;
 }
 
 @media screen and (min-width: 1024px) {
   .character-selection {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 20px;
   }
   .center .logo {

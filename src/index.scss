@@ -122,7 +122,7 @@ form {
     position: absolute;
   }
 }
-button,
+
 .button {
   padding: 0.2em 1em;
   @include font-style("Jomhuria", 43px, 200, $color-text-white, 2rem);
@@ -295,6 +295,53 @@ nav {
 }
 
 // –––––––––––––––––––––––––––––––––––––––––––
+// AddTask
+// ––––––––––––––––––––––––––––––––––––––––––-
+
+.category {
+  display: flex; 
+  height: 2em;
+  width: 2em;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em; 
+  border: 1px solid $color-inputBorder; 
+  background-color: $color-inputFill; 
+  border-radius: 100%; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+  aspect-ratio: 1;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &.selected {
+    border-color: #388e3c; /* Mørkere grøn kant */
+  }
+}
+.points {
+  display: flex; 
+  height: 2em;
+  width: 2em;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $color-inputBorder; 
+  background-color: $color-inputFill; 
+  border-radius: 100%; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+  aspect-ratio: 1;
+  padding: 10px;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &.selected {
+    border-color: #388e3c; /* Mørkere grøn kant */
+  }
+}
+
+// –––––––––––––––––––––––––––––––––––––––––––
 // Filter
 // ––––––––––––––––––––––––––––––––––––––––––-
 
@@ -302,48 +349,42 @@ nav {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  .filter-button {
+    display: flex; 
+    height: 2em;
+    width: 2em;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em; 
+    border: 1px solid $color-inputBorder; 
+    background-color: $color-inputFill; 
+    border-radius: 100%; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    aspect-ratio: 1;
+  }
 }
 
-.category-btn {
+.circle {
   display: flex; 
   height: 2em;
   width: 2em;
   justify-content: center;
   align-items: center;
-  font-size: 24px; 
+  font-size: 1em; 
   border: 1px solid $color-inputBorder; 
   background-color: $color-inputFill; 
   border-radius: 100%; 
   cursor: pointer; 
   transition: background-color 0.3s; 
   aspect-ratio: 1;
-}
-
-.category-btn.active {
-  background-color: #e3d9b0; 
-}
-
-.filter-emoji {
-  font-size: 20px; 
-}
-
-.circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px; 
-  height: 30px; 
-  background-color: $color-secondary; 
-  border-radius: 50%; 
-  color: white; 
-  font-size: 1.5rem; 
 
 }
 
 @media screen and (min-width: 1024px) {
 
   .character-selection {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 20px;
   }
 
