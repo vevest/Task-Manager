@@ -2,8 +2,8 @@ import { useState, useEffect, Children } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { LoginContext } from './context/LoginContext';
-import { CharacterContext } from './context/CharacterContext';
-import { CharacterProvider } from './context/CharacterContext';
+import { CharacterContext } from './context/CharacterContext'; // Den mangler?
+import { CharacterProvider } from './context/CharacterContext'; // Skal den væk?
 import { PointsProvider } from './context/PointsContext';  // Importér PointsProvider
 
 import Login from './login/Login';
@@ -18,7 +18,6 @@ interface Task {
   id: number;
   title: string;
   completed: boolean;
-  // Tilføj flere felter efter behov
 }
 
 interface CharacterContextType {
