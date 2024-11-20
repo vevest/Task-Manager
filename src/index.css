@@ -596,15 +596,13 @@ nav {
   margin: 20px 0;
   max-width: 100%;
 }
-
 .level p {
   margin: 0;
   padding-left: 20px;
   font-size: 18px;
   color: #2c2c2c; /* Tekstfarve */
 }
-
-.container {
+.level .container {
   position: relative;
   background-color: #fff8de;
   border: 1px solid #e3d9b0;
@@ -614,14 +612,12 @@ nav {
   align-items: center;
   width: 100%; /* Sikrer at containeren fylder hele bredden */
 }
-
-.container p {
+.level .container p {
   z-index: 2;
   font-size: 16px;
   color: #2a2a2a; /* Farve for 10/1000 ⚡️ tekst */
 }
-
-.color {
+.level .container .color {
   z-index: 1;
   position: absolute;
   height: 100%;
@@ -637,26 +633,25 @@ nav {
   cursor: pointer;
   transition: background-color 0.3s ease; /* Glidende overgang til hover-effekt */
 }
-
-.color:hover {
+.level .container .color:hover {
   background-color: #45a049; /* Mørkere grøn ved hover */
 }
-
 @media (max-width: 600px) {
-  .level {
+  .level .level {
     max-width: 100%;
     padding: 10px;
   }
-  .container {
+  .level .container {
     flex-direction: column;
     align-items: flex-start;
   }
-  .color {
+  .level .container .color {
     margin-top: 10px;
     width: 20%; /* Farveindikatoren kan være lidt større på små skærme */
     height: 40px;
   }
 }
+
 .water-plus, .water-minus {
   font-size: 2em;
   border-radius: 100%;
@@ -678,4 +673,23 @@ nav {
 .water-icon {
   font-size: 3em;
   display: inline-block;
+}
+
+.pointsOverviewWeek {
+  display: flex;
+  flex-direction: column;
+}
+.pointsOverviewWeek .container .capsule {
+  position: relative;
+  height: 6em;
+  width: 2em;
+  border: 1px solid #e3d9b0;
+  border-radius: 10px;
+}
+.pointsOverviewWeek .container .capsule .color {
+  position: absolute;
+  bottom: 0;
+  border-radius: 0 0 9px 9px;
+  background-color: #d8a744;
+  width: 100%;
 }/*# sourceMappingURL=index.css.map */

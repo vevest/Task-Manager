@@ -1,5 +1,6 @@
 import Navbar from "../allComponents/Navbar";
 import Level from "../allComponents/Level";
+import LastDone from "../allComponents/LastDone";
 import PointsOverviewWeek from "../allComponents/PointsOverviewWeek";
 import React, { useContext, useEffect } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
@@ -40,6 +41,7 @@ function Profile() {
         </div>
       </div>
       <PointsOverviewWeek />
+      <LastDone />
       <div>
         <Link to="/" onClick={handleClick}>
           <h3>Log ud</h3>
