@@ -1,4 +1,6 @@
 import Navbar from "../allComponents/Navbar";
+import Level from "../allComponents/Level";
+import PointsOverviewWeek from "../allComponents/PointsOverviewWeek";
 import React, { useContext, useEffect } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
 import { LoginContext } from "../context/LoginContext";
@@ -25,6 +27,7 @@ function Profile() {
 
   return (
     <>
+      <Level />
       <h1>{name}'s uge</h1>
       <div className="framedContent flex">
         <div className="selectedCharacter">
@@ -36,6 +39,7 @@ function Profile() {
           <h3>{weeklyPoints} ⚡️</h3> {/* Brug de ugentlige points fra konteksten */}
         </div>
       </div>
+      <PointsOverviewWeek />
       <div>
         <Link to="/" onClick={handleClick}>
           <h3>Log ud</h3>
