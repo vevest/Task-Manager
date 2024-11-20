@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Children } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { LoginContext } from './context/LoginContext';
 import { CharacterContext } from './context/CharacterContext';
+import { CharacterProvider } from './context/CharacterContext';
 import { PointsProvider } from './context/PointsContext';  // Importér PointsProvider
 
 import Login from './login/Login';
@@ -59,7 +60,7 @@ function App() {
 
   return (
     <PointsProvider>
-        <CharacterContext.Provider value={{ character, setCharacter, tasks, setTasks, addTaskToFilter, setAddTaskToFilter }}>
+        <CharacterProvider>
           <LoginContext.Provider value={{ name, setName, setShowName }}>
             <Router>
               <Routes>
@@ -74,7 +75,7 @@ function App() {
               </Routes>
             </Router>
           </LoginContext.Provider>
-        </CharacterContext.Provider>
+        </CharacterProvider>
       </PointsProvider>
   );
 }
