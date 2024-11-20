@@ -5,7 +5,7 @@ import { PointsContext } from '../context/PointsContext'; // Importér PointsCon
 
 
 function Filter() {
-  const { tasks, setTasks } = useContext(CharacterContext);  // Hent 'tasks' fra taskcontext
+  const { tasks, setTasks, addCompletedTask } = useContext(CharacterContext);  // Hent 'tasks' fra taskcontext
   const { setAddTaskToFilter } = useContext(CharacterContext);
   const { addPoints } = useContext(PointsContext); // Hent addPoints-funktionen fra 
   const [selectedFilter, setSelectedFilter] = useState("All");
@@ -20,15 +20,16 @@ function Filter() {
     { id: 7, label: '🛍️', value: 'Shop' },
   ];
 
-  // Slet opgaven
+  // funktion der fortæller hvad der skal ske når opgaven er færdig
   const handleTaskDone = (taskId) => {
     const completedTask = tasks.find((task) => task.id === taskId);
-  
+
     if (completedTask) {
-      addPoints(completedTask.points); // Tilføj points til konteksten
+      addPoints(completedTask.points); // Tilføj point
+      addCompletedTask(completedTask); // Flyt opgaven til færdige opgaver
     }
-  
-    setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern opgaven med det specifikke id
+
+    setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern fra "To-do"-liste
   };
 
   const handleToFilter = () => {

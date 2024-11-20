@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CharacterContext } from "../context/CharacterContext";
 
 function LastDone() {
-  const { completedTasks, tasks } = useContext(CharacterContext);
+  const { completedTasks } = useContext(CharacterContext);
 
   return (
     <div className="last-done-container">
