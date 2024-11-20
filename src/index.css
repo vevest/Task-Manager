@@ -160,7 +160,7 @@ form {
   position: absolute;
 }
 
-.button {
+.button, button {
   padding: 0.2em 1em;
   font-family: "Jomhuria";
   font-size: 43px;
@@ -173,7 +173,7 @@ form {
   border-radius: 10px;
 }
 @media screen and (max-width: 1000px) {
-  .button {
+  .button, button {
     font-size: 38.7px;
   }
 }
@@ -184,7 +184,7 @@ button:hover {
 
 .buttonBottom {
   position: absolute;
-  bottom: 2em;
+  bottom: 10rem;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -250,6 +250,7 @@ nav {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-items: center;
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -485,8 +486,11 @@ nav {
 }
 
 @media screen and (min-width: 1024px) {
+  .buttonBottom {
+    bottom: 1rem;
+  }
   .character-selection {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
   }
   .center .logo {

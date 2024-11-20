@@ -123,7 +123,7 @@ form {
   }
 }
 
-.button {
+.button, button {
   padding: 0.2em 1em;
   @include font-style("Jomhuria", 43px, 200, $color-text-white, 2rem);
   background-color: $color-secondary;
@@ -135,7 +135,7 @@ button:hover {
 }
 .buttonBottom {
   position: absolute;
-  bottom: 2em;
+  bottom: 10rem;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -206,6 +206,7 @@ nav {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-items: center;
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -453,8 +454,12 @@ nav {
 }
 @media screen and (min-width: 1024px) {
 
+  .buttonBottom {
+    bottom: 1rem;
+  }
+
   .character-selection {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
   }
 
