@@ -40,7 +40,7 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
 
   const addCompletedTask = (task: Task) => {
-    setCompletedTasks((prev) => [...prev, task]);
+    setCompletedTasks((prev) => [...prev, task]);  // Tilføjer den færdige opgave til completedTasks
   };
 
   return (

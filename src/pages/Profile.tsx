@@ -1,6 +1,7 @@
 import Navbar from "../allComponents/Navbar";
 import Level from "../allComponents/Level";
 import LastDone from "../allComponents/LastDone";
+import Filter from "src/assignments/Filter";
 import PointsOverviewWeek from "../allComponents/PointsOverviewWeek";
 import React, { useContext, useEffect } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
@@ -10,7 +11,7 @@ import { PointsContext } from '../context/PointsContext'; // Import PointsContex
 
 function Profile() {
   const { name, setShowName } = useContext(LoginContext);  // Hent login-navnet
-  const { character } = useContext(CharacterContext); // Hent karakterbillede
+  const { character, completedTasks } = useContext(CharacterContext); // Hent karakterbillede og hente færdige opgaver
   const { weeklyPoints } = useContext(PointsContext); // Hent ugentlige points fra PointsContext
 
   // Tjek om brugeren er logget ind, når komponenten indlæses

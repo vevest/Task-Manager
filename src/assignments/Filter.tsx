@@ -20,13 +20,15 @@ function Filter() {
     { id: 7, label: '🛍️', value: 'Shop' },
   ];
 
-  // funktion der fortæller hvad der skal ske når opgaven er færdig
+  // Funktion der fortæller hvad der skal ske når opgaven er færdig
   const handleTaskDone = (taskId) => {
     const completedTask = tasks.find((task) => task.id === taskId);
 
     if (completedTask) {
+      console.log("Task marked as done:", completedTask); // Log completedTask
       addPoints(completedTask.points); // Tilføj point
       addCompletedTask(completedTask); // Flyt opgaven til færdige opgaver
+      
     }
 
     setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern fra "To-do"-liste
@@ -87,10 +89,10 @@ function Filter() {
               </div>
             </div>
             <div className="task-actions">
-              <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
-                <i className="fa-solid fa-check"></i>
-              </button>
-            </div>
+                <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
+                  <i className="fa-solid fa-check"></i>
+                </button>
+              </div>
           </li>
         ))
       )}
