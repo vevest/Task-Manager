@@ -1,11 +1,16 @@
 import Navbar from "../allComponents/Navbar";
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
 import { LoginContext } from "../context/LoginContext";
 import { CharacterContext } from "../context/CharacterContext";
+import { PointsContext } from '../context/PointsContext'; // Import PointsContext
 
 function Homepage() {
   const { character } = useContext(CharacterContext);
   const { name } = useContext(LoginContext);
+  const { tasks } = useContext(CharacterContext);
+  const { weeklyPoints } = useContext(PointsContext); // Hent ugentlige points fra PointsContext
+
 
     // Array med citater
     const quotes = [
@@ -47,14 +52,43 @@ function Homepage() {
   return (
     <>
       <div className="homepage-msg">
-      <h1>{getGreeting()}</h1> {/* Brug getGreeting() til at vise den tidsbestemte besked */}
-      <h2>Velkommen tilbage</h2>
+        <h1>{getGreeting()}</h1> {/* Brug getGreeting() til at vise den tidsbestemte besked */}
+        <h2>Velkommen tilbage</h2>
       </div>
       <div className="selectedCharacter">
         <img className="characterHomepage" src={character} alt="Det valgte icon" />
       </div>
+      <div className="framedContent">
+        <div className="flexSB">
+          <h2>4 nyeste opgaver</h2>
+          <Link to={"/assignments"}><h2>Se alle</h2></Link>
+        </div>
+        <ul className="latestAssignments">
+          {tasks.length === 0 ? (
+            <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>
+          ) : (
+            tasks.slice(-4).map((task) => (
+              <li key={task.id} className="task-item">
+                <div className="task-info">
+                  <div className="task-category">
+                    {task.category}
+                  </div>
+                  <div className="task-name">
+                    <span className="task-name">{task.name}</span>
+                  </div>
+                </div>
+              </li>
+            ))
+          )}
+        </ul>
+      </div>
       <div className="home-quote">
-      <p className="random-quote">{randomQuote}</p> {/* Vis det randomiserede citat */}
+        <p className="random-quote">{randomQuote}</p> {/* Vis det randomiserede citat */}
+      </div>
+      <div className="framedContent">
+        <h2 className="textCenter">Point i denne uge</h2>
+          {/* Vis dynamiske ugentlige points her */}
+        <p className="textCenter pBig">{weeklyPoints} ⚡️</p> {/* Brug de ugentlige points fra konteksten */}
       </div>
       <Navbar />
     </>

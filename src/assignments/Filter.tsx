@@ -20,20 +20,20 @@ function Filter() {
     { id: 7, label: '🛍️', value: 'Shop' },
   ];
 
-    // Slet opgaven
-    const handleTaskDone = (taskId) => {
-      const completedTask = tasks.find((task) => task.id === taskId);
+  // Slet opgaven
+  const handleTaskDone = (taskId) => {
+    const completedTask = tasks.find((task) => task.id === taskId);
   
-      if (completedTask) {
-        addPoints(completedTask.points); // Tilføj points til konteksten
-      }
-  
-      setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern opgaven med det specifikke id
-    };
-
-    const handleToFilter = () => {
-      setAddTaskToFilter(true);
+    if (completedTask) {
+      addPoints(completedTask.points); // Tilføj points til konteksten
     }
+  
+    setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern opgaven med det specifikke id
+  };
+
+  const handleToFilter = () => {
+    setAddTaskToFilter(true);
+  }
 
   // Filter opgaver baseret på valgt kategori
   const filteredTasks =
@@ -69,27 +69,31 @@ function Filter() {
       </div>
 
       {/* Render de filtrerede opgaver */}
-<ul className="task-list">
-  <h2>To-do liste</h2>
-  {filteredTasks.map((task, index) => (
-    <li key={task.id} className="task-item">
-      <div className='task-info'>
-        <div className="task-category">
-          {task.category}
-        </div>
-        <div className="task-nameAndPoints">
-          <span className="task-name">{task.name}</span>
-          <span className="task-points">{task.points}⚡️</span>
-        </div>
-      </div>
-      <div className="task-actions">
-        <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
-          <i className="fa-solid fa-check"></i>
-        </button>
-      </div>
-    </li>
-  ))}
-</ul>
+    <ul className="task-list">
+      <h2>To-do liste</h2>
+      {tasks.length === 0 ? (
+        <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>
+      ) : (
+        filteredTasks.map((task) => (
+          <li key={task.id} className="task-item">
+            <div className='task-info'>
+              <div className="task-category">
+                {task.category}
+              </div>
+              <div className="task-nameAndPoints">
+                <span className="task-name">{task.name}</span>
+                <span className="task-points">{task.points}⚡️</span>
+              </div>
+            </div>
+            <div className="task-actions">
+              <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
+                <i className="fa-solid fa-check"></i>
+              </button>
+            </div>
+          </li>
+        ))
+      )}
+    </ul>
     </div>
   );
 };

@@ -4,8 +4,22 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   overflow-x: hidden;
-  padding: 2rem 4rem;
+  padding: 0rem;
   margin-bottom: 10rem;
+}
+@media screen and (min-width: 1024px) {
+  body {
+    padding: 2rem 4rem;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  padding: 0;
+  margin: 0;
 }
 
 p {
@@ -18,27 +32,41 @@ p {
 }
 @media screen and (max-width: 1000px) {
   p {
-    font-size: 1.17rem;
+    font-size: 1.04rem;
+  }
+}
+
+.pBig {
+  font-family: "Itim";
+  font-size: 3.3rem;
+  font-weight: 200;
+  color: #323232;
+  line-height: 2rem;
+  letter-spacing: 1px;
+}
+@media screen and (max-width: 1000px) {
+  .pBig {
+    font-size: 2.64rem;
   }
 }
 
 h1 {
   font-family: "Itim";
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 200;
   color: #323232;
-  line-height: 1.5rem;
+  line-height: 2.5rem;
   letter-spacing: 1px;
 }
 @media screen and (max-width: 1000px) {
   h1 {
-    font-size: 2.16rem;
+    font-size: 1.76rem;
   }
 }
 
 h2 {
   font-family: "Itim";
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 200;
   color: #323232;
   line-height: 1.5rem;
@@ -46,13 +74,13 @@ h2 {
 }
 @media screen and (max-width: 1000px) {
   h2 {
-    font-size: 1.62rem;
+    font-size: 1.36rem;
   }
 }
 
 h3 {
   font-family: "Itim";
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 200;
   color: #323232;
   line-height: 1.5rem;
@@ -60,7 +88,7 @@ h3 {
 }
 @media screen and (max-width: 1000px) {
   h3 {
-    font-size: 1.62rem;
+    font-size: 1.12rem;
   }
 }
 
@@ -75,7 +103,7 @@ a {
 }
 @media screen and (max-width: 1000px) {
   a {
-    font-size: 1.17rem;
+    font-size: 1.04rem;
   }
 }
 
@@ -84,8 +112,17 @@ a {
   justify-content: center;
 }
 
+.textCenter {
+  text-align: center;
+}
+
 .flex {
   display: flex;
+}
+
+.flexSB {
+  display: flex;
+  justify-content: space-between;
 }
 
 .grid {
@@ -106,7 +143,7 @@ a {
 
 .framedContent {
   background-color: #fff8de;
-  border: 2px solid #e3d9b0;
+  border: 1.5px solid #e3d9b0;
   border-radius: 10px;
   padding: 1em;
   margin-top: 2em;
@@ -126,7 +163,7 @@ input, select {
 }
 @media screen and (max-width: 1000px) {
   input, select {
-    font-size: 1.17rem;
+    font-size: 1.04rem;
   }
 }
 
@@ -174,7 +211,7 @@ form {
 }
 @media screen and (max-width: 1000px) {
   .button, button {
-    font-size: 38.7px;
+    font-size: 34.4px;
   }
 }
 
@@ -315,7 +352,13 @@ nav {
 }
 
 .homepage-msg {
-  padding: 2rem;
+  margin: 1em;
+}
+
+.no-tasks {
+  color: rgba(0, 0, 0, 0.5803921569);
+  font-size: 1.8em;
+  text-align: center;
 }
 
 .characterHomepage {
@@ -331,6 +374,42 @@ nav {
   align-items: center;
   padding: 2rem;
   text-align: center;
+}
+
+.latestAssignments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 100vw;
+}
+.latestAssignments .task-item {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  height: 5em;
+}
+.latestAssignments .task-info {
+  width: 30vw;
+  border: 1px solid #e3d9b0;
+  background-color: #fff8de;
+  border-radius: 10px;
+  display: flex;
+}
+.latestAssignments .task-category {
+  border-right: 1px solid #e3d9b0;
+  display: flex;
+  width: 5em;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+.latestAssignments .task-name {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 0 10px;
+  width: 100%;
 }
 
 .add-task-container {
