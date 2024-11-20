@@ -28,21 +28,21 @@ function Character() {
 
 
   const characters = [
-    { id: 1, src: character1, alt: 'Pige' },
-    { id: 2, src: character2, alt: 'Dreng' },
+    { id: 1, src: character1, alt: 'Hest' },
+    { id: 2, src: character2, alt: 'Kanin' },
     { id: 3, src: character3, alt: 'Egern' },
     { id: 4, src: character4, alt: 'Fisk' },
-    { id: 5, src: character5, alt: 'Pige' },
-    { id: 6, src: character6, alt: 'Dreng' },
-    { id: 7, src: character7, alt: 'Pige' },
-    { id: 8, src: character8, alt: 'Dreng' },
-    { id: 9, src: character9, alt: 'Pige' },
-    { id: 10, src: character10, alt: 'Dreng' },
-    { id: 11, src: character11, alt: 'Pige' },
-    { id: 12, src: character12, alt: 'Dreng' },
-    { id: 13, src: character13, alt: 'Pige' },
-    { id: 14, src: character14, alt: 'Dreng' },
-    { id: 15, src: character15, alt: 'Pige' },
+    { id: 5, src: character5, alt: 'Frø' },
+    { id: 6, src: character6, alt: 'Hund' },
+    { id: 7, src: character7, alt: 'Bjørn' },
+    { id: 8, src: character8, alt: 'Løve' },
+    { id: 9, src: character9, alt: 'Ugle' },
+    { id: 10, src: character10, alt: 'Kat' },
+    { id: 11, src: character11, alt: 'Hamster' },
+    { id: 12, src: character12, alt: 'Elefant' },
+    { id: 13, src: character13, alt: 'Zebra' },
+    { id: 14, src: character14, alt: 'Giraf' },
+    { id: 15, src: character15, alt: 'Gris' },
     // Tilføj flere karakterer her.
   ];
 
