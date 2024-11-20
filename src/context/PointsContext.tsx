@@ -13,8 +13,12 @@ type PointsProviderProps = {
 };
 
 export const PointsProvider: React.FC<PointsProviderProps> = ({ children }) => {
-  const [weeklyPoints, setWeeklyPoints] = useState<number>(0);
-  const [totalPoints, setTotalPoints] = useState<number>(0);
+  // Hent points fra localStorage, eller brug 0 som standard
+  const savedWeeklyPoints = localStorage.getItem("weeklyPoints");
+  const savedTotalPoints = localStorage.getItem("totalPoints");
+
+  const [weeklyPoints, setWeeklyPoints] = useState<number>(savedWeeklyPoints ? parseInt(savedWeeklyPoints) : 0);
+  const [totalPoints, setTotalPoints] = useState<number>(savedTotalPoints ? parseInt(savedTotalPoints) : 0);
 
   // Nulstil ugentlige points hver mandag kl. 00:00
   useEffect(() => {
@@ -27,9 +31,18 @@ export const PointsProvider: React.FC<PointsProviderProps> = ({ children }) => {
     return () => clearTimeout(resetWeeklyPoints);
   }, [weeklyPoints]);
 
+  // Funktion til at tilføje points og gemme dem i localStorage
   const addPoints = (points: number) => {
-    setWeeklyPoints((prev) => prev + points);
-    setTotalPoints((prev) => prev + points);
+    setWeeklyPoints((prev) => {
+      const newWeeklyPoints = prev + points;
+      localStorage.setItem("weeklyPoints", newWeeklyPoints.toString());
+      return newWeeklyPoints;
+    });
+    setTotalPoints((prev) => {
+      const newTotalPoints = prev + points;
+      localStorage.setItem("totalPoints", newTotalPoints.toString());
+      return newTotalPoints;
+    });
   };
 
   return (
