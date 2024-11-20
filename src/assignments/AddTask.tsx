@@ -41,7 +41,7 @@ function AddTask() {
     { id: 2, label: '10 point', value: 10 },
     { id: 3, label: '15 point', value: 15 },
     { id: 4, label: '20 point', value: 20 },
-    { id: 5, label: '25 point', value: 25 },
+    { id: 5, label: '25 point', value: 25 }, 
   ];
 
   // Håndter inputændringer

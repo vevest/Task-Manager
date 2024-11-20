@@ -11,6 +11,11 @@ function Level() {
     { level: 2, pointsRequired: 400 },
     { level: 3, pointsRequired: 800 },
     { level: 4, pointsRequired: 1600 },
+    { level: 5, pointsRequired: 3200 },
+    { level: 6, pointsRequired: 6400 },
+    { level: 7, pointsRequired: 8300 },
+    { level: 8, pointsRequired: 14000 },
+    { level: 9, pointsRequired: 20000 },
     // Du kan tilføje flere niveauer her
   ];
 
