@@ -18,6 +18,7 @@ import character13 from '../assets/characters/character13.png';
 import character14 from '../assets/characters/character14.png';
 import character15 from '../assets/characters/character15.png';
 
+
 interface CharacterType {
   id: number;
   src: string;

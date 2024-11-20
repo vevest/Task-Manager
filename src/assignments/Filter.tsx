@@ -21,7 +21,7 @@ function Filter() {
   ];
 
   // Funktion der fortæller hvad der skal ske når opgaven er færdig
-  const handleTaskDone = (taskId) => {
+  const handleTaskDone = (taskId: string) => {
     const completedTask = tasks.find((task) => task.id === taskId);
 
     if (completedTask) {
@@ -49,7 +49,7 @@ function Filter() {
       <div className='flex'>
         <h2>Opgaver</h2>
         <div onClick={handleToFilter} className="circle">
-          <i class="fa-solid fa-plus"></i>
+          <i className="fa-solid fa-plus"></i>
         </div>
       </div>
 

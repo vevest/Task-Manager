@@ -6,7 +6,11 @@ type PointsContextType = {
   addPoints: (points: number) => void;
 };
 
-export const PointsContext = createContext<PointsContextType | undefined>(undefined);
+export const PointsContext = createContext<PointsContextType>({
+  weeklyPoints: 0, // Standardværdi
+  totalPoints: 0,  // Standardværdi
+  addPoints: () => {}, // Standard funktion
+});
 
 type PointsProviderProps = {
   children: ReactNode;

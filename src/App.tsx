@@ -61,7 +61,7 @@ function App() {
   return (
     <PointsProvider>
         <CharacterProvider>
-          <LoginContext.Provider value={{ name, setName, setShowName }}>
+          <LoginContext.Provider value={{ name, setName, showName, setShowName }}>
             <Router>
               <Routes>
                 {/* Root route */}

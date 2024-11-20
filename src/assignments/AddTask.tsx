@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { SetStateAction, useContext, useState } from 'react';
 import { CharacterContext } from "../context/CharacterContext";
 
 /**
@@ -45,17 +45,17 @@ function AddTask() {
   ];
 
   // Håndter inputændringer
-  const handleTaskChange = (e) => {
+  const handleTaskChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setSelectedTask(e.target.value);
   };
 
   // Håndter valg af kategori
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = (category: SetStateAction<null>) => {
     setSelectedCategory(category);
   };
 
   // Håndter valg af points
-  const handlePointsClick = (point) => {
+  const handlePointsClick = (point: SetStateAction<null>) => {
     setSelectedPoints(point);
   };
 
@@ -64,7 +64,7 @@ function AddTask() {
   }
 
   // Tilføj opgaven til listen
-  const handleAddTask = (e) => {
+  const handleAddTask = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     if (!selectedTask || !selectedCategory || !selectedPoints) {
@@ -88,7 +88,7 @@ function AddTask() {
   return (
     <div className="center add-task-container">
       <h1>Opret opgave</h1>
-      <div onClick={shutDown} className='shutDown'><i class="fa-solid fa-xmark"></i></div>
+      <div onClick={shutDown} className='shutDown'><i className="fa-solid fa-xmark"></i></div>
 
       <form>
         <h2>📌 Kategori</h2>
