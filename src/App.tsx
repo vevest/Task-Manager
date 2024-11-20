@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { LoginContext } from './context/LoginContext';
@@ -19,6 +19,14 @@ function App() {
   const [showName, setShowName] = useState(false);
   const [character, setCharacter] = useState(null);
   const [addTaskToFilter, setAddTaskToFilter] = useState(false);
+
+  useEffect(() => {
+    const savedName = localStorage.getItem("loginName");
+    if (savedName) {
+      setName(savedName);
+      setShowName(true);  // Opdater login-status, hvis der er et gemt navn
+    }
+  }, []);
 
   return (
     <PointsProvider>

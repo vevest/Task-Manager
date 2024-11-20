@@ -1,18 +1,26 @@
 import Navbar from "../allComponents/Navbar";
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
 import { LoginContext } from "../context/LoginContext";
 import { Link } from "react-router-dom";
 import { PointsContext } from '../context/PointsContext'; // Import PointsContext
 
 function Profile() {
-  const { name } = useContext(LoginContext);  // Hent login-navnet
+  const { name, setShowName } = useContext(LoginContext);  // Hent login-navnet
   const { character } = useContext(CharacterContext); // Hent karakterbillede
-  const { setShowName } = useContext(LoginContext); // Håndter loginvisning
   const { weeklyPoints } = useContext(PointsContext); // Hent ugentlige points fra PointsContext
 
+  // Tjek om brugeren er logget ind, når komponenten indlæses
+  useEffect(() => {
+    const savedName = localStorage.getItem("loginName");
+    if (!savedName) {
+      setShowName(false); // Hvis der ikke er gemt navn, logg ud
+    }
+  }, [setShowName]);
+
   const handleClick = () => {
-    setShowName(null);
+    setShowName(false);
+    localStorage.removeItem("loginName"); // Fjern login-status fra localStorage
   }
 
   return (
