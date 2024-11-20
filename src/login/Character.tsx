@@ -1,8 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
 import { Link } from 'react-router-dom';
-
-
 
 import character1 from '../assets/characters/character1.png';
 import character2 from '../assets/characters/character2.png';
@@ -20,14 +18,18 @@ import character13 from '../assets/characters/character13.png';
 import character14 from '../assets/characters/character14.png';
 import character15 from '../assets/characters/character15.png';
 
-// Importer flere karakterbilleder, hvis nødvendigt.
+interface CharacterType {
+  id: number;
+  src: string;
+  alt: string;
+}
 
 function Character() {
   const { setCharacter } = useContext(CharacterContext);
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
 
 
-  const characters = [
+  const characters: CharacterType[] = [
     { id: 1, src: character1, alt: 'Hest' },
     { id: 2, src: character2, alt: 'Kanin' },
     { id: 3, src: character3, alt: 'Egern' },
@@ -43,13 +45,22 @@ function Character() {
     { id: 13, src: character13, alt: 'Zebra' },
     { id: 14, src: character14, alt: 'Giraf' },
     { id: 15, src: character15, alt: 'Gris' },
-    // Tilføj flere karakterer her.
   ];
 
+  // Hent karakter fra localStorage
+  useEffect(() => {
+    const savedCharacter = localStorage.getItem('selectedCharacter');
+    if (savedCharacter) {
+      setSelectedCharacter(savedCharacter);
+      setCharacter(savedCharacter);  // Opdater CharacterContext med den gemte karakter
+    }
+  }, [setCharacter]);
+
   // Funktion til at håndtere, når en karakter vælges
-  const handleCharacterClick = (characterId, characterSrc) => {
-    setSelectedCharacter(characterId);  // Sætter den valgte karakter
+  const handleCharacterClick = (characterId: number, characterSrc: string) => {
+    setSelectedCharacter(characterSrc);  // Sætter den valgte karakter
     setCharacter(characterSrc);
+    localStorage.setItem('selectedCharacter', characterSrc); // Gemmer karakterbilledet i localStorage
   };
 
   return (
@@ -59,10 +70,8 @@ function Character() {
         {characters.map((character) => (
           <div
             key={character.id}
-            className={`character ${selectedCharacter === character.id ? 'selected' : ''}`}
-            onClick={() => {
-              handleCharacterClick(character.id, character.src)
-            }}
+            className={`character ${selectedCharacter === character.src ? 'selected' : ''}`}
+            onClick={() => handleCharacterClick(character.id, character.src)}
           >
             <img
               src={character.src}

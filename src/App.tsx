@@ -13,18 +13,47 @@ import Homepage from './pages/Homepage';
 import Profile from './pages/Profile';
 import Assignments from './pages/Assignments'; // Inkluderer nu Filter
 
-function App() {
-  const [tasks, setTasks] = useState([]); // Gemmer opgaver i en liste
-  const [name, setName] = useState('');
-  const [showName, setShowName] = useState(false);
-  const [character, setCharacter] = useState(null);
-  const [addTaskToFilter, setAddTaskToFilter] = useState(false);
+interface Task {
+  id: number;
+  title: string;
+  completed: boolean;
+  // Tilføj flere felter efter behov
+}
 
+interface CharacterContextType {
+  character: string | null;
+  setCharacter: React.Dispatch<React.SetStateAction<string | null>>;
+  tasks: Task[];
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  addTaskToFilter: boolean;
+  setAddTaskToFilter: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface LoginContextType {
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  setShowName: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function App() {
+  const [tasks, setTasks] = useState<Task[]>([]); // Gemmer opgaver i en liste
+  const [name, setName] = useState<string>('');
+  const [showName, setShowName] = useState<boolean>(false);
+  const [character, setCharacter] = useState<string | null>(null); // Gemmer karakteren som en string eller null
+  const [addTaskToFilter, setAddTaskToFilter] = useState<boolean>(false);
+
+  // Hent navn og karakter fra localStorage
   useEffect(() => {
     const savedName = localStorage.getItem("loginName");
+    const savedCharacter = localStorage.getItem("selectedCharacter");
+    
     if (savedName) {
       setName(savedName);
       setShowName(true);  // Opdater login-status, hvis der er et gemt navn
+    }
+
+    if (savedCharacter) {
+      setCharacter(savedCharacter);  // Hent og opdater gemt karakter
     }
   }, []);
 
