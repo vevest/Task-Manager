@@ -6,7 +6,7 @@ function LastDone() {
   const { completedTasks } = useContext(CharacterContext); // Hent completedTasks fra contexten
 
   return (
-    <div className="last-done-container">
+    <div className="last-done-container baseContent">
       <h2>Sidst Gjorte Opgaver</h2>
       <ul>
         {completedTasks.length === 0 ? (

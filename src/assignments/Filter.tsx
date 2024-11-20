@@ -45,7 +45,7 @@ function Filter() {
       : tasks.filter((task) => task.category === selectedFilter);  // Filtrer opgaver efter kategori
 
   return (
-    <div className="filter-container">
+    <div className="filter-container baseContent">
       <div className='flex'>
         <h2>Opgaver</h2>
         <div onClick={handleToFilter} className="circle">
@@ -72,7 +72,7 @@ function Filter() {
       </div>
 
       {/* Render de filtrerede opgaver */}
-    <ul className="task-list">
+    <ul className="task-list framedContent">
       <h2>To-do liste</h2>
       {tasks.length === 0 ? (
         <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>

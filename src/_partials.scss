@@ -1,17 +1,41 @@
-/* VARIABLER vi har lavet vores farver til variabler*/ 
+// –––––––––––––––––––––––––––––––––––––––––––
+// Variabler
+// ––––––––––––––––––––––––––––––––––––––––––-
+$color-background: #fff5d0;
+$color-secondary: #d8a744;
+$color-inputFill: #fff8de;
+$color-inputBorder: #e3d9b0;
+$color-text-black: #323232;
+$color-text-white: #ffffff;
 
-// $white: #f7f7f7; 
-// $beige: #dfdbd5;
-// $black: #111111;
-// $blue: #2052B6;
-// $pink: #F996D7;
-// $grey: #333231;
+
+// –––––––––––––––––––––––––––––––––––––––––––
+// Mixins
+// ––––––––––––––––––––––––––––––––––––––––––-
+@mixin font-style($family, $size, $weight, $color, $line-height) {
+ font-family: $family;
+ font-size: $size;
+ font-weight: $weight;
+ color: $color;
+ line-height: $line-height;
+ letter-spacing: 1px;
+ @media screen and (max-width: 1000px) {
+   font-size: calc(#{$size} * 0.8);
 
 
-// /*MIXINS vi laver mixin på topmenu da den skal genbruges til alle siderne*/
-// @mixin topmenu{
-//     display: flex;
-//     list-style-type: none;
-//     font-family: "Francois";
-//     font-size: 1rem;
-// }
+ }
+}
+
+
+@mixin border($radius: 10px) {
+ border: 1px solid $color-inputBorder;
+ border-radius: $radius;
+}
+
+
+@mixin flex-container($direction: row, $justify: flex-start, $align: stretch) {
+ display: flex;
+ flex-direction: $direction;
+ justify-content: $justify;
+ align-items: $align;
+}

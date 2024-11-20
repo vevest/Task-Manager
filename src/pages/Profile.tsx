@@ -43,12 +43,11 @@ function Profile() {
       </div>
       <PointsOverviewWeek />
       <LastDone />
-      <div>
-        <Link to="/" onClick={handleClick}>
-          <h3>Log ud</h3>
-        </Link>
-      </div>
-      
+      <div className="center">
+       <Link to="/">
+         <button onClick={handleClick}>Log ud</button>
+       </Link>
+     </div>
       <Navbar />
     </>
   );

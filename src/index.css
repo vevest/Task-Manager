@@ -2,10 +2,9 @@
 body {
   background-color: #fff5d0;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 130vh;
   overflow-x: hidden;
-  padding: 0rem;
-  margin-bottom: 10rem;
+  padding-bottom: 10em;
 }
 @media screen and (min-width: 1024px) {
   body {
@@ -32,7 +31,7 @@ p {
 }
 @media screen and (max-width: 1000px) {
   p {
-    font-size: 1.04rem;
+    font-size: calc(1.3rem * 0.8);
   }
 }
 
@@ -46,7 +45,7 @@ p {
 }
 @media screen and (max-width: 1000px) {
   .pBig {
-    font-size: 2.64rem;
+    font-size: calc(3.3rem * 0.8);
   }
 }
 
@@ -60,7 +59,7 @@ h1 {
 }
 @media screen and (max-width: 1000px) {
   h1 {
-    font-size: 1.76rem;
+    font-size: calc(2.2rem * 0.8);
   }
 }
 
@@ -74,7 +73,7 @@ h2 {
 }
 @media screen and (max-width: 1000px) {
   h2 {
-    font-size: 1.36rem;
+    font-size: calc(1.7rem * 0.8);
   }
 }
 
@@ -88,7 +87,7 @@ h3 {
 }
 @media screen and (max-width: 1000px) {
   h3 {
-    font-size: 1.12rem;
+    font-size: calc(1.4rem * 0.8);
   }
 }
 
@@ -103,7 +102,7 @@ a {
 }
 @media screen and (max-width: 1000px) {
   a {
-    font-size: 1.04rem;
+    font-size: calc(1.3rem * 0.8);
   }
 }
 
@@ -118,16 +117,23 @@ a {
 
 .flex {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 
 .flexSB {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: stretch;
 }
 
 .flexSA {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
+  align-items: stretch;
 }
 
 .grid {
@@ -146,12 +152,15 @@ a {
   right: 1em;
 }
 
+.baseContent, .framedContent {
+  margin: 3em 0;
+}
+
 .framedContent {
-  background-color: #fff8de;
-  border: 1.5px solid #e3d9b0;
-  border-radius: 10px;
   padding: 1em;
-  margin-top: 2em;
+  background-color: #fff8de;
+  border: 1px solid #e3d9b0;
+  border-radius: 10px;
 }
 
 input, select {
@@ -168,7 +177,7 @@ input, select {
 }
 @media screen and (max-width: 1000px) {
   input, select {
-    font-size: 1.04rem;
+    font-size: calc(1.3rem * 0.8);
   }
 }
 
@@ -216,7 +225,7 @@ form {
 }
 @media screen and (max-width: 1000px) {
   .button, button {
-    font-size: 34.4px;
+    font-size: calc(43px * 0.8);
   }
 }
 
@@ -244,8 +253,8 @@ nav {
   justify-content: space-around;
   position: fixed;
   bottom: 0;
-  left: 0.4em;
-  right: 0.4em;
+  left: 0;
+  right: 0;
   padding-top: 1em;
   background-color: #fff5d0;
 }
@@ -300,14 +309,14 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
   overflow: hidden;
   width: 100px;
   height: 100px;
   cursor: pointer;
   transition: transform 0.3s ease;
   background-color: #fff8de;
-  border: 2px solid #e3d9b0;
+  border: 1px solid #e3d9b0;
+  border-radius: 50%;
 }
 
 .character img {
@@ -340,7 +349,7 @@ nav {
   justify-items: center;
   margin-top: 20px;
   background-color: #fff8de;
-  border: 2px solid #e3d9b0;
+  border: 1px solid #e3d9b0;
   border-radius: 10px;
   padding: 2rem;
 }
@@ -396,8 +405,8 @@ nav {
 }
 .latestAssignments .task-info {
   width: 30vw;
-  border: 1px solid #e3d9b0;
   background-color: #fff8de;
+  border: 1px solid #e3d9b0;
   border-radius: 10px;
   display: flex;
 }
@@ -418,8 +427,10 @@ nav {
 }
 
 .add-task-container {
-  border: 1px solid #e3d9b0;
   background-color: #fff8de;
+  border: 1px solid #e3d9b0;
+  border-radius: 10px;
+  margin-bottom: 20rem;
   position: absolute;
   width: 50vw;
 }
@@ -428,9 +439,10 @@ nav {
   position: absolute;
   right: 20px;
   top: 20px;
+  font-size: 2em;
 }
 .shutDown:hover {
-  font-size: 1.2em;
+  font-size: 2em;
   cursor: pointer;
 }
 
@@ -441,12 +453,12 @@ nav {
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
-  border: 1px solid #e3d9b0;
   background-color: #fff8de;
-  border-radius: 100%;
   cursor: pointer;
   transition: background-color 0.3s;
   aspect-ratio: 1;
+  border: 1px solid #e3d9b0;
+  border-radius: 100%;
 }
 .category:hover {
   background-color: #f0f0f0;
@@ -456,14 +468,14 @@ nav {
 }
 
 .points {
+  border: 1px solid #e3d9b0;
+  border-radius: 100%;
   display: flex;
   height: 2em;
   width: 2em;
   justify-content: center;
   align-items: center;
-  border: 1px solid #e3d9b0;
   background-color: #fff8de;
-  border-radius: 100%;
   cursor: pointer;
   transition: background-color 0.3s;
   aspect-ratio: 1;
@@ -482,41 +494,35 @@ nav {
   gap: 10px;
 }
 .category-buttons .filter-button {
+  border: 1px solid #e3d9b0;
+  border-radius: 100%;
   display: flex;
   height: 2em;
   width: 2em;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
-  border: 1px solid #e3d9b0;
   background-color: #fff8de;
-  border-radius: 100%;
   cursor: pointer;
   transition: background-color 0.3s;
   aspect-ratio: 1;
 }
 
 .circle {
+  border: 1px solid #e3d9b0;
+  border-radius: 100%;
   display: flex;
   height: 2em;
   width: 2em;
   justify-content: center;
   align-items: center;
   font-size: 1em;
-  border: 1px solid #e3d9b0;
   background-color: #fff8de;
-  border-radius: 100%;
   cursor: pointer;
   transition: background-color 0.3s;
   aspect-ratio: 1;
 }
 
-.task-list {
-  border: 1px solid #e3d9b0;
-  background-color: #fff8de;
-  border-radius: 10px;
-  max-width: 30vw;
-}
 .task-list .task-item {
   display: flex;
   list-style: none;
@@ -530,7 +536,7 @@ nav {
   width: 100vw;
 }
 .task-list .task-category {
-  border-right: 1px solid #e3d9b0;
+  border: 1px solid #e3d9b0;
   border-radius: 9px 0 0 9px;
   background-color: #fff5d0;
   display: flex;
@@ -603,10 +609,10 @@ nav {
   color: #2c2c2c; /* Tekstfarve */
 }
 .level .container {
-  position: relative;
-  background-color: #fff8de;
   border: 1px solid #e3d9b0;
   border-radius: 10px;
+  position: relative;
+  background-color: #fff8de;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -631,10 +637,11 @@ nav {
   font-size: 14px;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Glidende overgang til hover-effekt */
+  transition: background-color 0.6s ease; /* Glidende overgang til hover-effekt */
+  transition: width 0.3s ease-in-out; /* Glidende effekt når bredden ændres */
 }
 .level .container .color:hover {
-  background-color: #45a049; /* Mørkere grøn ved hover */
+  background-color: #a07845; /* Mørkere grøn ved hover */
 }
 @media (max-width: 600px) {
   .level .level {
@@ -645,16 +652,12 @@ nav {
     flex-direction: column;
     align-items: flex-start;
   }
-  .level .container .color {
-    margin-top: 10px;
-    width: 20%; /* Farveindikatoren kan være lidt større på små skærme */
-    height: 40px;
-  }
 }
 
 .water-plus, .water-minus {
-  font-size: 2em;
+  border: 1px solid #e3d9b0;
   border-radius: 100%;
+  font-size: 2em;
   height: 2em;
   width: 2em;
   display: flex;
@@ -662,7 +665,6 @@ nav {
   justify-content: center;
   text-align: center;
   background-color: #fff8de;
-  border: 1px solid #e3d9b0;
   cursor: pointer;
 }
 .water-plus p, .water-minus p {
@@ -680,11 +682,11 @@ nav {
   flex-direction: column;
 }
 .pointsOverviewWeek .container .capsule {
+  border: 1px solid #e3d9b0;
+  border-radius: 10px;
   position: relative;
   height: 6em;
   width: 2em;
-  border: 1px solid #e3d9b0;
-  border-radius: 10px;
 }
 .pointsOverviewWeek .container .capsule .color {
   position: absolute;

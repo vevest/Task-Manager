@@ -1,679 +1,695 @@
-@use 'partials';
+@use './partials' as p;
 
-// –––––––––––––––––––––––––––––––––––––––––––
-// Variabler
-// ––––––––––––––––––––––––––––––––––––––––––-
-$color-background: #fff5d0;
-$color-secondary: #d8a744;
-$color-inputFill: #fff8de;
-$color-inputBorder: #e3d9b0;
-$color-text-black: #323232;
-$color-text-white: #ffffff;
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Mixins
-// ––––––––––––––––––––––––––––––––––––––––––-
-@mixin font-style($family, $size, $weight, $color, $line-height) {
-  font-family: $family;
-  font-size: $size;
-  font-weight: $weight;
-  color: $color;
-  line-height: $line-height;
-  letter-spacing: 1px;
-  @media screen and (max-width: 1000px) {
-    font-size: ($size) * 0.8;
-  }
-}
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Global styles
 // ––––––––––––––––––––––––––––––––––––––––––-
 body {
-  background-color: $color-background;
-  box-sizing: border-box;
-  min-height: 100vh;
-  overflow-x: hidden;
-  padding: 0rem;
-  margin-bottom: 10rem;
-  @media screen and (min-width: 1024px) {
-    padding: 2rem 4rem;
-  }
+ background-color: p.$color-background;
+ box-sizing: border-box;
+ min-height: 130vh;
+ overflow-x: hidden;
+ padding-bottom: 10em; // Gør plads til navigationen
+ @media screen and (min-width: 1024px) {
+   padding: 2rem 4rem;
+ }
 }
+
 
 ul {
-  padding: 0;
-  margin: 0;
-  li {
-    padding: 0;
-    margin: 0;
-  }
+ padding: 0;
+ margin: 0;
+ li {
+   padding: 0;
+   margin: 0;
+ }
 }
+
 
 p {
-  @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem);
+ @include p.font-style("Itim", 1.3rem, 200, p.$color-text-black, 2rem);
 }
 .pBig {
-  @include font-style("Itim", 3.3rem, 200, $color-text-black, 2rem);
+ @include p.font-style("Itim", 3.3rem, 200, p.$color-text-black, 2rem);
 }
+
 
 h1 {
-  @include font-style("Itim", 2.2rem, 200, $color-text-black, 2.5rem);
+ @include p.font-style("Itim", 2.2rem, 200, p.$color-text-black, 2.5rem);
 }
+
 
 h2 {
-  @include font-style("Itim", 1.7rem, 200, $color-text-black, 1.5rem);
+ @include p.font-style("Itim", 1.7rem, 200, p.$color-text-black, 1.5rem);
 }
+
 
 h3 {
-  @include font-style("Itim", 1.4rem, 200, $color-text-black, 1.5rem);
+ @include p.font-style("Itim", 1.4rem, 200, p.$color-text-black, 1.5rem);
 }
+
 
 a {
-  @include font-style("Itim", 1.3rem, 600, $color-text-white, 2.5rem);
-  text-decoration: none;
+ @include p.font-style("Itim", 1.3rem, 600, p.$color-text-white, 2.5rem);
+ text-decoration: none;
 }
 .center {
-  text-align: center;
-  justify-content: center;
+ text-align: center;
+ justify-content: center;
 }
 .textCenter {
-  text-align: center;
+ text-align: center;
 }
 .flex {
-  display: flex;
+ @include p.flex-container();
 }
 .flexSB {
-  display: flex;
-  justify-content: space-between;
+ @include p.flex-container(row, space-between);
 }
 .flexSA {
-  display: flex;
-  justify-content: space-around;
+ @include p.flex-container(row, space-around);
 }
 .grid {
-  display: grid;
+ display: grid;
 }
+
 
 .disabled {
-  background-color: rgb(96, 96, 96);
-  cursor: not-allowed;
-  opacity: 0.6;
+ background-color: rgb(96, 96, 96);
+ cursor: not-allowed;
+ opacity: 0.6;
 }
+
 
 .signOut {
-  position: fixed;
-  top: 0;
-  right: 1em;
+ position: fixed;
+ top: 0;
+ right: 1em;
 }
 
-.framedContent {
-  background-color: $color-inputFill;
-  border: 1.5px solid $color-inputBorder;
-  border-radius: 10px;
-  padding: 1em;
-  margin-top: 2em;
+
+// Base-styling for indhold
+.baseContent {
+ margin: 3em 0;
 }
+
+
+// Framed content
+.framedContent {
+ padding: 1em;
+ @extend .baseContent; // Arver base-styling
+ background-color: p.$color-inputFill;
+ @include p.border(); // Giver en ramme
+}
+
 
 input, select {
-  padding: 0.5em 1em;
-  @include font-style("Itim", 1.3rem, 200, $color-text-black, 2rem);
-  background-color: $color-inputFill;
-  border: 1px solid $color-inputBorder;
-  border-radius: 10px;
+ padding: 0.5em 1em;
+ @include p.font-style("Itim", 1.3rem, 200, p.$color-text-black, 2rem);
+ background-color: p.$color-inputFill;
+ @include p.border();
 }
+
 
 form {
-  margin: 4em auto;
-  display: grid;
-  gap: 1em;
-  width: 100%; 
-  max-width: 400px; 
+ margin: 4em auto;
+ display: grid;
+ gap: 1em;
+ width: 100%;
+ max-width: 400px;
 }
 .logo {
-  margin: 8em auto;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  padding: 1em;
-  .smileCircle {
-    width: 100%;
-    height: auto;
-    animation: rotate 10s linear infinite;
-  }
-  .smileFace {
-    width: 35%;
-    height: auto;
-    position: absolute;
-  }
+ margin: 8em auto;
+ width: 150px;
+ height: 150px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ overflow: hidden;
+ position: relative;
+ padding: 1em;
+ .smileCircle {
+   width: 100%;
+   height: auto;
+   animation: rotate 10s linear infinite;
+ }
+ .smileFace {
+   width: 35%;
+   height: auto;
+   position: absolute;
+ }
 }
+
 
 .button, button {
-  padding: 0.2em 1em;
-  @include font-style("Jomhuria", 43px, 200, $color-text-white, 2rem);
-  background-color: $color-secondary;
-  border: none;
-  border-radius: 10px;
+ padding: 0.2em 1em;
+ @include p.font-style("Jomhuria", 43px, 200, p.$color-text-white, 2rem);
+ background-color: p.$color-secondary;
+ border: none;
+ border-radius: 10px;
 }
 button:hover {
-  background-color: #979797;
+ background-color: #979797;
 }
 .buttonBottom {
-  position: absolute;
-  bottom: 10rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
+ position: absolute;
+ bottom: 10rem;
+ left: 50%;
+ transform: translate(-50%, -50%);
 }
 
+
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ from {
+   transform: rotate(0deg);
+ }
+ to {
+   transform: rotate(360deg);
+ }
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Navigation
 // ––––––––––––––––––––––––––––––––––––––––––-
 nav {
-  display: flex;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
-  left: 0.4em;
-  right: 0.4em;
-  padding-top: 1em;
-  background-color: $color-background;
+ display: flex;
+ justify-content: space-around;
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ padding-top: 1em;
+ background-color: p.$color-background;
 }
 
+
 .navIcon {
-  stroke: #e3d9b0;
-  transition: transform 2s ease; 
+ stroke: #e3d9b0;
+ transition: transform 2s ease;
 }
+
 
 /* Valgt tilstand */
 .navIcon.selectedPage {
-  stroke: $color-secondary; 
-  stroke-width: 2px; 
-  transform: translateY(-2.5px); 
+ stroke: p.$color-secondary;
+ stroke-width: 2px;
+ transform: translateY(-2.5px);
 }
 .selectedPage {
-  stroke: $color-secondary; 
-  stroke-width: 2px;
+ stroke: p.$color-secondary;
+ stroke-width: 2px;
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Characters
 // ––––––––––––––––––––––––––––––––––––––––––-
 
+
 .selectedCharacter {
-  width: 100%;
-  height: 7em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .characterProfile {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  .characterHomepage {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+ width: 100%;
+ height: 7em;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ .characterProfile {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+ }
+ .characterHomepage {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+ }
 }
+
 
 .character-selection {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  justify-items: center;
-  justify-content: center;
-  margin-top: 20px;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 10px;
+ justify-items: center;
+ justify-content: center;
+ margin-top: 20px;
 }
+
 
 .character {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  overflow: hidden;
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  background-color: $color-inputFill;
-  border: 2px solid $color-inputBorder;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ overflow: hidden;
+ width: 100px;
+ height: 100px;
+ cursor: pointer;
+ transition: transform 0.3s ease;
+ background-color: p.$color-inputFill;
+ @include p.border(50%);
 }
 
+
 .character img {
-  width: 65%;
-  height: 65%;
-  object-fit: cover;
-  border-radius: 20%;
-  transition: transform 0.3s ease;
+ width: 65%;
+ height: 65%;
+ object-fit: cover;
+ border-radius: 20%;
+ transition: transform 0.3s ease;
 }
+
 
 /* Hover-effekt */
 .character img:hover {
-  transform: scale(1.1);
+ transform: scale(1.1);
 }
+
 
 /* Stil for den valgte karakter */
 .selected {
-  border: 2px solid green; 
+ border: 2px solid green;
 }
 
+
 .selected img {
-  transform: scale(1.1); 
+ transform: scale(1.1);
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Mood
 // ––––––––––––––––––––––––––––––––––––––––––-
 .moodBox {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  justify-items: center;
-  margin-top: 20px;
-  background-color: $color-inputFill;
-  border: 2px solid $color-inputBorder;
-  border-radius: 10px;
-  padding: 2rem;
-  
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 20px;
+ justify-items: center;
+ margin-top: 20px;
+ background-color: p.$color-inputFill;
+ @include p.border();
+ padding: 2rem;
   img {
-    border: none;
-    border-radius: 0;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    padding-top: .5rem;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-  }
+   border: none;
+   border-radius: 0;
+   width: 100%;
+   height: auto;
+   padding: 0;
+   padding-top: .5rem;
+   object-fit: contain;
+   transition: transform 0.3s ease;
+ }
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Homepage
 // ––––––––––––––––––––––––––––––––––––––––––-
 
+
 .homepage-msg {
-  margin: 1em;
+ margin: 1em;
 }
+
 
 .no-tasks {
-  color: #00000094;
-  font-size: 1.8em;
-  text-align: center;
+ color: #00000094;
+ font-size: 1.8em;
+ text-align: center;
 }
 .characterHomepage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 6rem;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: 6rem;
 }
+
 
 .home-quote {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 2rem;
+ text-align: center;
 }
 
+
 .latestAssignments {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  max-width: 100vw;
-  .task-item {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    height: 5em;
-  }
-  .task-info {
-    width: 30vw;
-    border: 1px solid $color-inputBorder; 
-    background-color: $color-inputFill;
-    border-radius: 10px;
-    display: flex;
-  }
-  .task-category {
-    border-right: 1px solid $color-inputBorder;
-    display: flex;
-    width: 5em;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5em;
-  }
-  .task-name {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    padding: 0 10px;
-    width: 100%;
-  }
+ display: flex;
+ flex-wrap: wrap;
+ gap: 10px;
+ justify-content: center;
+ max-width: 100vw;
+ .task-item {
+   display: flex;
+   list-style: none;
+   justify-content: center;
+   height: 5em;
+ }
+ .task-info {
+   width: 30vw;
+   background-color: p.$color-inputFill;
+   @include p.border();
+   display: flex;
+ }
+ .task-category {
+   border-right: 1px solid p.$color-inputBorder;
+   display: flex;
+   width: 5em;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.5em;
+ }
+ .task-name {
+   display: flex;
+   justify-content: right;
+   align-items: center;
+   padding: 0 10px;
+   width: 100%;
+ }
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // AddTask
 // ––––––––––––––––––––––––––––––––––––––––––-
 .add-task-container {
-  border: 1px solid $color-inputBorder;
-  background-color: $color-inputFill;
-  position: absolute;
-  width: 50vw;
+ background-color: p.$color-inputFill;
+ @include p.border();
+ margin-bottom: 20rem;
+ position: absolute;
+ width: 50vw;
 }
 .shutDown {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  &:hover {
-    font-size: 1.2em;
-    cursor: pointer;
-  }
+ position: absolute;
+ right: 20px;
+ top: 20px;
+ font-size: 2em;
+ &:hover {
+   font-size: 2em;
+   cursor: pointer;
+ }
 }
 .category {
-  display: flex; 
-  height: 2em;
-  width: 2em;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em; 
-  border: 1px solid $color-inputBorder; 
-  background-color: $color-inputFill; 
-  border-radius: 100%; 
-  cursor: pointer; 
-  transition: background-color 0.3s; 
-  aspect-ratio: 1;
-  &:hover {
-    background-color: #f0f0f0;
-  }
+ display: flex;
+ height: 2em;
+ width: 2em;
+ justify-content: center;
+ align-items: center;
+ font-size: 1.5em;
+ background-color: p.$color-inputFill;
+ cursor: pointer;
+ transition: background-color 0.3s;
+ aspect-ratio: 1;
+ @include p.border(100%);
+ &:hover {
+   background-color: #f0f0f0;
+ }
 
-  &.selected {
-    border-color: #388e3c; /* Mørkere grøn kant */
-  }
+
+ &.selected {
+   border-color: #388e3c; /* Mørkere grøn kant */
+ }
 }
 .points {
-  display: flex; 
-  height: 2em;
-  width: 2em;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid $color-inputBorder; 
-  background-color: $color-inputFill; 
-  border-radius: 100%; 
-  cursor: pointer; 
-  transition: background-color 0.3s; 
-  aspect-ratio: 1;
-  padding: 10px;
-  &:hover {
-    background-color: #f0f0f0;
-  }
+ @include p.border(100%);
+ display: flex;
+ height: 2em;
+ width: 2em;
+ justify-content: center;
+ align-items: center;
+ background-color: p.$color-inputFill;
+ cursor: pointer;
+ transition: background-color 0.3s;
+ aspect-ratio: 1;
+ padding: 10px;
+ &:hover {
+   background-color: #f0f0f0;
+ }
 
-  &.selected {
-    border-color: #388e3c; /* Mørkere grøn kant */
-  }
+
+ &.selected {
+   border-color: #388e3c; /* Mørkere grøn kant */
+ }
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Filter
 // ––––––––––––––––––––––––––––––––––––––––––-
-
 .category-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  .filter-button {
-    display: flex; 
-    height: 2em;
-    width: 2em;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5em; 
-    border: 1px solid $color-inputBorder; 
-    background-color: $color-inputFill; 
-    border-radius: 100%; 
-    cursor: pointer; 
-    transition: background-color 0.3s; 
-    aspect-ratio: 1;
-  }
+ display: flex;
+ flex-wrap: wrap;
+ gap: 10px;
+ .filter-button {
+   @include p.border(100%);
+   display: flex;
+   height: 2em;
+   width: 2em;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.5em;
+   background-color: p.$color-inputFill;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   aspect-ratio: 1;
+ }
 }
+
 
 .circle {
-  display: flex; 
-  height: 2em;
-  width: 2em;
-  justify-content: center;
-  align-items: center;
-  font-size: 1em; 
-  border: 1px solid $color-inputBorder; 
-  background-color: $color-inputFill; 
-  border-radius: 100%; 
-  cursor: pointer; 
-  transition: background-color 0.3s; 
-  aspect-ratio: 1;
+ @include p.border(100%);
+ display: flex;
+ height: 2em;
+ width: 2em;
+ justify-content: center;
+ align-items: center;
+ font-size: 1em;
+ background-color: p.$color-inputFill;
+ cursor: pointer;
+ transition: background-color 0.3s;
+ aspect-ratio: 1;
+
 
 }
+
 
 .task-list {
-  border: 1px solid $color-inputBorder; 
-  background-color: $color-inputFill; 
-  border-radius: 10px;
-  max-width: 30vw;
-  .task-item {
-    display: flex;
-    list-style: none;
-    padding: 1em;
-    justify-content: center;
-  }
-  .task-info {
-    border: 1px solid $color-inputBorder; 
-    border-radius: 10px;
-    display: flex;
-    width: 100vw;
-  }
-  .task-category {
-    border-right: 1px solid $color-inputBorder;
-    border-radius: 9px 0 0 9px;
-    background-color: $color-background;
-    display: flex;
-    width: 4em;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5em;
-  }
-  .task-nameAndPoints {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    gap: 20px;
-    width: 100%;
-  }
+ .task-item {
+   display: flex;
+   list-style: none;
+   padding: 1em;
+   justify-content: center;
+ }
+ .task-info {
+   @include p.border(10px);
+   display: flex;
+   width: 100vw;
+ }
+ .task-category {
+   @include p.border(9px 0 0 9px);
+   background-color: p.$color-background;
+   display: flex;
+   width: 4em;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.5em;
+ }
+ .task-nameAndPoints {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 20px;
+   gap: 20px;
+   width: 100%;
+ }
 }
 .checkmark {
-  color: #388e3c;
-  font-size: 1em;
-  margin-left: 10px;
-  display: flex; 
-  height: 5em;
-  width: 5em;
-  justify-content: center;
-  align-items: center;
-  background-color: $color-secondary; 
-  border: none;
-  border-radius: 10px; 
-  cursor: pointer; 
-  transition: background-color 0.3s; 
-  aspect-ratio: 1;
-  &:hover {
-    background-color: #c9ffcf;
-    border-color: #6e9977;
-  }
+ color: #388e3c;
+ font-size: 1em;
+ margin-left: 10px;
+ display: flex;
+ height: 5em;
+ width: 5em;
+ justify-content: center;
+ align-items: center;
+ background-color: p.$color-secondary;
+ border: none;
+ border-radius: 10px;
+ cursor: pointer;
+ transition: background-color 0.3s;
+ aspect-ratio: 1;
+ &:hover {
+   background-color: #c9ffcf;
+   border-color: #6e9977;
+ }
 }
 @media screen and (min-width: 1024px) {
 
-  .buttonBottom {
-    bottom: 1rem;
-  }
 
-  .character-selection {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-  }
+ .buttonBottom {
+   bottom: 1rem;
+ }
 
-  .center {
-    .logo {
-      margin: 3rem auto;
-    }
-  }
 
-  .moodBox {
-    margin-top: 2rem;
-    padding: 2rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
+ .character-selection {
+   grid-template-columns: repeat(5, 1fr);
+   gap: 20px;
+ }
 
-    img {
-      padding-top: 1rem;
-      width: 80%;
-    }
-  }
+
+ .center {
+   .logo {
+     margin: 3rem auto;
+   }
+ }
+
+
+ .moodBox {
+   margin-top: 2rem;
+   padding: 2rem;
+   margin-left: 4rem;
+   margin-right: 4rem;
+
+
+   img {
+     padding-top: 1rem;
+     width: 80%;
+   }
+ }
+
 
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Level
 // ––––––––––––––––––––––––––––––––––––––––––-
 
+
 .level {
-  border-radius: 8px;
-  margin: 20px 0;
-  max-width: 100%;
+ border-radius: 8px;
+ margin: 20px 0;
+ max-width: 100%;
 
-  p {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 18px;
-    color: #2c2c2c; /* Tekstfarve */
-  }
 
-  .container {
-    position: relative;
-    background-color: $color-inputFill;
-    border: 1px solid $color-inputBorder;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; /* Sikrer at containeren fylder hele bredden */
+ p {
+   margin: 0;
+   padding-left: 20px;
+   font-size: 18px;
+   color: #2c2c2c; /* Tekstfarve */
+ }
 
-    p {
-      z-index: 2;
-      font-size: 16px;
-      color: #2a2a2a; /* Farve for 10/1000 ⚡️ tekst */
-    }
 
-    .color {
-      z-index: 1;
-      position: absolute;
-      height: 100%;
-      background-color: $color-secondary; /* Grøn farve, kan ændres baseret på niveau */
-      border-radius: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease; /* Glidende overgang til hover-effekt */
+ .container {
+   @include p.border(10px);
+   position: relative;
+   background-color: p.$color-inputFill;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%; /* Sikrer at containeren fylder hele bredden */
 
-      &:hover {
-        background-color: #45a049; /* Mørkere grøn ved hover */
-      }
-    }
-  }
 
-  @media (max-width: 600px) {
-    .level {
-      max-width: 100%;
-      padding: 10px;
-    }
+   p {
+     z-index: 2;
+     font-size: 16px;
+     color: #2a2a2a; /* Farve for 10/1000 ⚡️ tekst */
+   }
 
-    .container {
-      flex-direction: column;
-      align-items: flex-start;
 
-      .color {
-        margin-top: 10px;
-        width: 20%; /* Farveindikatoren kan være lidt større på små skærme */
-        height: 40px;
-      }
-    }
-  }
+   .color {
+     z-index: 1;
+     position: absolute;
+     height: 100%;
+     background-color: p.$color-secondary; /* Grøn farve, kan ændres baseret på niveau */
+     border-radius: 9px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: white;
+     font-weight: bold;
+     font-size: 14px;
+     text-align: center;
+     cursor: pointer;
+     transition: background-color 0.6s ease; /* Glidende overgang til hover-effekt */
+     transition: width 0.3s ease-in-out; /* Glidende effekt når bredden ændres */
+
+
+     &:hover {
+       background-color: #a07845; /* Mørkere grøn ved hover */
+     }
+   }
+ }
+
+
+ @media (max-width: 600px) {
+   .level {
+     max-width: 100%;
+     padding: 10px;
+   }
+
+
+   .container {
+     flex-direction: column;
+     align-items: flex-start;
+   }
+ }
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
-// Water 
+// Water
 // ––––––––––––––––––––––––––––––––––––––––––-
 
-.water-plus, .water-minus {
-  font-size: 2em;
-  border-radius: 100%;
-  height: 2em;
-  width: 2em;
-  display: flex;  // Sørger for at knappen er en flex-container
-  align-items: center;  // Centrerer vertikalt
-  justify-content: center;  // Centrerer horisontalt
-  text-align: center;  // Sørger for tekst centering
-  background-color: $color-inputFill;
-  border: 1px solid $color-inputBorder;
-  cursor: pointer; 
 
-  p {
-    font-size: 1em;
-    margin: 0;  // Fjerner margin på <p> for at sikre, at den er korrekt centreret
-  }
+.water-plus, .water-minus {
+ @include p.border(100%);
+ font-size: 2em;
+ height: 2em;
+ width: 2em;
+ display: flex;  // Sørger for at knappen er en flex-container
+ align-items: center;  // Centrerer vertikalt
+ justify-content: center;  // Centrerer horisontalt
+ text-align: center;  // Sørger for tekst centering
+ background-color: p.$color-inputFill;
+ cursor: pointer;
+
+
+ p {
+   font-size: 1em;
+   margin: 0;  // Fjerner margin på <p> for at sikre, at den er korrekt centreret
+ }
 }
+
 
 .water-icon {
-  font-size: 3em;  // Sørger for at ikonet er synligt og på samme størrelse som knapperne
-  display: inline-block;  // Sørger for at ikonet placeres korrekt
+ font-size: 3em;  // Sørger for at ikonet er synligt og på samme størrelse som knapperne
+ display: inline-block;  // Sørger for at ikonet placeres korrekt
 }
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // PointOverviewWeek
 // ––––––––––––––––––––––––––––––––––––––––––-
 
+
 .pointsOverviewWeek {
-  display: flex;
-  flex-direction: column;
-  .container {
-    .capsule {
-      position: relative;
-      height: 6em;
-      width: 2em;
-      border: 1px solid $color-inputBorder;
-      border-radius: 10px;
-      .color {
-        position: absolute;
-        bottom: 0;
-        border-radius: 0 0 9px 9px;
-        background-color: $color-secondary;
-        width: 100%;
-      }
-    }
-  }
+ display: flex;
+ flex-direction: column;
+ .container {
+   .capsule {
+     @include p.border(10px);
+     position: relative;
+     height: 6em;
+     width: 2em;
+     .color {
+       position: absolute;
+       bottom: 0;
+       border-radius: 0 0 9px 9px;
+       background-color: p.$color-secondary;
+       width: 100%;
+     }
+   }
+ }
 }
+//648
