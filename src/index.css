@@ -153,7 +153,7 @@ a {
 }
 
 .baseContent, .framedContent {
-  margin: 3em 0;
+  margin-bottom: 3em;
 }
 
 .framedContent {
@@ -211,8 +211,9 @@ form {
   position: absolute;
 }
 
-.button, button {
+button {
   padding: 0.2em 1em;
+  margin-top: 1em;
   font-family: "Jomhuria";
   font-size: 43px;
   font-weight: 200;
@@ -224,20 +225,13 @@ form {
   border-radius: 10px;
 }
 @media screen and (max-width: 1000px) {
-  .button, button {
+  button {
     font-size: calc(43px * 0.8);
   }
 }
 
 button:hover {
   background-color: #979797;
-}
-
-.buttonBottom {
-  position: absolute;
-  bottom: 10rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 @keyframes rotate {
@@ -310,8 +304,8 @@ nav {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 100px;
-  height: 100px;
+  width: 5.5em;
+  height: 5.5em;
   cursor: pointer;
   transition: transform 0.3s ease;
   background-color: #fff8de;
@@ -576,9 +570,6 @@ nav {
 }
 
 @media screen and (min-width: 1024px) {
-  .buttonBottom {
-    bottom: 1rem;
-  }
   .character-selection {
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;

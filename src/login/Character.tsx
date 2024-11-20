@@ -83,9 +83,8 @@ function Character() {
       </div>
       <Link 
         to={`${selectedCharacter ? "/mood" : ""}`} 
-        className={`buttonBottom button ${!selectedCharacter ? "disabled" : ""}`} 
       > 
-        Kom i gang
+      <button className={`${!selectedCharacter ? "disabled" : ""}`} >Kom i gang</button>
       </Link>
     </div> 
   );

@@ -90,7 +90,7 @@ a {
 
 // Base-styling for indhold
 .baseContent {
- margin: 3em 0;
+ margin-bottom: 3em;
 }
 
 
@@ -141,8 +141,9 @@ form {
 }
 
 
-.button, button {
+button {
  padding: 0.2em 1em;
+ margin-top: 1em;
  @include p.font-style("Jomhuria", 43px, 200, p.$color-text-white, 2rem);
  background-color: p.$color-secondary;
  border: none;
@@ -150,12 +151,6 @@ form {
 }
 button:hover {
  background-color: #979797;
-}
-.buttonBottom {
- position: absolute;
- bottom: 10rem;
- left: 50%;
- transform: translate(-50%, -50%);
 }
 
 
@@ -241,8 +236,8 @@ nav {
  justify-content: center;
  align-items: center;
  overflow: hidden;
- width: 100px;
- height: 100px;
+ width: 5.5em;
+ height: 5.5em;
  cursor: pointer;
  transition: transform 0.3s ease;
  background-color: p.$color-inputFill;
@@ -524,12 +519,6 @@ nav {
  }
 }
 @media screen and (min-width: 1024px) {
-
-
- .buttonBottom {
-   bottom: 1rem;
- }
-
 
  .character-selection {
    grid-template-columns: repeat(5, 1fr);
