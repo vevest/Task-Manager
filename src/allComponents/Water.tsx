@@ -6,9 +6,22 @@ function Water() {
     // Læs localStorage, når komponenten indlæses første gang
     useEffect (() => {
       const savedWater = localStorage.getItem("dailyWater");
-      if (savedWater) {
-        setWater(parseInt(savedWater, 10)); //10 er basen (radix), der angiver, hvilket talsystem der skal bruges til at fortolke strengen.
-      }
+      // Tjek dato og nulstil, om nødvendigt
+      const savedDate = localStorage.getItem("lastUpdatedDate");
+
+      const today = new Date().toDateString(); // Hent dags dato
+
+      if (savedDate === today) {
+        // Hvis dato ikke er ændret (efter 00:00), hent gemt antal glas
+        if (savedWater) {
+          setWater(parseInt(savedWater, 10)); //10 er basen (radix), der angiver, hvilket talsystem der skal bruges til at fortolke strengen.
+        }
+    } else {
+      // Hvis det er en ny dag, nulstil
+      setWater(0);
+      localStorage.setItem("dailyWater", "0");
+      localStorage.setItem("lastUpdatedDate", today);
+    }
     }, []);
 
     // Funktion til at reducere vandet
@@ -16,7 +29,7 @@ function Water() {
       if (water > 0) {
         const newWater = water - 1; // Træk 1 fra
         setWater(newWater);
-        localStorage.setItem("dailyWater", newWater); // Gem i localStorage
+        localStorage.setItem("dailyWater", newWater.toString()); // Gem i localStorage
       }
     };
   
@@ -24,7 +37,7 @@ function Water() {
     const increaseWater = () => {
       const newWater = water + 1; // Tilføj 1 til
       setWater(newWater);
-      localStorage.setItem("dailyWater", newWater); // Gem i localStorage
+      localStorage.setItem("dailyWater", newWater.toString()); // Gem i localStorage
     };
   
 
