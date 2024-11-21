@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
 
 // Definer typerne med typescript
@@ -39,7 +39,8 @@ export const CharacterContext = createContext<CharacterContextType>(defaultConte
 
 // Opret en CharacterProvider komponent
 export const CharacterProvider = ({ children }: { children: ReactNode }) => {
-  const [character, setCharacter] = useState<string | null>(null);
+  const [character, setCharacter] = useState<string | null>(
+    () => localStorage.getItem("selectedCharacter"));
   const [tasks, setTasks] = useState<Task[]>([]);
   const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
   const [addTaskToFilter, setAddTaskToFilter] = useState<boolean>(false);  // Ny state for addTaskToFilter
@@ -48,8 +49,16 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
     setCompletedTasks((prev) => [...prev, task]);  // Tilføjer den færdige opgave til completedTasks
   };
 
+  // Opdater localStorage, når character ændres
+  useEffect(() => {
+    if (character) {
+      localStorage.setItem("selectedCharacter", character);
+    }
+  }, [character]);
+
   return (
-    <CharacterContext.Provider value={{
+    <CharacterContext.Provider 
+    value={{
       character,
       setCharacter,
       tasks,
