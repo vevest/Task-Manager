@@ -9,7 +9,8 @@ function Filter() {
   const { setAddTaskToFilter } = useContext(CharacterContext);
   const { addPoints } = useContext(PointsContext); // Hent addPoints-funktionen fra 
   const [selectedFilter, setSelectedFilter] = useState("All");
-  const [clickedTasks, setClickedTasks] = useState({});
+  const [clickedTasks, setClickedTasks] = useState<Record<string, boolean>>({});
+
 
   const categories = [
     { id: 1, label: '📚', value: 'Study' },

@@ -34,7 +34,12 @@ function Profile() {
     <div className="gridToFlex-Box2">
       <div className="framedContent flex">
         <div className="selectedCharacter">
-          <img className="characterProfile" src={character} alt="Det valgte icon" />
+        <img
+          className="characterProfile"
+          src={character || "default-image-path.jpg"} // Tilføjer fallback værdi
+          alt="Det valgte icon"
+        />
+
         </div>
         <div className="grid">
           <h2>Point i denne uge</h2>

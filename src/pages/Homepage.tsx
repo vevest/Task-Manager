@@ -56,7 +56,11 @@ function Homepage() {
         <h2>Velkommen tilbage</h2>
       </div>
       <div className="selectedCharacter">
-        <img className="characterHomepage" src={character} alt="Det valgte icon" />
+        <img 
+          className="characterHomepage" 
+          src={character || "default-image-path.jpg"} // Tilføjer fallback værdi
+          alt="Det valgte icon" 
+        />
       </div>
       <div className="gridToFlex-Box2">
                 <div className="framedContent">

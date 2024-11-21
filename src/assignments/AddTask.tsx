@@ -14,17 +14,28 @@ import { CharacterContext } from "../context/CharacterContext";
  * @param categories er en liste over de værdier brugeren kan vælge imellem af kategorier
  * @param points er en liste over de værdier brugeren kan vælge imellem af points
  * 
- * @returns 
+ * @returns en funktion der opretter og tilføjer en opgave
  */
+
+interface Category {
+  id: number;
+  label: string;
+  value: string;
+}
+
+interface Point {
+  id: number;
+  label: string;
+  value: number;
+}
 
 
 function AddTask() {
   const { tasks, setTasks } = useContext(CharacterContext);
   const { setAddTaskToFilter } = useContext(CharacterContext);
   const [selectedTask, setSelectedTask] = useState(''); // Opgavens navn
-  const [selectedCategory, setSelectedCategory] = useState(null); // Valgte kategori
-  const [selectedPoints, setSelectedPoints] = useState(null); // Valgte points
-
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null); // Valgte kategori
+  const [selectedPoints, setSelectedPoints] = useState<Point | null>(null); // Valgte points
 
   const categories = [
     { id: 1, label: '📚', value: 'Study' },
@@ -50,12 +61,12 @@ function AddTask() {
   };
 
   // Håndter valg af kategori
-  const handleCategoryClick = (category: SetStateAction<null>) => {
+  const handleCategoryClick = (category: Category) => {
     setSelectedCategory(category);
   };
 
   // Håndter valg af points
-  const handlePointsClick = (point: SetStateAction<null>) => {
+  const handlePointsClick = (point: Point) => {
     setSelectedPoints(point);
   };
 
