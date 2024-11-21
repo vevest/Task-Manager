@@ -50,7 +50,7 @@ function Homepage() {
   };
 
   return (
-    <>
+    <div className="containerHomepage">
       <div className="homepage-msg">
         <h1>{getGreeting()}</h1> {/* Brug getGreeting() til at vise den tidsbestemte besked */}
         <h2>Velkommen tilbage</h2>
@@ -58,40 +58,47 @@ function Homepage() {
       <div className="selectedCharacter">
         <img className="characterHomepage" src={character} alt="Det valgte icon" />
       </div>
-      <div className="framedContent">
-        <div className="flexSB">
-          <h2>4 nyeste opgaver</h2>
-          <Link to={"/assignments"}><h2>Se alle</h2></Link>
+      <div className="gridToFlex-Box2">
+                <div className="framedContent">
+          <div className="flexSB">
+            <h2>4 nyeste opgaver</h2>
+            <Link to={"/assignments"}><h2>Se alle</h2></Link>
+          </div>
+          <ul className="latestAssignments">
+            {tasks.length === 0 ? (
+              <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>
+            ) : (
+              tasks.slice(-4).map((task) => (
+                <li key={task.id} className="task-item">
+                  <div className="task-info">
+                    <div className="task-category">
+                      {task.category}
+                    </div>
+                    <div className="task-nameAndPoints">
+                      <p className="task-name">{task.name}</p>
+                      <p className="task-points">{task.points}⚡️</p>
+                    </div>
+                  </div>
+                </li>
+              ))
+            )}
+          </ul>
         </div>
-        <ul className="latestAssignments">
-          {tasks.length === 0 ? (
-            <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>
-          ) : (
-            tasks.slice(-4).map((task) => (
-              <li key={task.id} className="task-item">
-                <div className="task-info">
-                  <div className="task-category">
-                    {task.category}
-                  </div>
-                  <div className="task-name">
-                    <span className="task-name">{task.name}</span>
-                  </div>
-                </div>
-              </li>
-            ))
-          )}
-        </ul>
+        <div className="reverse">
+          <div className="framedContent">
+          <h2 className="textCenter">Point i denne uge</h2>
+            {/* Vis dynamiske ugentlige points her */}
+          <p className="textCenter pBig">{weeklyPoints} ⚡️</p> {/* Brug de ugentlige points fra konteksten */}
+          </div>
+          <div className="home-quote">
+            <p className="random-quote">{randomQuote}</p> {/* Vis det randomiserede citat */}
+          </div>
+        </div>
+        
       </div>
-      <div className="home-quote">
-        <p className="random-quote">{randomQuote}</p> {/* Vis det randomiserede citat */}
-      </div>
-      <div className="framedContent">
-        <h2 className="textCenter">Point i denne uge</h2>
-          {/* Vis dynamiske ugentlige points her */}
-        <p className="textCenter pBig">{weeklyPoints} ⚡️</p> {/* Brug de ugentlige points fra konteksten */}
-      </div>
+
       <Navbar />
-    </>
+    </div>
   );
 }
 

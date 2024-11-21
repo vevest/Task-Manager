@@ -29,7 +29,7 @@ function Mood() {
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
   return (
-    <div className='center'>
+    <div className='containerMood'>
       <p>{randomQuote}</p> {/* Vis det randomiserede citat */}
       <div className='logo'>
         <img src={smileCircle} alt="Smile" className='smileCircle' />

@@ -88,6 +88,14 @@ text-align: center;
 display: grid;
 }
 
+.reverse {
+  display: flex;
+  flex-direction: column-reverse;
+  @media screen and (min-width: 1000px) {
+    flex-direction: column;
+  }
+}
+
 
 .gridToFlex-Box {
  @include p.responsive-grid(column-reverse, 3fr 1fr);
@@ -331,30 +339,37 @@ transform: scale(1.1);
 // –––––––––––––––––––––––––––––––––––––––––––
 // Mood
 // ––––––––––––––––––––––––––––––––––––––––––-
+.containerMood {
+  text-align: center;
+  justify-content: center;
+  .logo {
+    margin: 5.5rem auto;
+  }
+}
 .moodBox {
- display: grid;
- grid-template-columns: repeat(3, 1fr);
- gap: 10vw;
- justify-items: center;
- margin-top: 20px;
- background-color: p.$color-inputFill;
- @include p.border();
- padding: 2rem;
- @media screen and (min-width: 700px) {
-   padding: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5vw;
+  justify-items: center;
+  margin-top: 20px;
+  background-color: p.$color-inputFill;
+  @include p.border();
+  padding: 2rem;
+  @media screen and (min-width: 1000px) {
+    margin-top: 2rem;
+    padding: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
  }
  img {
    border: none;
    border-radius: 0;
    width: 100%;
    height: auto;
-   padding: 0;
-   padding-top: .5rem;
    object-fit: contain;
    transition: transform 0.3s ease;
  }
 }
-
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Homepage
@@ -362,18 +377,31 @@ transform: scale(1.1);
 .homepage-msg {
 margin: 1em;
 }
-
-
-.no-tasks {
-color: #00000094;
-font-size: 1.8em;
-text-align: center;
+.containerHomepage {
+  transition: transform 1s ease-in; 
+  &:hover {
+    .characterHomepage {
+      transform: translate(20vw, 8px) scale(1.2); /* Kombiner begge transformationer */
+      transition: transform 1s ease-in-out; /* Glidende overgang for transformationerne */
+    }
+  }
 }
-.characterHomepage {
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 6rem;
+.no-tasks {
+  color: #00000094;
+  font-size: 1.8em;
+  text-align: center;
+  }
+  .characterHomepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6rem;
+  transform: translateY(21px);
+  @media screen and (min-width: 1000px) {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+  }
 }
 
 
@@ -387,38 +415,37 @@ text-align: center;
 
 
 .latestAssignments {
-display: flex;
-flex-wrap: wrap;
+display: grid;
+grid-template-columns: repeat(1, 1fr);
 gap: 10px;
-justify-content: center;
 max-width: 100vw;
-.task-item {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  height: 5em;
-}
-.task-info {
-  width: 30vw;
-  background-color: p.$color-inputFill;
-  @include p.border();
-  display: flex;
-}
-.task-category {
-  border-right: 1px solid p.$color-inputBorder;
-  display: flex;
-  width: 5em;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-}
-.task-name {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  padding: 0 10px;
-  width: 100%;
-}
+  .task-item {
+    display: flex;
+    list-style: none;
+    height: 5em;
+  }
+  .task-info {
+    @include p.border(10px);
+    display: flex;
+    width: 100%;
+  }
+  .task-category {
+    border-right: 1px solid p.$color-inputBorder;
+    display: flex;
+    width: 5em;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    background-color: p.$color-background;
+    border-radius: 10px 0 0 10px;
+  }
+  .task-nameAndPoints {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+  }
 }
 
 
@@ -577,28 +604,12 @@ border: none;
 border-radius: 10px;
 cursor: pointer;
 transition: background-color 0.3s;
-&:hover {
-  background-color: #c9ffcf;
-  border-color: #6e9977;
-}
-}
-@media screen and (min-width: 1024px) {
-.center {
-  .logo {
-    margin: 3rem auto;
+  &:hover {
+    background-color: #c9ffcf;
+    border-color: #6e9977;
   }
 }
-.moodBox {
-  margin-top: 2rem;
-  padding: 2rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
-  img {
-    padding-top: 1rem;
-    width: 80%;
-  }
-}
-}
+
 // –––––––––––––––––––––––––––––––––––––––––––
 // Level
 // ––––––––––––––––––––––––––––––––––––––––––-
