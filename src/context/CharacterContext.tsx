@@ -54,11 +54,10 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
 
   const [addTaskToFilter, setAddTaskToFilter] = useState<boolean>(false);  // Ny state for addTaskToFilter
 
-  // Funktion til at tilføje færdige opgaver
   const addCompletedTask = (task: Task) => {
-    setCompletedTasks((prev) => {
-      const updatedTasks = [...prev, task];  // Tilføjer den færdige opgave til completedTasks
-      localStorage.setItem("completedTasks", JSON.stringify(updatedTasks)); // Gem i localStorage
+    setCompletedTasks((prevCompletedTasks) => {
+      const updatedTasks = [...prevCompletedTasks, task];
+      localStorage.setItem("completedTasks", JSON.stringify(updatedTasks));
       return updatedTasks;
     });
   };
