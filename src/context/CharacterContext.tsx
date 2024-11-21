@@ -40,13 +40,22 @@ export const CharacterContext = createContext<CharacterContextType>(defaultConte
 // Opret en CharacterProvider komponent
 export const CharacterProvider = ({ children }: { children: ReactNode }) => {
   const [character, setCharacter] = useState<string | null>(
-    () => localStorage.getItem("selectedCharacter"));
+    () => localStorage.getItem("selectedCharacter")
+  );
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
+  const [completedTasks, setCompletedTasks] = useState<Task[]>(() => {
+    const savedCompletedTasks = localStorage.getItem("completedTasks");
+    return savedCompletedTasks ? JSON.parse(savedCompletedTasks) : [];
+  });
   const [addTaskToFilter, setAddTaskToFilter] = useState<boolean>(false);  // Ny state for addTaskToFilter
 
+  // Funktion til at tilføje færdige opgaver
   const addCompletedTask = (task: Task) => {
-    setCompletedTasks((prev) => [...prev, task]);  // Tilføjer den færdige opgave til completedTasks
+    setCompletedTasks((prev) => {
+      const updatedTasks = [...prev, task];  // Tilføjer den færdige opgave til completedTasks
+      localStorage.setItem("completedTasks", JSON.stringify(updatedTasks)); // Gem i localStorage
+      return updatedTasks;
+    });
   };
 
   // Opdater localStorage, når character ændres
@@ -55,6 +64,11 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem("selectedCharacter", character);
     }
   }, [character]);
+
+  // Opdater `localStorage`, når `completedTasks` ændres
+  useEffect(() => {
+    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+  }, [completedTasks]);
 
   return (
     <CharacterContext.Provider 
