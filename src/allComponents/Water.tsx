@@ -39,7 +39,6 @@ function Water() {
       setWater(newWater);
       localStorage.setItem("dailyWater", newWater.toString()); // Gem i localStorage
     };
-  
 
   return(
     <div className="framedContent">
