@@ -42,7 +42,13 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
   const [character, setCharacter] = useState<string | null>(
     () => localStorage.getItem("selectedCharacter")
   );
-  const [tasks, setTasks] = useState<Task[]>([]);
+
+  // indlæs tasks fra localStorage
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : []; // returnerer tom liste, hvis der ikke er gemte tasks
+  });
+
   const [completedTasks, setCompletedTasks] = useState<Task[]>(() => {
     const savedCompletedTasks = localStorage.getItem("completedTasks");
     return savedCompletedTasks ? JSON.parse(savedCompletedTasks) : [];
@@ -58,14 +64,19 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  // Opdater localStorage, når character ændres
+  // Opdater localStorage, når karakter ændres
   useEffect(() => {
     if (character) {
       localStorage.setItem("selectedCharacter", character);
     }
   }, [character]);
 
-  // Opdater `localStorage`, når `completedTasks` ændres
+  // Opdater localStorage, når tasks tilføjes
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  // Opdater localStorage, når completedTasks ændres
   useEffect(() => {
     localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   }, [completedTasks]);
