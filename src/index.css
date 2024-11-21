@@ -230,7 +230,7 @@ input, select {
 }
 
 input:focus {
-  border: 1px solid #d8a744;
+  border: 1px solid #B14D12;
 }
 
 form {
@@ -272,7 +272,7 @@ button {
   color: #ffffff;
   line-height: 2rem;
   letter-spacing: 1px;
-  background-color: #d8a744;
+  background-color: #B14D12;
   border: none;
   border-radius: 10px;
   transition: all ease 0.3s;
@@ -317,13 +317,13 @@ nav {
 
 /* Valgt tilstand */
 .navIcon.selectedPage {
-  stroke: #d8a744;
+  stroke: #B14D12;
   stroke-width: 2px;
   transform: translateY(-2.5px);
 }
 
 .selectedPage {
-  stroke: #d8a744;
+  stroke: #B14D12;
   stroke-width: 2px;
 }
 
@@ -579,7 +579,7 @@ nav {
 }
 .shutDown:hover {
   cursor: pointer;
-  color: #d8a744;
+  color: #B14D12;
 }
 
 .category {
@@ -601,8 +601,8 @@ nav {
   background-color: #e3d9b0;
 }
 .category.selected {
-  border-color: #d8a744;
-  border: 3px solid #d8a744;
+  border-color: #B14D12;
+  border: 3px solid #B14D12;
 }
 
 .points {
@@ -624,8 +624,8 @@ nav {
   background-color: #e3d9b0;
 }
 .points.selected {
-  border-color: #d8a744;
-  border: 3px solid #d8a744;
+  border-color: #B14D12;
+  border: 3px solid #B14D12;
 }
 
 .category-buttons {
@@ -648,7 +648,7 @@ nav {
   aspect-ratio: 1;
 }
 .category-buttons .filter-button.active {
-  border: 2px solid #d8a744;
+  border: 2px solid #B14D12;
 }
 
 .addTaskButton {
@@ -755,7 +755,7 @@ nav {
   height: 100%;
   justify-content: center;
   align-items: center;
-  background-color: #d8a744;
+  background-color: #B14D12;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -781,7 +781,7 @@ nav {
 .level p {
   margin: 0;
   padding-left: 20px;
-  color: #2c2c2c; /* Tekstfarve */
+  color: #323232; /* Tekstfarve */
 }
 .level .container {
   border: 1px solid #e3d9b0;
@@ -802,7 +802,7 @@ nav {
   z-index: 2;
   font-size: 20px;
   letter-spacing: 2px;
-  color: #323232; /* Farve for 10/1000 ⚡️ tekst */
+  color: #ffffff; /* Farve for 10/1000 ⚡️ tekst */
 }
 .level .container .color {
   display: flex;
@@ -812,7 +812,7 @@ nav {
   z-index: 1;
   position: absolute;
   height: 100%;
-  background-color: #d8a744;
+  background-color: #B14D12;
   border-radius: 9px;
   color: white;
   font-weight: bold;
@@ -836,7 +836,7 @@ nav {
   transform: translateY(30px);
   font-size: 1.7em;
   text-align: center;
-  background-color: #d8a744;
+  background-color: #B14D12;
   color: #ffffff;
   cursor: pointer;
 }
@@ -869,7 +869,7 @@ nav {
   position: absolute;
   bottom: 0;
   border-radius: 0 0 9px 9px;
-  background-color: #d8a744;
+  background-color: #B14D12;
   width: 100%;
 }
 

@@ -589,7 +589,7 @@ nav {
   p {
     margin: 0;
     padding-left: 20px;
-    color: #2c2c2c; /* Tekstfarve */
+    color: p.$color-text-black; /* Tekstfarve */
   }
 
   .container {
@@ -606,7 +606,7 @@ nav {
       z-index: 2;
       font-size: 20px;
       letter-spacing: 2px;
-      color: p.$color-text-black; /* Farve for 10/1000 ⚡️ tekst */
+      color: p.$color-text-white; /* Farve for 10/1000 ⚡️ tekst */
     }
     .color {
       @include p.flex-container(row, center, center);
