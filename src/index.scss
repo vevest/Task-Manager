@@ -740,22 +740,25 @@ gap: 10px;
 // Water
 // ––––––––––––––––––––––––––––––––––––––––––-
 .water-plus, .water-minus {
-transform: translateY(30px);
-font-size: 1.7em;
-height: 2em;
-width: 2em;
-display: flex;  // Sørger for at knappen er en flex-container
-align-items: center;  // Centrerer vertikalt
-justify-content: center;  // Centrerer horisontalt
-text-align: center;  // Sørger for tekst centering
-background-color: p.$color-secondary;
-color: p.$color-text-white;
-cursor: pointer;
-p {
-  font-size: 1.2em;
+  transform: translateY(30px);
+  font-size: 1.7em;
+  height: 2em;
+  width: 2em;
+  display: flex;  // Sørger for at knappen er en flex-container
+  align-items: center;  // Centrerer vertikalt
+  justify-content: center;  // Centrerer horisontalt
+  text-align: center;  // Sørger for tekst centering
+  background-color: p.$color-secondary;
   color: p.$color-text-white;
-  margin: 0;  // Fjerner margin på <p> for at sikre, at den er korrekt centreret
-}
+  cursor: pointer;
+  &:active {
+    background-color: #8e6d41;
+  }
+  p {
+    font-size: 1.2em;
+    color: p.$color-text-white;
+    margin: 0;  // Fjerner margin på <p> for at sikre, at den er korrekt centreret
+  }
 }
 
 

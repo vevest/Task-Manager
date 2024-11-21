@@ -841,6 +841,9 @@ nav {
   color: #ffffff;
   cursor: pointer;
 }
+.water-plus:active, .water-minus:active {
+  background-color: #8e6d41;
+}
 .water-plus p, .water-minus p {
   font-size: 1.2em;
   color: #ffffff;
