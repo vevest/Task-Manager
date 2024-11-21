@@ -30,7 +30,6 @@ function Mood() {
 
   return (
     <div className='containerMood'>
-      <p>{randomQuote}</p> {/* Vis det randomiserede citat */}
       <div className='logo'>
         <img src={smileCircle} alt="Smile" className='smileCircle' />
         <img src={smileFace} alt="Smile" className='smileFace' />

@@ -77,7 +77,7 @@ h2 {
   font-size: 34px;
   font-weight: 200;
   color: #323232;
-  line-height: 1rem;
+  line-height: 1.9rem;
   letter-spacing: 1px;
 }
 @media screen and (max-width: 1000px) {
@@ -152,11 +152,6 @@ a {
 .reverse {
   display: flex;
   flex-direction: column-reverse;
-}
-@media screen and (min-width: 1000px) {
-  .reverse {
-    flex-direction: column;
-  }
 }
 
 .gridToFlex-Box {
@@ -281,10 +276,8 @@ button:hover {
 }
 
 .buttonBottom {
-  position: absolute;
-  bottom: 2em; /* 2em fra bunden af forælderen */
-  left: 50%; /* Placer knappen i midten af bredden */
-  transform: translateX(-50%); /* Justér knappen til præcist at være centreret */
+  position: relative;
+  bottom: -2em; /* 2em fra bunden af forælderen */
 }
 
 @keyframes rotate {
@@ -471,8 +464,8 @@ nav {
   transition: transform 1s ease-in;
 }
 .containerHomepage:hover .characterHomepage {
-  transform: translate(20vw, 8px) scale(1.2); /* Kombiner begge transformationer */
-  transition: transform 1s ease-in-out; /* Glidende overgang for transformationerne */
+  transform: translate(20vw) scale(1.2);
+  transition: transform 1s ease-in-out;
 }
 
 .no-tasks {
@@ -486,7 +479,6 @@ nav {
   justify-content: center;
   align-items: center;
   margin: 6rem;
-  transform: translateY(21px);
 }
 @media screen and (min-width: 1000px) {
   .characterHomepage {
@@ -640,7 +632,7 @@ nav {
 }
 
 .addTaskButton {
-  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .last-done-container {
@@ -877,4 +869,8 @@ nav {
   border-radius: 0 0 9px 9px;
   background-color: #d8a744;
   width: 100%;
+}
+
+.overviewDays {
+  font-size: 18px;
 }/*# sourceMappingURL=index.css.map */

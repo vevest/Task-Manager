@@ -9,7 +9,7 @@ function PointsOverviewWeek() {
           height: `20%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
           </div>
-          <p>Man</p>
+          <p className="overviewDays">Man</p>
         </div>
         <div className="container">
           <div className="capsule">
@@ -17,7 +17,7 @@ function PointsOverviewWeek() {
           height: `50%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
           </div>
-          <p>Tirs</p>
+          <p className="overviewDays">Tirs</p>
         </div>
         <div className="container">
           <div className="capsule">
@@ -25,7 +25,7 @@ function PointsOverviewWeek() {
           height: `30%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
           </div>
-          <p>Ons</p>
+          <p className="overviewDays">Ons</p>
         </div>
         <div className="container">
           <div className="capsule">
@@ -33,7 +33,7 @@ function PointsOverviewWeek() {
           height: `40%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
           </div>
-          <p>Tors</p>
+          <p className="overviewDays">Tors</p>
         </div>
         <div className="container">
           <div className="capsule">
@@ -41,7 +41,7 @@ function PointsOverviewWeek() {
           height: `80%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
           </div>
-          <p>Fre</p>
+          <p className="overviewDays">Fre</p>
         </div>
         <div className="container">
           <div className="capsule">
@@ -49,7 +49,7 @@ function PointsOverviewWeek() {
           height: `90%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
           </div>
-          <p>Lør</p>
+          <p className="overviewDays">Lør</p>
         </div>
         <div className="container">
           <div className="capsule">
@@ -57,7 +57,7 @@ function PointsOverviewWeek() {
           height: `24%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
           </div>
-          <p>Søn</p>
+          <p className="overviewDays">Søn</p>
         </div>
       </div>
     </div>
