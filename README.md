@@ -42,11 +42,11 @@ Currently, two official plugins are available:
 **Project Structure**
 /Task Manager
 
-├── node_modules  
+├─ node_modules  
 
-├── public 
+├─ public 
 
-├── /src
+├─ /src
 
 │       ├── /allComponents 
 
@@ -60,35 +60,35 @@ Currently, two official plugins are available:
 
 │       └── /pages  
 
-├── _partials.scss 
+├─ _partials.scss 
 
-├── App.tsx
+├─ App.tsx
 
-├── declarations.d.ts
+├─ declarations.d.ts
 
-├── index.css
+├─ index.css
 
-├── index.css.map
+├─ index.css.map
 
-├── index.scss 
+├─ index.scss 
 
-├── main.tsx 
+├─ main.tsx 
 
-├── .gitignore
+├─ .gitignore
 
-├── eslintrc.js 
+├─ eslintrc.js 
 
-├── index.html 
+├─ index.html 
 
-├── package-lock.json 
+├─ package-lock.json 
 
-├── package.json 
+├─ package.json 
 
-├── README.md  
+├─ README.md  
 
-├── tsconfig.json  
+├─ tsconfig.json  
 
-└── vite.config.js          
+└─ vite.config.js          
 
 **Description of folders and files**
 
