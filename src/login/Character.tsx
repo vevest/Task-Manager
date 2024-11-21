@@ -18,7 +18,6 @@ import character13 from '../assets/characters/character13.png';
 import character14 from '../assets/characters/character14.png';
 import character15 from '../assets/characters/character15.png';
 
-
 interface CharacterType {
   id: number;
   src: string;
@@ -28,7 +27,6 @@ interface CharacterType {
 function Character() {
   const { setCharacter } = useContext(CharacterContext);
   const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
-
 
   const characters: CharacterType[] = [
     { id: 1, src: character1, alt: 'Hest' },
@@ -66,25 +64,38 @@ function Character() {
 
   return (
     <div className='center'>
-      <h1>Vælg din karakter</h1>
-      <div className="character-selection">
+      <h1 id="character-selection-heading">Vælg din karakter</h1>
+      <div className="character-selection" role="region" aria-labelledby="character-selection-heading">
         {characters.map((character) => (
           <div
             key={character.id}
             className={`character ${selectedCharacter === character.src ? 'selected' : ''}`}
             onClick={() => handleCharacterClick(character.id, character.src)}
+            role="button"
+            tabIndex={0} // Gør karakterbillederne tastaturvenlige
+            aria-label={`Vælg ${character.alt}`}
+            onKeyPress={(e) => e.key === 'Enter' && handleCharacterClick(character.id, character.src)} // Tillader tastaturinteraktion
           >
             <img
               src={character.src}
               alt={character.alt}
+              role="img"
+              aria-label={character.alt}
             />
           </div>
         ))}
       </div>
       <Link 
         to={`${selectedCharacter ? "/mood" : ""}`} 
-      > 
-      <button className={`buttonBottom ${!selectedCharacter ? "disabled" : ""}`} >Kom i gang</button>
+        aria-disabled={!selectedCharacter} // Deaktiverer linket, hvis ingen karakter er valgt
+      >
+        <button 
+          className={`buttonBottom ${!selectedCharacter ? "disabled" : ""}`} 
+          disabled={!selectedCharacter} // Deaktiverer knappen, hvis ingen karakter er valgt
+          aria-label="Kom i gang"
+        >
+          Kom i gang
+        </button>
       </Link>
     </div> 
   );

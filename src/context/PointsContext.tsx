@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
+// Definer typerne
 type PointsContextType = {
   weeklyPoints: number;
   totalPoints: number;
@@ -12,6 +13,7 @@ export const PointsContext = createContext<PointsContextType>({
   addPoints: () => {}, // Standard funktion
 });
 
+// Props for PointsProvider
 type PointsProviderProps = {
   children: ReactNode;
 };
@@ -21,27 +23,40 @@ export const PointsProvider: React.FC<PointsProviderProps> = ({ children }) => {
   const savedWeeklyPoints = localStorage.getItem("weeklyPoints");
   const savedTotalPoints = localStorage.getItem("totalPoints");
 
-  const [weeklyPoints, setWeeklyPoints] = useState<number>(savedWeeklyPoints ? parseInt(savedWeeklyPoints) : 0);
-  const [totalPoints, setTotalPoints] = useState<number>(savedTotalPoints ? parseInt(savedTotalPoints) : 0);
+  const [weeklyPoints, setWeeklyPoints] = useState<number>(
+    savedWeeklyPoints ? parseInt(savedWeeklyPoints) : 0
+  );
+  const [totalPoints, setTotalPoints] = useState<number>(
+    savedTotalPoints ? parseInt(savedTotalPoints) : 0
+  );
 
   // Nulstil ugentlige points hver mandag kl. 00:00
   useEffect(() => {
     const now = new Date();
-    const timeUntilMonday = 
-      new Date(now.getFullYear(), now.getMonth(), now.getDate() + (7 - now.getDay() + 1) % 7, 0, 0, 0).getTime() - now.getTime();
+    const timeUntilMonday = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate() + (7 - now.getDay() + 1) % 7, // Beregn næste mandag
+      0, 0, 0
+    ).getTime() - now.getTime();
 
-    const resetWeeklyPoints = setTimeout(() => setWeeklyPoints(0), timeUntilMonday);
+    const resetWeeklyPoints = setTimeout(() => {
+      setWeeklyPoints(0); // Nulstil points
+    }, timeUntilMonday);
 
-    return () => clearTimeout(resetWeeklyPoints);
+    return () => clearTimeout(resetWeeklyPoints); // Ryd op ved komponent unmount
   }, [weeklyPoints]);
 
   // Funktion til at tilføje points og gemme dem i localStorage
   const addPoints = (points: number) => {
+    // Opdaterer weeklyPoints og gemmer i localStorage
     setWeeklyPoints((prev) => {
       const newWeeklyPoints = prev + points;
       localStorage.setItem("weeklyPoints", newWeeklyPoints.toString());
       return newWeeklyPoints;
     });
+
+    // Opdaterer totalPoints og gemmer i localStorage
     setTotalPoints((prev) => {
       const newTotalPoints = prev + points;
       localStorage.setItem("totalPoints", newTotalPoints.toString());

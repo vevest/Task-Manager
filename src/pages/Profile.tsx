@@ -29,34 +29,33 @@ function Profile() {
 
   return (
     <>
-    <Level />
-    <h1>{name}'s uge</h1>
-    <div className="gridToFlex-Box2">
-      <div className="framedContent flex">
-        <div className="selectedCharacter">
-        <img
-          className="characterProfile"
-          src={character || "default-image-path.jpg"} // Tilføjer fallback værdi
-          alt="Det valgte icon"
-        />
-
+      <Level />
+      <h1>{name}'s uge</h1>
+      <div className="gridToFlex-Box2">
+        <div className="framedContent flex">
+          <div className="selectedCharacter">
+            <img
+              className="characterProfile"
+              src={character || "default-image-path.jpg"} // Tilføjer fallback værdi
+              alt={`Billede af valgte karakter: ${character || "Ikon"}`} // Tilføj beskrivende alt-tekst for skærmlæsere
+              aria-labelledby="selectedCharacter" // Tilføjer ARIA-label for at beskrive billedet
+            />
+          </div>
+          <div className="grid">
+            <h2 id="weekly-points-title">Point i denne uge</h2>
+            <p className="pBig" aria-labelledby="weekly-points-title">{weeklyPoints} ⚡️</p> {/* Brug de ugentlige points fra konteksten */}
+          </div>
         </div>
-        <div className="grid">
-          <h2>Point i denne uge</h2>
-          {/* Vis dynamiske ugentlige points her */}
-          <p className="pBig">{weeklyPoints} ⚡️</p> {/* Brug de ugentlige points fra konteksten */}
-        </div>
+        <PointsOverviewWeek />
       </div>
-      <PointsOverviewWeek />
-    </div>
-    <LastDone />
-    <div className="center">
-     <Link to="/">
-       <button onClick={handleClick}>Log ud</button>
-     </Link>
-   </div>
-    <Navbar />
-  </>
+      <LastDone />
+      <div className="center">
+        <Link to="/" aria-label="Log ud">
+          <button onClick={handleClick} aria-labelledby="logout-button">Log ud</button>
+        </Link>
+      </div>
+      <Navbar />
+    </>
   );
 }
 

@@ -32,13 +32,21 @@ function Level() {
 
   return (
     <div className="level">
+      {/* Niveau og punktstatus */}
       <p>Level {currentLevel ? currentLevel.level : levels.length}</p>
       <div className="container">
-        <p>{weeklyPoints}/{nextLevelPoints}</p>
-        <p className='lyn'>⚡️</p>
-        <div className="color" style={{
-          width: `${progressToNextLevel}%`, // Dynamisk bredde baseret på fremgangen mod næste level
-        }}></div>
+        <p>{weeklyPoints}/{nextLevelPoints} <span className="lyn">⚡️</span></p>
+        <div 
+          className="color" 
+          style={{ width: `${progressToNextLevel}%` }}
+          role="progressbar" 
+          aria-valuenow={weeklyPoints} 
+          aria-valuemin={0} 
+          aria-valuemax={nextLevelPoints} 
+          aria-label={`Progress to next level: ${progressToNextLevel.toFixed(2)}%`}
+        >
+          {/* Dette er den visuelle progressbar, og den er nu beriget med ARIA information */}
+        </div>
       </div>
     </div>
   );

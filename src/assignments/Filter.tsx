@@ -2,15 +2,12 @@ import { useContext, useState } from 'react';
 import { CharacterContext } from "../context/CharacterContext"; 
 import { PointsContext } from '../context/PointsContext'; // Importér PointsContext
 
-
-
 function Filter() {
   const { tasks, setTasks, addCompletedTask } = useContext(CharacterContext);  // Hent 'tasks' fra taskcontext
   const { setAddTaskToFilter } = useContext(CharacterContext);
   const { addPoints } = useContext(PointsContext); // Hent addPoints-funktionen fra 
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [clickedTasks, setClickedTasks] = useState<Record<string, boolean>>({});
-
 
   const categories = [
     { id: 1, label: '📚', value: 'Study' },
@@ -35,7 +32,6 @@ function Filter() {
       console.log("Task marked as done:", completedTask); // Log completedTask
       addPoints(completedTask.points); // Tilføj point
       addCompletedTask(completedTask); // Flyt opgaven til færdige opgaver
-      
     }
 
     setTimeout(() => {
@@ -56,15 +52,24 @@ function Filter() {
   return (
     <div className="filter-container baseContent">
       <div className='flex'>
-        <h2>Opgaver</h2>
+        <h2 id="task-filter-heading">Opgaver</h2>
       </div>
 
-
       {/* Emoji knapper for hver kategori */}
-      <button className='addTaskButton' onClick={handleToFilter}>Tilføj opgave</button>
+      <button 
+        className='addTaskButton' 
+        onClick={handleToFilter} 
+        aria-label="Tilføj opgave"
+      >
+        Tilføj opgave
+      </button>
       <div className="category-buttons">
-        <button onClick={() => setSelectedFilter("All")}
-        className={`filter-button ${selectedFilter === "All" ? "active" : ""}`}>
+        <button 
+          onClick={() => setSelectedFilter("All")}
+          className={`filter-button ${selectedFilter === "All" ? "active" : ""}`}
+          aria-pressed={selectedFilter === "All" ? "true" : "false"}
+          aria-label="Vis alle opgaver"
+        >
           <p className="filter-emoji">🔄</p>
         </button>
         {categories.map((category) => (
@@ -73,12 +78,13 @@ function Filter() {
             onClick={() => setSelectedFilter(category.label)}
             className={`filter-button ${selectedFilter === category.label ? "active" : ""}`}
             title={category.label}
+            aria-pressed={selectedFilter === category.label ? "true" : "false"}
+            aria-label={`Filtrer opgaver efter ${category.label}`}
           >
             <p className="filter-emoji">{category.label}</p>
           </button>
         ))}
       </div>
-
 
       {/* Render de filtrerede opgaver */}
       <div className='framedContent'>
@@ -88,8 +94,8 @@ function Filter() {
             <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>
           ) : (
             filteredTasks.map((task) => (
-              <div className='container'>
-                <li key={task.id} className="task-item">
+              <div className='container' key={task.id}>
+                <li className="task-item">
                   <div className='task-info'>
                     <div className="task-category">
                       {task.category}
@@ -100,9 +106,14 @@ function Filter() {
                     </div>
                   </div>
                   <div className="task-actions">
-                      <button className={`checkmark ${clickedTasks[task.id] ? 'clicked' : ''}`}  onClick={() => handleTaskDone(task.id)}>
-                        <p><i className="fa-solid fa-check"></i></p>
-                      </button>
+                    <button
+                      className={`checkmark ${clickedTasks[task.id] ? 'clicked' : ''}`}  
+                      onClick={() => handleTaskDone(task.id)}
+                      aria-label={`Markér opgaven "${task.name}" som færdig`}
+                      aria-pressed={clickedTasks[task.id] ? 'true' : 'false'}
+                    >
+                      <p><i className="fa-solid fa-check"></i></p>
+                    </button>
                   </div>
                 </li>
               </div>

@@ -37,19 +37,35 @@ const Login: React.FC = () => {
       {!showName ? (
         <>
           <div className="logo">
-            <img src={smileCircle} alt="Smile" className="smileCircle" />
-            <img src={smileFace} alt="Smile" className="smileFace" />
+            <img 
+              src={smileCircle} 
+              alt="Smile" 
+              className="smileCircle" 
+              aria-hidden="true" // Gør smilet billede ikke-væsentligt for skærmlæsere
+            />
+            <img 
+              src={smileFace} 
+              alt="Smile" 
+              className="smileFace" 
+              aria-hidden="true" // Gør smilet billede ikke-væsentligt for skærmlæsere
+            />
           </div>
-          <form onSubmit={handleSubmit}>
+
+          <form onSubmit={handleSubmit} aria-labelledby="login-form" role="form">
+            <label htmlFor="name" className="sr-only">Indtast dit navn</label> {/* Skjult label for skærmlæsere */}
             <input 
               type="text" 
+              id="name"
               placeholder="Navn" 
               onChange={handleChange} 
               value={name || ""} // Sikrer, at inputfeltet viser navnet fra context
+              aria-required="true" // Markerer feltet som påkrævet
             />
             <button 
               type="submit" 
-              className={`${!name ? "disabled" : ""}`} // Deaktiver knap, hvis der ikke er indtastet navn
+              className={`${!name ? "disabled" : ""}`} 
+              disabled={!name} // Deaktiverer knappen, hvis der ikke er noget navn
+              aria-disabled={name ? "false" : "true"} // Forbedrer tilgængelighed ved at angive knapens tilstand
             >
               Login
             </button>

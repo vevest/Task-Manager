@@ -8,14 +8,20 @@ function WelcomeMessage() {
   const welcomeMessage = getWelcomeMessage(name); // Generér dynamisk besked
 
   return (
-    <section className="center">
-      <h1>{welcomeMessage}</h1> {/* Dynamisk velkomstbesked */}
+    <section className="center" role="region" aria-labelledby="welcome-message">
+      <h1 id="welcome-message">{welcomeMessage}</h1> {/* Dynamisk velkomstbesked */}
       <h2>Velkommen til Smile!</h2>
       <div className="containerWelcome">
-        <p className="framedContent">Få styr på din hverdag sammen med os, i forsøget på at gøre hverdagens kedelige gøremål sjovere! </p>
+        <p className="framedContent">
+          Få styr på din hverdag sammen med os, i forsøget på at gøre hverdagens kedelige gøremål sjovere!
+        </p>
         <p className="framedContent">Pointsystem for at holde motivationen oppe.</p>
         <p className="framedContent">Motiverende citater</p> 
-        <Link to="/character"><button className="buttonBottom">Gå videre</button></Link>
+        <Link to="/character">
+          <button className="buttonBottom" aria-label="Gå videre til karaktervalg">
+            Gå videre
+          </button>
+        </Link>
       </div>
     </section>
   );

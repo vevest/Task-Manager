@@ -31,15 +31,24 @@ function Mood() {
   return (
     <div className='containerMood'>
       <div className='logo'>
-        <img src={smileCircle} alt="Smile" className='smileCircle' />
-        <img src={smileFace} alt="Smile" className='smileFace' />
+        <img src={smileCircle} alt="Smile" className='smileCircle' aria-hidden="true" />
+        <img src={smileFace} alt="Smile" className='smileFace' aria-hidden="true" />
       </div>
-      <p>Hvordan har din dag været?</p>
+      <p id="question">Hvordan har din dag været?</p>
+
+      {/* Mood-smiley billeder med aria-labels */}
       <div className='moodBox'>
-        <Link to='/homepage'><img src={happySmile} alt="Happy Smile" /></Link>
-        <Link to='/homepage'><img src={neutralSmile} alt="Neutral Smile" /></Link>
-        <Link to='/homepage'><img src={sadSmile} alt="Sad Smile" /></Link>
+        <Link to='/homepage' aria-label="Jeg er glad">
+          <img src={happySmile} alt="Happy Smile" />
+        </Link>
+        <Link to='/homepage' aria-label="Jeg føler mig neutral">
+          <img src={neutralSmile} alt="Neutral Smile" />
+        </Link>
+        <Link to='/homepage' aria-label="Jeg er trist">
+          <img src={sadSmile} alt="Sad Smile" />
+        </Link>
       </div>
+      
     </div>
   );
 }

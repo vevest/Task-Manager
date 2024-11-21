@@ -1,14 +1,12 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
-
 // Definer typerne med typescript
 interface Task {
-    id: string;
-    name: string;
-    category: string;
-    points: number;
-  }
-
+  id: string;
+  name: string;
+  category: string;
+  points: number;
+}
 
 // Definer typerne for CharacterContext
 interface CharacterContextType {
@@ -22,7 +20,7 @@ interface CharacterContextType {
   setAddTaskToFilter: (value: boolean) => void;  // Funktion til at ændre filter status
 }
 
-// Opret en standardværdi for parametrene 
+// Opret en standardværdi for parametrene
 const defaultContext: CharacterContextType = {
   character: null,
   setCharacter: () => {},
@@ -53,6 +51,7 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
     const savedCompletedTasks = localStorage.getItem("completedTasks");
     return savedCompletedTasks ? JSON.parse(savedCompletedTasks) : [];
   });
+
   const [addTaskToFilter, setAddTaskToFilter] = useState<boolean>(false);  // Ny state for addTaskToFilter
 
   // Funktion til at tilføje færdige opgaver
@@ -82,18 +81,20 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
   }, [completedTasks]);
 
   return (
-    <CharacterContext.Provider 
-    value={{
-      character,
-      setCharacter,
-      tasks,
-      setTasks,
-      completedTasks,
-      addCompletedTask,
-      addTaskToFilter, // Ny værdi for addTaskToFilter
-      setAddTaskToFilter, // Ny funktion for setAddTaskToFilter
-    }}>
+    <CharacterContext.Provider
+      value={{
+        character,
+        setCharacter,
+        tasks,
+        setTasks,
+        completedTasks,
+        addCompletedTask,
+        addTaskToFilter, // Ny værdi for addTaskToFilter
+        setAddTaskToFilter, // Ny funktion for setAddTaskToFilter
+      }}
+    >
       {children}
     </CharacterContext.Provider>
   );
 };
+

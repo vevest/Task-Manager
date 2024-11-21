@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 
-// tidsbestemt hilsen
-
 const Greeting: React.FC = () => {
   const { name } = useContext(LoginContext);
 
@@ -23,7 +21,14 @@ const Greeting: React.FC = () => {
     }
   };
 
-  return <h1>{getGreeting()}</h1>;
+  return (
+    <h1
+      tabIndex={0} // Gør overskriften tastaturvenlig
+      aria-live="polite" // Meddelelsen opdateres dynamisk, og skærmlæsere informerer brugeren
+    >
+      {getGreeting()}
+    </h1>
+  );
 };
 
 export default Greeting;

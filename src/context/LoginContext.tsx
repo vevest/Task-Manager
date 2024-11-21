@@ -1,19 +1,31 @@
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 
-export const LoginContext = createContext({
-    name: "",
-    setName: (name: string) => {}, // Placeholder-funktion
-    showName: false,
-    setShowName: (show: boolean) => {} // Placeholder-funktion
-});
+// Definer typerne for contexten
+interface LoginContextType {
+  name: string;
+  setName: (name: string) => void;
+  showName: boolean;
+  setShowName: (show: boolean) => void;
+}
 
-export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [name, setName] = useState<string>(""); // State til at gemme brugernavnet
-    const [showName, setShowName] = useState<boolean>(false); // State til at vise om brugeren er logget ind
+// Opret en standardværdi for contexten
+const defaultLoginContext: LoginContextType = {
+  name: "",
+  setName: () => {},
+  showName: false,
+  setShowName: () => {},
+};
+
+// Opret contexten med den korrekte type
+export const LoginContext = createContext<LoginContextType>(defaultLoginContext);
+
+export const LoginProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [name, setName] = useState<string>(""); // State til at gemme brugernavnet
+  const [showName, setShowName] = useState<boolean>(false); // State til at vise, om brugeren er logget ind
   
-    return (
-      <LoginContext.Provider value={{ name, setName, showName, setShowName }}>
-        {children}
-      </LoginContext.Provider>
-    );
-  };
+  return (
+    <LoginContext.Provider value={{ name, setName, showName, setShowName }}>
+      {children}
+    </LoginContext.Provider>
+  );
+};

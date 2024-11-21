@@ -29,7 +29,6 @@ interface Point {
   value: number;
 }
 
-
 function AddTask() {
   const { tasks, setTasks } = useContext(CharacterContext);
   const { setAddTaskToFilter } = useContext(CharacterContext);
@@ -99,64 +98,73 @@ function AddTask() {
 
   return (
     <div className="center add-task-container">
-    <h1>Opret opgave</h1>
-    <div onClick={shutDown} className='shutDown'><i className="fa-solid fa-xmark"></i></div>
-
-
-    <form>
-      <h2>📌 Kategori</h2>
-      <div className="chooseCategory">
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className={`category ${
-              selectedCategory && selectedCategory.label === category.label ? 'selected' : ''
-            }`}
-            onClick={() => handleCategoryClick(category)}
-          >
-            {category.label}
-          </div>
-        ))}
+      <h1 id="task-form-heading">Opret opgave</h1>
+      <div 
+        onClick={shutDown} 
+        className='shutDown' 
+        aria-label="Luk opgaveformularen" 
+        tabIndex={0} 
+        role="button" 
+      >
+        <i className="fa-solid fa-xmark"></i>
       </div>
 
+      <form aria-labelledby="task-form-heading">
+        <h2>📌 Kategori</h2>
+        <div className="chooseCategory">
+          {categories.map((category) => (
+            <div
+              key={category.id}
+              className={`category ${selectedCategory && selectedCategory.label === category.label ? 'selected' : ''}`}
+              onClick={() => handleCategoryClick(category)}
+              tabIndex={0}
+              role="button"
+              aria-pressed={selectedCategory && selectedCategory.label === category.label ? 'true' : 'false'}
+            >
+              {category.label}
+            </div>
+          ))}
+        </div>
 
-      <h2>Opgaven</h2>
-      <input className='assignment-selection'
-        type="text"
-        value={selectedTask}
-        placeholder="Skriv opgaven"
-        onChange={handleTaskChange}
-      />
+        <h2>Opgaven</h2>
+        <input 
+          id="task-name" 
+          className='assignment-selection'
+          type="text"
+          value={selectedTask}
+          placeholder="Skriv opgaven"
+          onChange={handleTaskChange}
+          aria-required="true"
+          aria-describedby="task-name-description"
+        />
+        <p id="task-name-description" className="sr-only">Indtast navnet på opgaven</p>
 
-
-      <h2>⚡️ Points</h2>
-      <div className="choosePoints">
-        {points.map((point) => (
-          <div
-            key={point.id}
-            className={`points ${
-              selectedPoints && selectedPoints.value === point.value ? 'selected' : ''
-            }`}
-
-
-            onClick={() => handlePointsClick(point)}
-          >
-            <p>{point.value}</p>
-          </div>
-        ))}
-      </div>
+        <h2>⚡️ Points</h2>
+        <div className="choosePoints">
+          {points.map((point) => (
+            <div
+              key={point.id}
+              className={`points ${selectedPoints && selectedPoints.value === point.value ? 'selected' : ''}`}
+              onClick={() => handlePointsClick(point)}
+              tabIndex={0}
+              role="button"
+              aria-pressed={selectedPoints && selectedPoints.value === point.value ? 'true' : 'false'}
+            >
+              <p>{point.value}</p>
+            </div>
+          ))}
+        </div>
 
         <button
-          className={`button ${
-            !selectedTask || !selectedCategory || !selectedPoints ? 'disabled' : ''
-          }`}
+          className={`button ${!selectedTask || !selectedCategory || !selectedPoints ? 'disabled' : ''}`}
           onClick={handleAddTask}
+          aria-disabled={selectedTask && selectedCategory && selectedPoints ? 'false' : 'true'}
         >
           Tilføj opgave
         </button>
       
-    </form>
-  </div>
+      </form>
+    </div>
   );
 }
 
