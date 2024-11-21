@@ -11,7 +11,6 @@ $color-disable: #62605c;
 
 
 
-
 // –––––––––––––––––––––––––––––––––––––––––––
 // Mixins
 // ––––––––––––––––––––––––––––––––––––––––––-
@@ -24,19 +23,18 @@ line-height: $line-height;
 letter-spacing: 1px;
 @media screen and (max-width: 1000px) {
   font-size: calc(#{$size} * 0.8);
-
-
-
-
 }
 }
-
 
 @mixin border($radius: 10px) {
 border: 1px solid $color-inputBorder;
 border-radius: $radius;
 }
 
+@mixin widthAndHight($width, $height) {
+  width: $width;
+  height: $height;
+}
 
 @mixin flex-container($direction: row, $justify: flex-start, $align: stretch) {
 display: flex;
@@ -45,11 +43,9 @@ justify-content: $justify;
 align-items: $align;
 }
 
-
 @mixin responsive-grid($grid-direction, $columns-large, $gap: 20px) {
  display: flex;
  flex-direction: $grid-direction;
-
 
  @media screen and (min-width: 1000px) {
    display: grid;
@@ -57,3 +53,27 @@ align-items: $align;
    gap: $gap;
  }
 }
+
+// –––––––––––––––––––––––––––––––––––––––––––
+// keyframes
+// ––––––––––––––––––––––––––––––––––––––––––-
+
+// bruges til logoet, hvor cirklen drejer rundt
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(3); 
+  }
+}
+  

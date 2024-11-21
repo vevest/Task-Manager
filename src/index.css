@@ -1,4 +1,20 @@
 @charset "UTF-8";
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(3);
+  }
+}
 body {
   background-color: #fff5d0;
   box-sizing: border-box;
@@ -226,12 +242,13 @@ form {
 }
 
 .logo {
-  margin: 8em auto;
-  width: 150px;
-  height: 150px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 150px;
+  height: 150px;
+  margin: 8em auto;
   overflow: hidden;
   position: relative;
   padding: 1em;
@@ -280,17 +297,11 @@ button:hover {
   bottom: -2em; /* 2em fra bunden af forælderen */
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 nav {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
+  align-items: stretch;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -334,11 +345,12 @@ nav {
 }
 
 .selectedCharacter {
-  width: 50%;
-  height: 7em;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 50%;
+  height: 7em;
 }
 @media screen and (min-width: 1000px) {
   .selectedCharacter {
@@ -384,16 +396,17 @@ nav {
 
 .character {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  border: 1px solid #e3d9b0;
+  border-radius: 50%;
   width: 7em;
   height: 7em;
+  overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease;
   background-color: #fff8de;
-  border: 1px solid #e3d9b0;
-  border-radius: 50%;
 }
 
 .character img {
@@ -447,10 +460,10 @@ nav {
   }
 }
 .moodBox img {
-  border: none;
-  border-radius: 0;
   width: 100%;
   height: auto;
+  border: none;
+  border-radius: 0;
   -o-object-fit: contain;
      object-fit: contain;
   transition: transform 0.3s ease;
@@ -476,6 +489,7 @@ nav {
 
 .characterHomepage {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin: 6rem;
@@ -491,6 +505,7 @@ nav {
 
 .home-quote {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 2rem;
@@ -515,17 +530,19 @@ nav {
   width: 100%;
 }
 .latestAssignments .task-category {
-  border-right: 1px solid #e3d9b0;
   display: flex;
-  width: 5em;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-right: 1px solid #e3d9b0;
+  width: 5em;
   font-size: 1.5em;
   background-color: #fff5d0;
   border-radius: 10px 0 0 10px;
 }
 .latestAssignments .task-nameAndPoints {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
@@ -566,9 +583,10 @@ nav {
 }
 
 .category {
-  display: flex;
-  height: 2em;
   width: 2em;
+  height: 2em;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
@@ -590,9 +608,10 @@ nav {
 .points {
   border: 1px solid #e3d9b0;
   border-radius: 10px;
-  display: flex;
-  height: 2em;
   width: 2em;
+  height: 2em;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   background-color: #fff5d0;
@@ -617,9 +636,10 @@ nav {
 .category-buttons .filter-button {
   border: 1px solid #e3d9b0;
   border-radius: 10px;
-  display: flex;
-  height: 2em;
   width: 2em;
+  height: 2em;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
@@ -724,15 +744,6 @@ nav {
   width: 100%;
 }
 
-/* Definer animationen */
-@keyframes scale {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(3); /* Flytter elementet til venstre */
-  }
-}
 .task-actions {
   position: relative;
 }
@@ -775,11 +786,12 @@ nav {
 .level .container {
   border: 1px solid #e3d9b0;
   border-radius: 10px;
-  position: relative;
-  background-color: #fff8de;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  background-color: #fff8de;
   width: 100%; /* Sikrer at containeren fylder hele bredden */
 }
 .level .container .lyn {
@@ -793,49 +805,36 @@ nav {
   color: #323232; /* Farve for 10/1000 ⚡️ tekst */
 }
 .level .container .color {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
   position: absolute;
   height: 100%;
-  background-color: #d8a744; /* Grøn farve, kan ændres baseret på niveau */
+  background-color: #d8a744;
   border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: white;
   font-weight: bold;
   font-size: 14px;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.6s ease; /* Glidende overgang til hover-effekt */
-  transition: width 0.3s ease-in-out; /* Glidende effekt når bredden ændres */
+  transition: background-color 0.6s ease;
+  transition: width 0.3s ease-in-out;
 }
 .level .container .color:hover {
-  background-color: #a07845; /* Mørkere grøn ved hover */
-}
-@media screen and (min-width: 800px) {
-  .level .container {
-    padding: 10px 0;
-  }
-}
-@media (max-width: 600px) {
-  .level .level {
-    max-width: 100%;
-    padding: 10px;
-  }
-  .level .container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  background-color: #a07845;
 }
 
 .water-plus, .water-minus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
   transform: translateY(30px);
   font-size: 1.7em;
-  height: 2em;
-  width: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   background-color: #d8a744;
   color: #ffffff;
@@ -862,9 +861,9 @@ nav {
 .pointsOverviewWeek .container .capsule {
   border: 1px solid #e3d9b0;
   border-radius: 10px;
-  position: relative;
-  height: 6em;
   width: 2em;
+  height: 6em;
+  position: relative;
 }
 .pointsOverviewWeek .container .capsule .color {
   position: absolute;
