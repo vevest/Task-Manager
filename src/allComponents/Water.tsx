@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Water() {
   const [water, setWater] = useState(0);
 
+    // Læs localStorage, når komponenten indlæses første gang
+    useEffect (() => {
+      const savedWater = localStorage.getItem("dailyWater");
+      if (savedWater) {
+        setWater(parseInt(savedWater, 10)); //10 er basen (radix), der angiver, hvilket talsystem der skal bruges til at fortolke strengen.
+      }
+    }, []);
+
     // Funktion til at reducere vandet
     const decreaseWater = () => {
       if (water > 0) {
-        setWater(water - 1); // Træk 1 fra
+        const newWater = water - 1; // Træk 1 fra
+        setWater(newWater);
+        localStorage.setItem("dailyWater", newWater); // Gem i localStorage
       }
     };
   
     // Funktion til at øge vandet
     const increaseWater = () => {
-      setWater(water + 1); // Tilføj 1 til
+      const newWater = water + 1; // Tilføj 1 til
+      setWater(newWater);
+      localStorage.setItem("dailyWater", newWater); // Gem i localStorage
     };
   
 
