@@ -40,7 +40,8 @@ Currently, two official plugins are available:
 
 
 **Project Structure**
-/projekt-mappen
+/Task Manager
+
 ├── node_modules  
 
 ├── public 
