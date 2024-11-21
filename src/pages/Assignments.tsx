@@ -12,13 +12,15 @@ function Assignments() {
 
   return (
     <>
-      <Level />
-      <Water />
+      {!addTaskToFilter && <Level />}
+      <div className="gridToFlex-Box">
+        {!addTaskToFilter && <Filter />}
+        {!addTaskToFilter && <Water />}
+      </div>
       {addTaskToFilter && <AddTask />}
-      <Filter />
       <Navbar />
     </>
-  );
+  ); 
 }
 
 export default Assignments;
