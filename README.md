@@ -41,29 +41,52 @@ Currently, two official plugins are available:
 
 **Project Structure**
 /projekt-mappen
-├── node_modules           
-├── public           
+├── node_modules  
+
+├── public 
+
 ├── /src
-│   ├── /allComponents   
+
+│   ├── /allComponents 
+
 │   ├── /assets
+
 │   ├── /assignments
+
 │   ├── /context
+
 │   ├── /login
-│   └── /pages                         
+
+│   └── /pages  
+
 ├── _partials.scss 
+
 ├── App.tsx
+
 ├── declarations.d.ts
+
 ├── index.css
+
 ├── index.css.map
+
 ├── index.scss 
+
 ├── main.tsx 
+
 ├── .gitignore
+
 ├── eslintrc.js 
+
 ├── index.html 
+
 ├── package-lock.json 
+
 ├── package.json 
-├── README.md           
-├── tsconfig.json           
+
+├── README.md  
+
+├── tsconfig.json  
+
 └── vite.config.js          
 
 **Description of folders and files**
