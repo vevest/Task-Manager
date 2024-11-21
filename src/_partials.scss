@@ -7,35 +7,53 @@ $color-inputFill: #fff8de;
 $color-inputBorder: #e3d9b0;
 $color-text-black: #323232;
 $color-text-white: #ffffff;
+$color-disable: #62605c;
+
+
 
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Mixins
 // ––––––––––––––––––––––––––––––––––––––––––-
 @mixin font-style($family, $size, $weight, $color, $line-height) {
- font-family: $family;
- font-size: $size;
- font-weight: $weight;
- color: $color;
- line-height: $line-height;
- letter-spacing: 1px;
- @media screen and (max-width: 1000px) {
-   font-size: calc(#{$size} * 0.8);
+font-family: $family;
+font-size: $size;
+font-weight: $weight;
+color: $color;
+line-height: $line-height;
+letter-spacing: 1px;
+@media screen and (max-width: 1000px) {
+  font-size: calc(#{$size} * 0.8);
 
 
- }
+
+
+}
 }
 
 
 @mixin border($radius: 10px) {
- border: 1px solid $color-inputBorder;
- border-radius: $radius;
+border: 1px solid $color-inputBorder;
+border-radius: $radius;
 }
 
 
 @mixin flex-container($direction: row, $justify: flex-start, $align: stretch) {
+display: flex;
+flex-direction: $direction;
+justify-content: $justify;
+align-items: $align;
+}
+
+
+@mixin responsive-grid($grid-direction, $columns-large, $gap: 20px) {
  display: flex;
- flex-direction: $direction;
- justify-content: $justify;
- align-items: $align;
+ flex-direction: $grid-direction;
+
+
+ @media screen and (min-width: 1000px) {
+   display: grid;
+   grid-template-columns: $columns-large;
+   gap: $gap;
+ }
 }

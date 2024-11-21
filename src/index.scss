@@ -1,124 +1,149 @@
-@use './partials' as p;
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Global styles
-// ––––––––––––––––––––––––––––––––––––––––––-
-body {
- background-color: p.$color-background;
- box-sizing: border-box;
- min-height: 130vh;
- overflow-x: hidden;
- padding-bottom: 10em; // Gør plads til navigationen
- @media screen and (min-width: 1024px) {
-   padding: 2rem 4rem;
+ @use './partials' as p;
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Global styles
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ body {
+  background-color: p.$color-background;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin-bottom: 10em;
+  @media screen and (min-width: 600px) {
+    padding: 1rem 2rem;
+  }
+  @media screen and (min-width: 800px) {
+    padding: 1rem 4rem;
+  }
+  @media screen and (min-width: 1400px) {
+    padding: 1rem 12rem;
+  }
  }
-}
-
-
-ul {
+ 
+ 
+ 
+ 
+ ul {
  padding: 0;
  margin: 0;
  li {
    padding: 0;
    margin: 0;
  }
-}
-
-
-p {
+ }
+ 
+ 
+ 
+ 
+ p {
  @include p.font-style("Itim", 1.3rem, 200, p.$color-text-black, 2rem);
-}
-.pBig {
+ }
+ .pBig {
  @include p.font-style("Itim", 3.3rem, 200, p.$color-text-black, 2rem);
-}
-
-
-h1 {
+ }
+ 
+ 
+ 
+ 
+ h1 {
  @include p.font-style("Itim", 2.2rem, 200, p.$color-text-black, 2.5rem);
-}
-
-
-h2 {
- @include p.font-style("Itim", 1.7rem, 200, p.$color-text-black, 1.5rem);
-}
-
-
-h3 {
+ }
+ 
+ 
+ 
+ 
+ h2 {
+ @include p.font-style("Itim", 1.7rem, 200, p.$color-text-black, 1rem);
+ }
+ 
+ 
+ 
+ 
+ h3 {
  @include p.font-style("Itim", 1.4rem, 200, p.$color-text-black, 1.5rem);
-}
-
-
-a {
+ }
+ 
+ 
+ 
+ 
+ a {
  @include p.font-style("Itim", 1.3rem, 600, p.$color-text-white, 2.5rem);
  text-decoration: none;
-}
-.center {
+ }
+ .center {
  text-align: center;
  justify-content: center;
-}
-.textCenter {
+ }
+ .textCenter {
  text-align: center;
-}
-.flex {
+ }
+ .flex {
  @include p.flex-container();
-}
-.flexSB {
+ }
+ .flexSB {
  @include p.flex-container(row, space-between);
-}
-.flexSA {
+ }
+ .flexSA {
  @include p.flex-container(row, space-around);
-}
-.grid {
+ }
+ .grid {
  display: grid;
-}
-
-
-.disabled {
- background-color: rgb(96, 96, 96);
+ }
+ 
+ 
+ .gridToFlex-Box {
+  @include p.responsive-grid(column-reverse, 3fr 1fr);
+ }
+ 
+ 
+ .gridToFlex-Box2 {
+  @include p.responsive-grid(column, 3fr 2fr);
+ }
+ 
+ 
+ 
+ 
+ .disabled {
+ background-color: p.$color-disable;
  cursor: not-allowed;
  opacity: 0.6;
-}
-
-
-.signOut {
- position: fixed;
- top: 0;
- right: 1em;
-}
-
-
-// Base-styling for indhold
-.baseContent {
- margin-bottom: 3em;
-}
-
-
-// Framed content
-.framedContent {
- padding: 1em;
+ }
+ 
+ 
+ // Base-styling for indhold
+ .baseContent {
+ margin-top: 1em;
+ }
+ 
+ 
+ // Framed content
+ .framedContent {
  @extend .baseContent; // Arver base-styling
+ padding: 1em;
  background-color: p.$color-inputFill;
  @include p.border(); // Giver en ramme
-}
-
-
-input, select {
+ }
+ 
+ 
+ input, select {
  padding: 0.5em 1em;
  @include p.font-style("Itim", 1.3rem, 200, p.$color-text-black, 2rem);
- background-color: p.$color-inputFill;
+ background-color: p.$color-background;
  @include p.border();
-}
-
-
-form {
+ }
+ 
+ 
+ input:focus {
+  border: 1px solid p.$color-secondary;
+ }
+ 
+ 
+ form {
  margin: 4em auto;
  display: grid;
  gap: 1em;
  width: 100%;
  max-width: 400px;
-}
-.logo {
+ }
+ .logo {
  margin: 8em auto;
  width: 150px;
  height: 150px;
@@ -138,36 +163,37 @@ form {
    height: auto;
    position: absolute;
  }
-}
-
-
-button {
+ }
+ 
+ 
+ button {
  padding: 0.2em 1em;
- margin-top: 1em;
  @include p.font-style("Jomhuria", 43px, 200, p.$color-text-white, 2rem);
  background-color: p.$color-secondary;
  border: none;
  border-radius: 10px;
-}
-button:hover {
- background-color: #979797;
-}
-
-
-@keyframes rotate {
+ transition: all ease 0.3s;
+ cursor: pointer;
+ &:hover {
+  letter-spacing: 2px;
+ }
+ }
+ 
+ 
+ @keyframes rotate {
  from {
    transform: rotate(0deg);
  }
  to {
    transform: rotate(360deg);
  }
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Navigation
-// ––––––––––––––––––––––––––––––––––––––––––-
-nav {
+ }
+ 
+ 
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Navigation
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ nav {
  display: flex;
  justify-content: space-around;
  position: fixed;
@@ -176,62 +202,62 @@ nav {
  right: 0;
  padding-top: 1em;
  background-color: p.$color-background;
-}
-
-
-.navIcon {
+ }
+ 
+ 
+ .navIcon {
  stroke: #e3d9b0;
  transition: transform 2s ease;
-}
-
-
-/* Valgt tilstand */
-.navIcon.selectedPage {
+ }
+ 
+ 
+ /* Valgt tilstand */
+ .navIcon.selectedPage {
  stroke: p.$color-secondary;
  stroke-width: 2px;
  transform: translateY(-2.5px);
-}
-.selectedPage {
+ }
+ .selectedPage {
  stroke: p.$color-secondary;
  stroke-width: 2px;
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Characters
-// ––––––––––––––––––––––––––––––––––––––––––-
-
-
-.selectedCharacter {
- width: 100%;
+ }
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Characters
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .selectedCharacter {
+ width: 50%;
  height: 7em;
  display: flex;
  justify-content: center;
  align-items: center;
+ @media screen and (min-width: 1000px) {
+  height: 10em;
+ }
  .characterProfile {
    width: 100%;
    height: 100%;
    object-fit: contain;
+   transform: translateY(2em);
  }
  .characterHomepage {
    width: 100%;
    height: 100%;
    object-fit: contain;
  }
-}
-
-
-.character-selection {
+ }
+ 
+ 
+ .character-selection {
  display: grid;
  grid-template-columns: repeat(3, 1fr);
  gap: 10px;
  justify-items: center;
  justify-content: center;
  margin-top: 20px;
-}
-
-
-.character {
+ }
+ 
+ 
+ .character {
  display: flex;
  justify-content: center;
  align-items: center;
@@ -242,39 +268,39 @@ nav {
  transition: transform 0.3s ease;
  background-color: p.$color-inputFill;
  @include p.border(50%);
-}
-
-
-.character img {
+ }
+ 
+ 
+ .character img {
  width: 65%;
  height: 65%;
  object-fit: cover;
  border-radius: 20%;
  transition: transform 0.3s ease;
-}
-
-
-/* Hover-effekt */
-.character img:hover {
+ }
+ 
+ 
+ /* Hover-effekt */
+ .character img:hover {
  transform: scale(1.1);
-}
-
-
-/* Stil for den valgte karakter */
-.selected {
+ }
+ 
+ 
+ /* Stil for den valgte karakter */
+ .selected {
  border: 2px solid green;
-}
-
-
-.selected img {
+ }
+ 
+ 
+ .selected img {
  transform: scale(1.1);
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Mood
-// ––––––––––––––––––––––––––––––––––––––––––-
-.moodBox {
+ }
+ 
+ 
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Mood
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .moodBox {
  display: grid;
  grid-template-columns: repeat(3, 1fr);
  gap: 20px;
@@ -293,42 +319,40 @@ nav {
    object-fit: contain;
    transition: transform 0.3s ease;
  }
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Homepage
-// ––––––––––––––––––––––––––––––––––––––––––-
-
-
-.homepage-msg {
+ }
+ 
+ 
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Homepage
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .homepage-msg {
  margin: 1em;
-}
-
-
-.no-tasks {
+ }
+ 
+ 
+ .no-tasks {
  color: #00000094;
  font-size: 1.8em;
  text-align: center;
-}
-.characterHomepage {
+ }
+ .characterHomepage {
  display: flex;
  justify-content: center;
  align-items: center;
  margin: 6rem;
-}
-
-
-.home-quote {
+ }
+ 
+ 
+ .home-quote {
  display: flex;
  justify-content: center;
  align-items: center;
  padding: 2rem;
  text-align: center;
-}
-
-
-.latestAssignments {
+ }
+ 
+ 
+ .latestAssignments {
  display: flex;
  flex-wrap: wrap;
  gap: 10px;
@@ -361,82 +385,91 @@ nav {
    padding: 0 10px;
    width: 100%;
  }
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// AddTask
-// ––––––––––––––––––––––––––––––––––––––––––-
-.add-task-container {
- background-color: p.$color-inputFill;
- @include p.border();
- margin-bottom: 20rem;
- position: absolute;
- width: 50vw;
-}
-.shutDown {
- position: absolute;
- right: 20px;
- top: 20px;
- font-size: 2em;
- &:hover {
-   font-size: 2em;
-   cursor: pointer;
  }
-}
-.category {
- display: flex;
- height: 2em;
- width: 2em;
- justify-content: center;
- align-items: center;
- font-size: 1.5em;
- background-color: p.$color-inputFill;
- cursor: pointer;
- transition: background-color 0.3s;
- aspect-ratio: 1;
- @include p.border(100%);
- &:hover {
-   background-color: #f0f0f0;
+ 
+ 
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // AddTask
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .add-task-container {
+    position: relative;
+    background-color: p.$color-inputFill;
+    @include p.border();     
+    width: 100%;     
+    box-sizing: border-box;
+    .assignment-selection{
+    width: 80%;
+    margin: 0 auto;
+  }
+  .chooseCategory, .choosePoints {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    justify-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
  }
-
-
- &.selected {
-   border-color: #388e3c; /* Mørkere grøn kant */
+ .shutDown {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 2em;
+  transition: color 0.3s;
+  &:hover {
+    cursor: pointer;
+    color: p.$color-secondary;
+  }
  }
-}
-.points {
- @include p.border(100%);
- display: flex;
- height: 2em;
- width: 2em;
- justify-content: center;
- align-items: center;
- background-color: p.$color-inputFill;
- cursor: pointer;
- transition: background-color 0.3s;
- aspect-ratio: 1;
- padding: 10px;
- &:hover {
-   background-color: #f0f0f0;
+ .category {
+  display: flex;
+  height: 2em;
+  width: 2em;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  background-color: p.$color-background;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  aspect-ratio: 1;
+  @include p.border(10px);
+  &:hover {
+    background-color: p.$color-inputBorder;
+  }
+  &.selected {
+    border-color: p.$color-secondary;
+    border: 3px solid p.$color-secondary;
+  }
  }
-
-
- &.selected {
-   border-color: #388e3c; /* Mørkere grøn kant */
+ .points {
+  @include p.border(10px);
+  display: flex;
+  height: 2em;
+  width: 2em;
+  justify-content: center;
+  align-items: center;
+  background-color: p.$color-background;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  aspect-ratio: 1;
+  padding: 10px;
+  &:hover {
+    background-color: p.$color-inputBorder;
+  }
+  &.selected {
+    border-color: p.$color-secondary;
+    border: 3px solid p.$color-secondary;
+  }
  }
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Filter
-// ––––––––––––––––––––––––––––––––––––––––––-
-.category-buttons {
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Filter
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .category-buttons {
  display: flex;
  flex-wrap: wrap;
  gap: 10px;
  .filter-button {
-   @include p.border(100%);
+   @include p.border(10px);
    display: flex;
    height: 2em;
    width: 2em;
@@ -445,46 +478,45 @@ nav {
    font-size: 1.5em;
    background-color: p.$color-inputFill;
    cursor: pointer;
-   transition: background-color 0.3s;
    aspect-ratio: 1;
+   &.active {
+    border: 2px solid p.$color-secondary;
+   }
  }
-}
-
-
-.circle {
- @include p.border(100%);
- display: flex;
- height: 2em;
- width: 2em;
- justify-content: center;
- align-items: center;
- font-size: 1em;
- background-color: p.$color-inputFill;
- cursor: pointer;
- transition: background-color 0.3s;
- aspect-ratio: 1;
-
-
-}
-
-
-.task-list {
+ }
+ .addTaskButton {
+  margin-top: 15px;
+ }
+ 
+ 
+ .task-list, .last-done-container {
+  @media screen and (min-width: 1400px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
  .task-item {
    display: flex;
    list-style: none;
-   padding: 1em;
+   padding: 1em 0;
    justify-content: center;
+   @media screen and (min-width: 1400px) {
+    justify-content: left;
+  }
  }
  .task-info {
    @include p.border(10px);
    display: flex;
-   width: 100vw;
+   width: 100%;
+   @media screen and (min-width: 1400px) {
+    width: 80%;
+  }
  }
  .task-category {
-   @include p.border(9px 0 0 9px);
+   border-right: 1px solid p.$color-inputBorder;
+   border-radius: 10px 0 0 10px;
    background-color: p.$color-background;
    display: flex;
-   width: 4em;
+   width: 3em;
    justify-content: center;
    align-items: center;
    font-size: 1.5em;
@@ -493,18 +525,17 @@ nav {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 0 20px;
-   gap: 20px;
+   padding: 0 10px;
+   gap: 10px;
    width: 100%;
  }
-}
-.checkmark {
+ }
+ .checkmark {
  color: #388e3c;
  font-size: 1em;
  margin-left: 10px;
  display: flex;
- height: 5em;
- width: 5em;
+ height: 100%;
  justify-content: center;
  align-items: center;
  background-color: p.$color-secondary;
@@ -512,63 +543,49 @@ nav {
  border-radius: 10px;
  cursor: pointer;
  transition: background-color 0.3s;
- aspect-ratio: 1;
  &:hover {
    background-color: #c9ffcf;
    border-color: #6e9977;
  }
-}
-@media screen and (min-width: 1024px) {
-
+ }
+ @media screen and (min-width: 1024px) {
  .character-selection {
    grid-template-columns: repeat(5, 1fr);
    gap: 20px;
  }
-
-
  .center {
    .logo {
      margin: 3rem auto;
    }
  }
-
-
  .moodBox {
    margin-top: 2rem;
    padding: 2rem;
    margin-left: 4rem;
    margin-right: 4rem;
-
-
    img {
      padding-top: 1rem;
      width: 80%;
    }
  }
-
-
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Level
-// ––––––––––––––––––––––––––––––––––––––––––-
-
-
-.level {
+ }
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Level
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .level {
  border-radius: 8px;
- margin: 20px 0;
+ margin: 10px 0 5em 0;
  max-width: 100%;
-
-
+ 
+ 
  p {
    margin: 0;
    padding-left: 20px;
    font-size: 18px;
    color: #2c2c2c; /* Tekstfarve */
  }
-
-
+ 
+ 
  .container {
    @include p.border(10px);
    position: relative;
@@ -577,16 +594,16 @@ nav {
    justify-content: space-between;
    align-items: center;
    width: 100%; /* Sikrer at containeren fylder hele bredden */
-
-
-   p {
+ 
+ 
+  p {
      z-index: 2;
      font-size: 16px;
      color: #2a2a2a; /* Farve for 10/1000 ⚡️ tekst */
-   }
-
-
-   .color {
+  }
+ 
+ 
+  .color {
      z-index: 1;
      position: absolute;
      height: 100%;
@@ -602,36 +619,31 @@ nav {
      cursor: pointer;
      transition: background-color 0.6s ease; /* Glidende overgang til hover-effekt */
      transition: width 0.3s ease-in-out; /* Glidende effekt når bredden ændres */
-
-
      &:hover {
        background-color: #a07845; /* Mørkere grøn ved hover */
-     }
-   }
+    }
+  }
+  @media screen and (min-width: 800px) {
+    padding: 10px 0;
+  }
  }
-
-
+ 
+ 
  @media (max-width: 600px) {
    .level {
      max-width: 100%;
      padding: 10px;
    }
-
-
    .container {
      flex-direction: column;
      align-items: flex-start;
    }
  }
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// Water
-// ––––––––––––––––––––––––––––––––––––––––––-
-
-
-.water-plus, .water-minus {
+ }
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // Water
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .water-plus, .water-minus {
  @include p.border(100%);
  font-size: 2em;
  height: 2em;
@@ -642,27 +654,21 @@ nav {
  text-align: center;  // Sørger for tekst centering
  background-color: p.$color-inputFill;
  cursor: pointer;
-
-
  p {
    font-size: 1em;
    margin: 0;  // Fjerner margin på <p> for at sikre, at den er korrekt centreret
  }
-}
-
-
-.water-icon {
+ }
+ 
+ 
+ .water-icon {
  font-size: 3em;  // Sørger for at ikonet er synligt og på samme størrelse som knapperne
  display: inline-block;  // Sørger for at ikonet placeres korrekt
-}
-
-
-// –––––––––––––––––––––––––––––––––––––––––––
-// PointOverviewWeek
-// ––––––––––––––––––––––––––––––––––––––––––-
-
-
-.pointsOverviewWeek {
+ }
+ // –––––––––––––––––––––––––––––––––––––––––––
+ // PointOverviewWeek
+ // ––––––––––––––––––––––––––––––––––––––––––-
+ .pointsOverviewWeek {
  display: flex;
  flex-direction: column;
  .container {
@@ -680,5 +686,6 @@ nav {
      }
    }
  }
-}
-//648
+ }
+ //648
+ 
