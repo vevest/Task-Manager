@@ -11,11 +11,11 @@ function WelcomeMessage() {
     <section className="center">
       <h1>{welcomeMessage}</h1> {/* Dynamisk velkomstbesked */}
       <h2>Velkommen til Smile!</h2>
-      <div className="boxType1">
+      <div className="containerWelcome">
         <p className="framedContent">Få styr på din hverdag sammen med os, i forsøget på at gøre hverdagens kedelige gøremål sjovere! </p>
         <p className="framedContent">Pointsystem for at holde motivationen oppe.</p>
         <p className="framedContent">Motiverende citater</p> 
-        <Link to="/character"><button>Gå videre</button></Link>
+        <Link to="/character"><button className="buttonBottom">Gå videre</button></Link>
       </div>
     </section>
   );

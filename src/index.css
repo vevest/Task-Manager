@@ -32,7 +32,7 @@ ul li {
 
 p {
   font-family: "Itim";
-  font-size: 1.3rem;
+  font-size: 24px;
   font-weight: 200;
   color: #323232;
   line-height: 2rem;
@@ -40,7 +40,7 @@ p {
 }
 @media screen and (max-width: 1000px) {
   p {
-    font-size: calc(1.3rem * 0.8);
+    font-size: calc(24px * 0.8);
   }
 }
 
@@ -60,7 +60,7 @@ p {
 
 h1 {
   font-family: "Itim";
-  font-size: 2.2rem;
+  font-size: 40px;
   font-weight: 200;
   color: #323232;
   line-height: 2.5rem;
@@ -68,13 +68,13 @@ h1 {
 }
 @media screen and (max-width: 1000px) {
   h1 {
-    font-size: calc(2.2rem * 0.8);
+    font-size: calc(40px * 0.8);
   }
 }
 
 h2 {
   font-family: "Itim";
-  font-size: 1.7rem;
+  font-size: 34px;
   font-weight: 200;
   color: #323232;
   line-height: 1rem;
@@ -82,13 +82,13 @@ h2 {
 }
 @media screen and (max-width: 1000px) {
   h2 {
-    font-size: calc(1.7rem * 0.8);
+    font-size: calc(34px * 0.8);
   }
 }
 
 h3 {
   font-family: "Itim";
-  font-size: 1.4rem;
+  font-size: 27px;
   font-weight: 200;
   color: #323232;
   line-height: 1.5rem;
@@ -96,13 +96,13 @@ h3 {
 }
 @media screen and (max-width: 1000px) {
   h3 {
-    font-size: calc(1.4rem * 0.8);
+    font-size: calc(27px * 0.8);
   }
 }
 
 a {
   font-family: "Itim";
-  font-size: 1.3rem;
+  font-size: 24px;
   font-weight: 600;
   color: #ffffff;
   line-height: 2.5rem;
@@ -111,7 +111,7 @@ a {
 }
 @media screen and (max-width: 1000px) {
   a {
-    font-size: calc(1.3rem * 0.8);
+    font-size: calc(24px * 0.8);
   }
 }
 
@@ -265,6 +265,13 @@ button:hover {
   letter-spacing: 2px;
 }
 
+.buttonBottom {
+  position: absolute;
+  bottom: 2em; /* 2em fra bunden af forælderen */
+  left: 50%; /* Placer knappen i midten af bredden */
+  transform: translateX(-50%); /* Justér knappen til præcist at være centreret */
+}
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -301,6 +308,23 @@ nav {
   stroke-width: 2px;
 }
 
+.containerWelcome {
+  margin-top: 20vw;
+}
+@media screen and (min-width: 1024px) {
+  .containerWelcome {
+    margin: 10vw 10em 0 10em;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .containerWelcome {
+    margin: 10vw 20em 0 20em;
+  }
+}
+.containerWelcome .framedContent {
+  margin-top: 1em;
+}
+
 .selectedCharacter {
   width: 50%;
   height: 7em;
@@ -330,10 +354,24 @@ nav {
 .character-selection {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 2vw;
   justify-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 5em;
+}
+@media screen and (min-width: 1000px) {
+  .character-selection {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin: 5em 4em 0 4em;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .character-selection {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin: 5em 8em 0 8em;
+  }
 }
 
 .character {
@@ -341,8 +379,8 @@ nav {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 5.5em;
-  height: 5.5em;
+  width: 7em;
+  height: 7em;
   cursor: pointer;
   transition: transform 0.3s ease;
   background-color: #fff8de;
@@ -376,13 +414,18 @@ nav {
 .moodBox {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 10vw;
   justify-items: center;
   margin-top: 20px;
   background-color: #fff8de;
   border: 1px solid #e3d9b0;
   border-radius: 10px;
   padding: 2rem;
+}
+@media screen and (min-width: 700px) {
+  .moodBox {
+    padding: 4rem;
+  }
 }
 .moodBox img {
   border: none;
@@ -627,10 +670,6 @@ nav {
 }
 
 @media screen and (min-width: 1024px) {
-  .character-selection {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-  }
   .center .logo {
     margin: 3rem auto;
   }
