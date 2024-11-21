@@ -48,17 +48,17 @@ Currently, two official plugins are available:
 
 ├── /src
 
-│   ├── /allComponents 
+│       ├── /allComponents 
 
-│   ├── /assets
+│       ├── /assets
 
-│   ├── /assignments
+│       ├── /assignments
 
-│   ├── /context
+│       ├── /context
 
-│   ├── /login
+│       ├── /login
 
-│   └── /pages  
+│       └── /pages  
 
 ├── _partials.scss 
 
