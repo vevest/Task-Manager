@@ -87,59 +87,64 @@ function AddTask() {
 
   return (
     <div className="center add-task-container">
-      <h1>Opret opgave</h1>
-      <div onClick={shutDown} className='shutDown'><i className="fa-solid fa-xmark"></i></div>
+    <h1>Opret opgave</h1>
+    <div onClick={shutDown} className='shutDown'><i className="fa-solid fa-xmark"></i></div>
 
-      <form>
-        <h2>📌 Kategori</h2>
-        <div className="character-selection">
-          {categories.map((category) => (
-            <div
-              key={category.id}
-              className={`category ${
-                selectedCategory && selectedCategory.label === category.label ? 'selected' : ''
-              }`}
-              onClick={() => handleCategoryClick(category)}
-            >
-              {category.label}
-            </div>
-          ))}
-        </div>
 
-        <h2>Opgaven</h2>
-        <input
-          type="text"
-          value={selectedTask}
-          placeholder="Skriv opgaven"
-          onChange={handleTaskChange}
-        />
+    <form>
+      <h2>📌 Kategori</h2>
+      <div className="chooseCategory">
+        {categories.map((category) => (
+          <div
+            key={category.id}
+            className={`category ${
+              selectedCategory && selectedCategory.label === category.label ? 'selected' : ''
+            }`}
+            onClick={() => handleCategoryClick(category)}
+          >
+            {category.label}
+          </div>
+        ))}
+      </div>
 
-        <h2>⚡️ Points</h2>
-        <div className="character-selection">
-          {points.map((point) => (
-            <div
-              key={point.id}
-              className={`points ${
-                selectedPoints && selectedPoints.value === point.value ? 'selected' : ''
-              }`}
 
-              onClick={() => handlePointsClick(point)}
-            >
-              {point.value}
-            </div>
-          ))}
-        </div>
+      <h2>Opgaven</h2>
+      <input className='assignment-selection'
+        type="text"
+        value={selectedTask}
+        placeholder="Skriv opgaven"
+        onChange={handleTaskChange}
+      />
 
-        <button
-          className={`button ${
-            !selectedTask || !selectedCategory || !selectedPoints ? 'disabled' : ''
-          }`}
-          onClick={handleAddTask}
-        >
-          Tilføj opgave
-        </button>
-      </form>
-    </div>
+
+      <h2>⚡️ Points</h2>
+      <div className="choosePoints">
+        {points.map((point) => (
+          <div
+            key={point.id}
+            className={`points ${
+              selectedPoints && selectedPoints.value === point.value ? 'selected' : ''
+            }`}
+
+
+            onClick={() => handlePointsClick(point)}
+          >
+            <p>{point.value}</p>
+          </div>
+        ))}
+      </div>
+
+
+      <button
+        className={`button ${
+          !selectedTask || !selectedCategory || !selectedPoints ? 'disabled' : ''
+        }`}
+        onClick={handleAddTask}
+      >
+        Tilføj opgave
+      </button>
+    </form>
+  </div>
   );
 }
 

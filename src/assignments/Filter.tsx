@@ -46,58 +46,62 @@ function Filter() {
 
   return (
     <div className="filter-container baseContent">
-      <div className='flex'>
-        <h2>Opgaver</h2>
-        <div onClick={handleToFilter} className="circle">
-          <i className="fa-solid fa-plus"></i>
-        </div>
-      </div>
-
-      {/* Emoji knapper for hver kategori */}
-      <div className="category-buttons">
-        <button onClick={() => setSelectedFilter("All")} 
-        className={`filter-button ${selectedFilter === "All" ? "active" : ""}`}>
-          <p className="filter-emoji">🔄</p>
-        </button>
-        {categories.map((category) => (
-          <button
-            key={category.value}
-            onClick={() => setSelectedFilter(category.label)}
-            className={`filter-button ${selectedFilter === "All" ? "active" : ""}`}
-            title={category.label}
-          >
-            <p className="filter-emoji">{category.label}</p>
-          </button>
-        ))}
-      </div>
-
-      {/* Render de filtrerede opgaver */}
-    <ul className="task-list framedContent">
-      <h2>To-do liste</h2>
-      {tasks.length === 0 ? (
-        <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>
-      ) : (
-        filteredTasks.map((task) => (
-          <li key={task.id} className="task-item">
-            <div className='task-info'>
-              <div className="task-category">
-                {task.category}
-              </div>
-              <div className="task-nameAndPoints">
-                <span className="task-name">{task.name}</span>
-                <span className="task-points">{task.points}⚡️</span>
-              </div>
-            </div>
-            <div className="task-actions">
-                <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
-                  <i className="fa-solid fa-check"></i>
-                </button>
-              </div>
-          </li>
-        ))
-      )}
-    </ul>
+    <div className='flex'>
+      <h2>Opgaver</h2>
     </div>
+
+
+    {/* Emoji knapper for hver kategori */}
+    <div className="category-buttons">
+      <button onClick={() => setSelectedFilter("All")}
+      className={`filter-button ${selectedFilter === "All" ? "active" : ""}`}>
+        <p className="filter-emoji">🔄</p>
+      </button>
+      {categories.map((category) => (
+        <button
+          key={category.value}
+          onClick={() => setSelectedFilter(category.label)}
+          className={`filter-button ${selectedFilter === category.label ? "active" : ""}`}
+          title={category.label}
+        >
+          <p className="filter-emoji">{category.label}</p>
+        </button>
+      ))}
+    </div>
+
+
+    {/* Render de filtrerede opgaver */}
+    <button className='addTaskButton' onClick={handleToFilter}>Tilføj opgave</button>
+    <div className='framedContent'>
+      <h2>To-do liste</h2>
+      <ul className="task-list">
+        {tasks.length === 0 ? (
+          <p className="no-tasks">Ingen opgaver i øjeblikket 🔆</p>
+        ) : (
+          filteredTasks.map((task) => (
+            <div className='container'>
+              <li key={task.id} className="task-item">
+                <div className='task-info'>
+                  <div className="task-category">
+                    {task.category}
+                  </div>
+                  <div className="task-nameAndPoints">
+                    <p className="task-name">{task.name}</p>
+                    <p className="task-points">{task.points}⚡️</p>
+                  </div>
+                </div>
+                <div className="task-actions">
+                    <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
+                      <i className="fa-solid fa-check"></i>
+                    </button>
+                </div>
+              </li>
+            </div>
+          ))
+        )}
+      </ul>
+    </div>
+  </div>
   );
 };
 

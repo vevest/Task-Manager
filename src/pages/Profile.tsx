@@ -29,27 +29,29 @@ function Profile() {
 
   return (
     <>
-      <Level />
-      <h1>{name}'s uge</h1>
+    <Level />
+    <h1>{name}'s uge</h1>
+    <div className="gridToFlex-Box2">
       <div className="framedContent flex">
         <div className="selectedCharacter">
           <img className="characterProfile" src={character} alt="Det valgte icon" />
         </div>
         <div className="grid">
-          <h3>Point i denne uge</h3>
+          <h2>Point i denne uge</h2>
           {/* Vis dynamiske ugentlige points her */}
-          <h3>{weeklyPoints} ⚡️</h3> {/* Brug de ugentlige points fra konteksten */}
+          <p className="pBig">{weeklyPoints} ⚡️</p> {/* Brug de ugentlige points fra konteksten */}
         </div>
       </div>
       <PointsOverviewWeek />
-      <LastDone />
-      <div className="center">
-       <Link to="/">
-         <button onClick={handleClick}>Log ud</button>
-       </Link>
-     </div>
-      <Navbar />
-    </>
+    </div>
+    <LastDone />
+    <div className="center">
+     <Link to="/">
+       <button onClick={handleClick}>Log ud</button>
+     </Link>
+   </div>
+    <Navbar />
+  </>
   );
 }
 
