@@ -185,6 +185,9 @@ button {
  &:hover {
    letter-spacing: 2px;
  }
+ @media screen and (min-width: 1024px) {
+    padding: 0.3em 1.8em;
+  }
 }
 .buttonBottom {
  position: absolute;
@@ -549,8 +552,46 @@ gap: 10px;
  margin-top: 15px;
 }
 
+.last-done-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  max-width: 100vw;
+  margin-bottom: 2em;
+  @media screen and (min-width: 1000px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .task-item {
+    display: flex;
+    list-style: none;
+    height: 5em;
+  }
+  .task-info {
+    @include p.border(10px);
+    display: flex;
+    width: 100%;
+  }
+  .task-category {
+    border-right: 1px solid p.$color-inputBorder;
+    display: flex;
+    width: 5em;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    background-color: p.$color-background;
+    border-radius: 10px 0 0 10px;
+  }
+  .task-nameAndPoints {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+  }
+}
 
-.task-list, .last-done-container {
+.task-list{
  @media screen and (min-width: 1400px) {
    display: grid;
    grid-template-columns: repeat(2, 1fr);
@@ -591,79 +632,99 @@ gap: 10px;
   width: 100%;
 }
 }
-.checkmark {
-color: #388e3c;
-font-size: 1em;
-margin-left: 10px;
-display: flex;
-height: 100%;
-justify-content: center;
-align-items: center;
-background-color: p.$color-secondary;
-border: none;
-border-radius: 10px;
-cursor: pointer;
-transition: background-color 0.3s;
-  &:hover {
-    background-color: #c9ffcf;
-    border-color: #6e9977;
+/* Definer animationen */
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(3); /* Flytter elementet til venstre */
   }
 }
+
+.task-actions {
+  position: relative;
+
+  .checkmark {
+    color: #ffffff;
+    font-size: 0.7em;
+    margin-left: 10px;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: p.$color-secondary;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, all 0.3s ease;
+    /* Animation til knappen ved klik */
+    &.clicked {
+      position: relative;
+      z-index: 5;
+      animation: scale 0.5s ease-in-out; /* Kør animationen */
+      background-color: transparent;
+    }
+
+    p {
+      font-size: 2em;
+      color: white;
+    }
+  }
+}
+
 
 // –––––––––––––––––––––––––––––––––––––––––––
 // Level
 // ––––––––––––––––––––––––––––––––––––––––––-
 .level {
-border-radius: 8px;
-margin: 10px 0 5em 0;
-max-width: 100%;
+  border-radius: 8px;
+  margin: 10px 0 5em 0;
+  max-width: 100%;
+  p {
+    margin: 0;
+    padding-left: 20px;
+    color: #2c2c2c; /* Tekstfarve */
+  }
 
-
-p {
-  margin: 0;
-  padding-left: 20px;
-  font-size: 18px;
-  color: #2c2c2c; /* Tekstfarve */
-}
-
-
-.container {
-  @include p.border(10px);
-  position: relative;
-  background-color: p.$color-inputFill;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; /* Sikrer at containeren fylder hele bredden */
-
-
- p {
-    z-index: 2;
-    font-size: 16px;
-    color: #2a2a2a; /* Farve for 10/1000 ⚡️ tekst */
- }
-
-
- .color {
-    z-index: 1;
-    position: absolute;
-    height: 100%;
-    background-color: p.$color-secondary; /* Grøn farve, kan ændres baseret på niveau */
-    border-radius: 9px;
+  .container {
+    @include p.border(10px);
+    position: relative;
+    background-color: p.$color-inputFill;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.6s ease; /* Glidende overgang til hover-effekt */
-    transition: width 0.3s ease-in-out; /* Glidende effekt når bredden ændres */
-    &:hover {
-      background-color: #a07845; /* Mørkere grøn ved hover */
-   }
- }
+    width: 100%; /* Sikrer at containeren fylder hele bredden */
+    .lyn {
+      font-size: 2em;
+      padding-right: 10px;
+    }
+    p {
+        z-index: 2;
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: p.$color-text-black; /* Farve for 10/1000 ⚡️ tekst */
+    }
+    .color {
+      z-index: 1;
+      position: absolute;
+      height: 100%;
+      background-color: p.$color-secondary; /* Grøn farve, kan ændres baseret på niveau */
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.6s ease; /* Glidende overgang til hover-effekt */
+      transition: width 0.3s ease-in-out; /* Glidende effekt når bredden ændres */
+      &:hover {
+        background-color: #a07845; /* Mørkere grøn ved hover */
+    }
+  }
  @media screen and (min-width: 800px) {
    padding: 10px 0;
  }
@@ -685,18 +746,20 @@ p {
 // Water
 // ––––––––––––––––––––––––––––––––––––––––––-
 .water-plus, .water-minus {
-@include p.border(100%);
-font-size: 2em;
+transform: translateY(30px);
+font-size: 1.7em;
 height: 2em;
 width: 2em;
 display: flex;  // Sørger for at knappen er en flex-container
 align-items: center;  // Centrerer vertikalt
 justify-content: center;  // Centrerer horisontalt
 text-align: center;  // Sørger for tekst centering
-background-color: p.$color-inputFill;
+background-color: p.$color-secondary;
+color: p.$color-text-white;
 cursor: pointer;
 p {
-  font-size: 1em;
+  font-size: 1.2em;
+  color: p.$color-text-white;
   margin: 0;  // Fjerner margin på <p> for at sikre, at den er korrekt centreret
 }
 }

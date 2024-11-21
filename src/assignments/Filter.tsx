@@ -9,6 +9,7 @@ function Filter() {
   const { setAddTaskToFilter } = useContext(CharacterContext);
   const { addPoints } = useContext(PointsContext); // Hent addPoints-funktionen fra 
   const [selectedFilter, setSelectedFilter] = useState("All");
+  const [clickedTasks, setClickedTasks] = useState({});
 
   const categories = [
     { id: 1, label: '📚', value: 'Study' },
@@ -24,6 +25,11 @@ function Filter() {
   const handleTaskDone = (taskId: string) => {
     const completedTask = tasks.find((task) => task.id === taskId);
 
+    setClickedTasks((prevState) => ({
+      ...prevState,
+      [taskId]: true,  // Sæt den klikkede opgave til true
+    }));
+
     if (completedTask) {
       console.log("Task marked as done:", completedTask); // Log completedTask
       addPoints(completedTask.points); // Tilføj point
@@ -31,7 +37,9 @@ function Filter() {
       
     }
 
-    setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern fra "To-do"-liste
+    setTimeout(() => {
+      setTasks(tasks.filter((task) => task.id !== taskId)); // Fjern fra "To-do"-liste
+    }, 700); // Samme forsinkelse som tilføjelsen af completedTask
   };
 
   const handleToFilter = () => {
@@ -91,8 +99,8 @@ function Filter() {
                   </div>
                 </div>
                 <div className="task-actions">
-                    <button className="checkmark" onClick={() => handleTaskDone(task.id)}>
-                      <i className="fa-solid fa-check"></i>
+                    <button className={`checkmark ${clickedTasks[task.id] ? 'clicked' : ''}`}  onClick={() => handleTaskDone(task.id)}>
+                      <p><i className="fa-solid fa-check"></i></p>
                     </button>
                 </div>
               </li>

@@ -44,9 +44,9 @@ function Water() {
     <div className="framedContent">
       <p>Glas vand i dag: {water}</p>
       <div className="flexSA">
-        <button className="water-plus" onClick={decreaseWater}><p>-</p></button>
+        <button className="water-plus" onClick={decreaseWater}><p><i className="fa-solid fa-minus"></i></p></button>
         <p className="water-icon">💧</p>
-        <button className="water-minus" onClick={increaseWater}><p>+</p></button>
+        <button className="water-minus" onClick={increaseWater}><p><i className="fa-solid fa-plus"></i></p></button>
       </div>
 
     </div>

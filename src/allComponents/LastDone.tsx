@@ -8,12 +8,12 @@ function LastDone() {
   return (
     <>
     <h2>Sidst gjort</h2>
-    <div className="last-done-container baseContent">
-      <ul>
+    <div className="baseContent">
+      <ul className="last-done-container">
         {completedTasks.length === 0 ? (
           <p>Ingen opgaver er færdiggjort endnu 😢</p> // Hvis der ikke er nogen færdige opgaver
         ) : (
-          completedTasks.slice(-5).map((task) => (
+          completedTasks.slice(-10).map((task) => (
             <li key={task.id} className="task-item">
             <div className='task-info'>
               <div className="task-category">

@@ -67,6 +67,7 @@ function AddTask() {
   const handleAddTask = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
+    shutDown();
     if (!selectedTask || !selectedCategory || !selectedPoints) {
       alert('Udfyld venligst alle felter før du tilføjer en opgave.');
       return;
@@ -134,15 +135,15 @@ function AddTask() {
         ))}
       </div>
 
-
-      <button
-        className={`button ${
-          !selectedTask || !selectedCategory || !selectedPoints ? 'disabled' : ''
-        }`}
-        onClick={handleAddTask}
-      >
-        Tilføj opgave
-      </button>
+        <button
+          className={`button ${
+            !selectedTask || !selectedCategory || !selectedPoints ? 'disabled' : ''
+          }`}
+          onClick={handleAddTask}
+        >
+          Tilføj opgave
+        </button>
+      
     </form>
   </div>
   );

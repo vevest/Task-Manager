@@ -34,7 +34,8 @@ function Level() {
     <div className="level">
       <p>Level {currentLevel ? currentLevel.level : levels.length}</p>
       <div className="container">
-        <p>{weeklyPoints}/{nextLevelPoints} ⚡️</p>
+        <p>{weeklyPoints}/{nextLevelPoints}</p>
+        <p className='lyn'>⚡️</p>
         <div className="color" style={{
           width: `${progressToNextLevel}%`, // Dynamisk bredde baseret på fremgangen mod næste level
         }}></div>
